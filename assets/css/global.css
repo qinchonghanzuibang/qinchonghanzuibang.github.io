@@ -67,3 +67,6 @@ div.lazy {
     font-family: Courier, monospace;
 }
 
+.card-body .h1 {
+    font-family: "Georgia", serif !important;
+}
