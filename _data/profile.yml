@@ -24,7 +24,8 @@ short_bio: >-
   <p>
     I am currently an undergraduate student in <a href="https://www.cds.hku.hk/">school of computing and data science</a> at <a href="https://hku.hk">the University of Hong Kong</a> (HKU).
     I am also fortunately to be working at <a href="https://hkunlp.github.io//">HKUNLP</a>, advised by Prof. <a href="https://ikekonglp.github.io/">Lingpeng, Kong</a> and Dr. <a href="https://xcfeng.net/">Xiachong, Feng</a>.
-    My research interests include Large Language Models and its possible applications.
+    Previously, I have been an exchange student in <a href="https://eecs.berkeley.edu/">Department of Electrical Engineering and Computer Sciences</a> at <a href="https://www.berkeley.edu/">University of California, Berkeley</a> in both 2023 Summer and 2024 Fall.
+    My current research interests include Large Language Models and its possible applications.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
@@ -42,9 +43,16 @@ education:
 - name: University of California, Berkeley
   logo: /assets/images/badges/UCB.png
   position: >- 
-    Department of Electrical Engineering and Computer Sciences <br/>
-    Exchange Student
-  date: June 2023 - Aug 2023, Aug 2024 - Dec 2024
+    EECS <br/>
+    Fall Exchange
+  date: Aug 2024 - Dec 2024
+
+- name: University of California, Berkeley
+  logo: /assets/images/badges/UCB.png
+  position: >- 
+    EECS <br/>
+    Summer Exchange
+  date: June 2023 - Aug 2023
 
 - name: High School Affiliated to Fudan University
   logo: /assets/images/badges/FDFZ.png
@@ -54,18 +62,34 @@ education:
 experience:
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
-  position: Student Research Assistant
-  date: Oct. 2024 - Present
+  position: Student Teaching Assistant
+  date: Jan 2025 - May 2025 (expected)
 
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
   position: Student Research Assistant
   date: Oct. 2024 - Present
+
+- name: Fudan University
+  logo: /assets/images/badges/FDU.png
+  position: Research Intern
+  date: July 2024 - Dec 2024
   
+- name: E Fund Management (HK) Co., Ltd
+  logo: /assets/images/badges/EFUND.png
+  position: Quantitative Research Intern
+  date: June 2024 - Aug 2024
+
+- name: Tishman Speyer
+  logo: /assets/images/badges/TS.png
+  position: Acquisition Intern
+  date: Dec 2023 - Jan 2024
+
+experience:
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
   position: Student Research Assistant
-  date: Oct. 2024 - Present
+  date: Aug 2023 - July 2024
 # awards:
 # - name: Award Name 2
 #   date: 2024
