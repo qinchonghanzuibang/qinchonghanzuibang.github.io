@@ -1,6 +1,6 @@
 primary_name: "Jonathan Qin"
 secondary_name: ""
-navbar_name: "Hello Stranger"
+navbar_name: "Hello, Stranger"
 
 positions:
 - logo: /assets/images/badges/HKU.png  # Logo is optional
@@ -35,27 +35,44 @@ portrait_caption: >-
   Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 
 education:
-- name: Massachusetts Institute of Technology
-  logo: /assets/images/badges/MIT_Social_circle.png
+- name: The University of Hong Kong
+  logo: /assets/images/badges/HKU.png
   position: >- 
-    Department of Electrical Engineering and Computer Science <br/>
-    Ph.D. Student
-  date: Sep. 2024 - present
-- name: Peking University
-  logo: /assets/images/badges/PKU_red.png
-  position: B.S. in Computer Science
-  date: Sep. 2019 - Jul. 2021
+    School of Computing and Data Science <br/>
+    Undergraduate Student
+  date: Sep. 2022 - May. 2026 (expected)
 
-# experience:
-# - name: Peking University
-#   logo: /assets/images/badges/PKU_red.png
-#   position: Research Intern
-#   date: Sep. 2019 - Jul. 2021
+- name: University of California, Berkeley
+  logo: /assets/images/badges/UCB.png
+  position: >- 
+    Department of Electrical Engineering and Computer Sciences <br/>
+    Exchange Student
+  date: June 2023 - Aug 2023, Aug 2024 - Dec 2024
 
-awards:
-- name: Award Name 2
-  date: 2024
-- name: Award Name 1 
-  date: 2021
-- name: A quick brown fox jumps over the lazy dog and runs away award
-  date: 2021
+- name: High School Affiliated to Fudan University
+  logo: /assets/images/badges/FDFZ.png
+  position: IBDP Student
+  date: Sep. 2019 - June. 2022
+
+experience:
+- name: The University of Hong Kong
+  logo: /assets/images/badges/HKU.png
+  position: Student Research Assistant
+  date: Oct. 2024 - Present
+
+- name: The University of Hong Kong
+  logo: /assets/images/badges/HKU.png
+  position: Student Research Assistant
+  date: Oct. 2024 - Present
+  
+- name: The University of Hong Kong
+  logo: /assets/images/badges/HKU.png
+  position: Student Research Assistant
+  date: Oct. 2024 - Present
+# awards:
+# - name: Award Name 2
+#   date: 2024
+# - name: Award Name 1 
+#   date: 2021
+# - name: A quick brown fox jumps over the lazy dog and runs away award
+#   date: 2021
