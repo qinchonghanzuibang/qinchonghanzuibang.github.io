@@ -43,15 +43,15 @@ education:
 - name: University of California, Berkeley
   logo: /assets/images/badges/UCB.png
   position: >- 
-    EECS <br/>
-    Fall Exchange
+    Department of EECS <br/>
+    Fall Exchange Student
   date: Aug 2024 - Dec 2024
 
 - name: University of California, Berkeley
   logo: /assets/images/badges/UCB.png
   position: >- 
-    EECS <br/>
-    Summer Exchange
+    Department of EECS <br/>
+    Summer Exchange Student
   date: June 2023 - Aug 2023
 
 - name: High School Affiliated to Fudan University
@@ -85,11 +85,11 @@ experience:
   position: Acquisition Intern
   date: Dec 2023 - Jan 2024
 
-experience:
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
   position: Student Research Assistant
   date: Aug 2023 - July 2024
+
 # awards:
 # - name: Award Name 2
 #   date: 2024
