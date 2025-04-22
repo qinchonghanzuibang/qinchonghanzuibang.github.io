@@ -41,7 +41,7 @@ education:
   position: >- 
     School of Computing and Data Science <br/>
     Undergraduate Student
-  date: Sep. 2022 - May. 2026 (expected)
+  date: Sep. 2022 - Present
 
 - name: University of California, Berkeley
   logo: /assets/images/badges/UCB.png
@@ -57,16 +57,16 @@ education:
     Summer Exchange Student
   date: June 2023 - Aug 2023
 
-- name: High School Affiliated to Fudan University
-  logo: /assets/images/badges/FDFZ.png
-  position: IBDP Student
-  date: Sep. 2019 - June. 2022
+# - name: High School Affiliated to Fudan University
+#   logo: /assets/images/badges/FDFZ.png
+#   position: IBDP Student
+#   date: Sep. 2019 - June. 2022
 
 experience:
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
   position: Student Teaching Assistant
-  date: Jan 2025 - May 2025 (expected)
+  date: Jan 2025 - Present
 
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
