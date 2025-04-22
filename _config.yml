@@ -37,6 +37,7 @@ plugins:
 collections:
   - publications
   - news
-  - showcase
+  # - showcase
+  - bazinga
 
 # trigger build
