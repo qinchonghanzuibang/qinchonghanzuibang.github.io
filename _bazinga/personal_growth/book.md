@@ -5,7 +5,7 @@ date: 2098-08-02 00:00:00 +0800
 ---
 
 <div class="p-4">
-  <h2>My recent favorite BOOK!</h2>
+  <h3>My recent favorite BOOK!</h3>
   <hr />
 
   <!-- Jottings --------------------------------------------------------->
@@ -45,6 +45,6 @@ date: 2098-08-02 00:00:00 +0800
     <strong>Spoiler Alert:</strong>
     I will be discussing certain parts of the plot of the book in this section.
     If you haven't read the book yet and plan to read it, I suggest you skip this
-    section.
+    section. <strong>I will eventually write it, I promise!</strong>
   </p>
 </div>
