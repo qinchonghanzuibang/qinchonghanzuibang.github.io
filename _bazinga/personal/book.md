@@ -46,10 +46,13 @@ date: 2098-08-02 00:00:00 +0800
     I will be discussing certain parts of the plot of the book in this section.
     If you haven't read the book yet and plan to read it, I suggest you skip this
     section. Christopher's journey begins with the investigation of a neighbor's dog's death, but it quickly unfolds into a deeper quest for understanding and self-discovery. His logical approach to life, reliance on patterns, and difficulty interpreting social cues highlight the challenges faced by individuals who perceive the world differently. Through Christopher's interactions, the novel examines the impact of secrets and lies within familial relationships, emphasizing the importance of honesty and communication.​
+  </p>
 
+  <p>
     While the narrative provides valuable insight into Christopher's mind, it's important to acknowledge critiques regarding the portrayal of autism. Some readers and critics have expressed concerns about the accuracy and sensitivity of the representation, noting that the novel may reinforce certain stereotypes and overlook the diverse experiences of individuals on the autism spectrum. ​
-
-
+  </p>
+  
+  <p>
     Despite these critiques, the novel's strength lies in its ability to foster empathy and challenge readers to consider perspectives different from their own. By immersing us in Christopher's world, Haddon encourages a deeper understanding of the nuances of human behavior and the significance of embracing neurodiversity.​
   </p>
 
