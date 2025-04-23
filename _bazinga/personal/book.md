@@ -54,6 +54,6 @@ date: 2098-08-02 00:00:00 +0800
   </p>
 
   <p>
-    <strong>written in 2023 July</strong>
+    <strong>written in 2024 July</strong>
   </p>
 </div>
