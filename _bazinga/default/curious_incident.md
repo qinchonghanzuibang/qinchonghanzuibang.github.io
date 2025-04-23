@@ -1,15 +1,16 @@
 ---
 show: true
 width: 8
-date: 2024-08-02 00:00:00 +0800
+# date: 2024-08-02 00:00:00 +0800
+date: 98
 ---
 
 <div class="p-4">
-  <h5>L</h5>
+  <h2>My recent favorite BOOK!</h2>
   <hr />
 
   <!-- Jottings --------------------------------------------------------->
-  <h2>Jottings</h2>
+  <h5>Jottings</h5>
   <p>
     Actually I haven't been reading for a considerable amount of time. Admittedly,
     this might be the first book I read (except for textbooks) in years.
@@ -22,7 +23,7 @@ date: 2024-08-02 00:00:00 +0800
   </p>
 
   <!-- About the Book ---------------------------------------------------->
-  <h2>About the Book</h2>
+  <h5>About the Book</h5>
   <p>
     <a href="https://en.wikipedia.org/wiki/The_Curious_Incident_of_the_Dog_in_the_Night-Time">This book</a>
     is written by
@@ -40,7 +41,7 @@ date: 2024-08-02 00:00:00 +0800
   </p>
 
   <!-- Reflection -------------------------------------------------------->
-  <h2>Reflection</h2>
+  <h5>Reflection</h5>
   <p>
     <strong>Spoiler Alert:</strong>
     I will be discussing certain parts of the plot of the book in this section.
