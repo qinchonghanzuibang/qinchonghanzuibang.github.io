@@ -1,8 +1,8 @@
 ---
 show: true
-width: 8
+width: 12
 date: 2098-08-02 00:00:00 +0800
-group: Personal
+# group: Personal
 ---
 
 <div class="p-4">
