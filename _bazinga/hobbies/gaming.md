@@ -9,15 +9,12 @@ date: 2098-01-12 00:01:00 +0800
   <p>
       I'm sooooo passionate about games and have been playing them since primary school. I am thrilled to share some of the best games I've played over the years, and I hope you find them as enjoyable as I did!
   </p>
-
-  <h4>My Favorite Games</h4>
-
   <h5>League of Legends</h5>
   <p>
       I've been playing LoL since primary school. At that time, I have to sneak out to play it because my parents forbade me from playing video games. I felt bad about it, but I didn't regret it at all. I believe that playing video games is an amazing way to relax and meet new friends. 
   </p>
   <img 
-    data-src="{{ 'assets/images/bazinga/hobbies/league.png' | relative_url }}" 
+    data-src="{{ 'assets/images/bazinga/hobbies/league.jpg' | relative_url }}" 
     class="lazy w-100 rounded" 
     src="{{ '/assets/images/empty_300x200.png' | relative_url }}" 
     data-toggle="tooltip" 
@@ -69,3 +66,4 @@ date: 2098-01-12 00:01:00 +0800
     </li>
   </ul>
 </div>
+
