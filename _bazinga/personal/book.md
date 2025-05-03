@@ -6,11 +6,11 @@ date: 2000-08-02 00:00:00 +0800
 ---
 
 <div class="p-4">
-  <h3>My recent favorite book!</h3>
+  <h4>My recent favorite book!</h4>
   <hr />
 
   <!-- About the Book ---------------------------------------------------->
-  <h4>About the Book</h4>
+  <h5>About the Book</h5>
   <p>
     <a href="https://en.wikipedia.org/wiki/The_Curious_Incident_of_the_Dog_in_the_Night-Time">This book</a> (The Curious Incident of the Dog in the Night-Time) is written by
     <a href="https://en.wikipedia.org/wiki/Mark_Haddon">Mark Haddon</a> in 2003,
@@ -27,7 +27,7 @@ date: 2000-08-02 00:00:00 +0800
   </p>
 
   <!-- Jottings --------------------------------------------------------->
-  <h4>Jottings</h4>
+  <h5>Jottings</h5>
   <p>
     Actually I haven't been reading for a considerable amount of time. Admittedly,
     this might be the first book I read (except for textbooks) in years.
@@ -40,7 +40,7 @@ date: 2000-08-02 00:00:00 +0800
   </p>
 
   <!-- Reflection -------------------------------------------------------->
-  <h4>Reflection</h4>
+  <h5>Reflection</h5>
   <p>
     <strong>Spoiler Alert:</strong>
     I will be discussing certain parts of the plot of the book in this section.

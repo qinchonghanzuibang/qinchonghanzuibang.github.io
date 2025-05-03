@@ -5,7 +5,7 @@ date: 2099-01-12 00:01:00 +0800
 ---
 
 <div class="p-4">
-    <h3>Badminton</h3>
+    <h4>Badminton</h4>
     <hr />
     <p>
         Badminton is one of my <strong>favorite</strong> sports. I started receiving professional training (Youth Sports School) since I was in primary school. I have represented my school and district (Yangpu, Shanghai) in many local competitions and won some prizes (like top 16 in Shanghai).

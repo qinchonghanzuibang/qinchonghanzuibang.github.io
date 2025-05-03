@@ -4,13 +4,13 @@ width: 8
 date: 2098-01-12 00:01:00 +0800
 ---
 <div class="p-4">
-  <h3>Gaming</h3>
+  <h4>Gaming</h4>
   <hr />
   <p>
       I'm sooooo passionate about games and have been playing them since primary school. I am thrilled to share some of the best games I've played over the years, and I hope you find them as enjoyable as I did!
   </p>
 
-  <h4>My Favorite Games</h4>
+  <h5>My Favorite Games</h5>
     <ul>
         <li>League of Legends (2012)</li>
         <li>Counter-Strike: Global Offensive (2013)</li>
@@ -21,7 +21,7 @@ date: 2098-01-12 00:01:00 +0800
     </ul>
 
 
-  <h4>Devices</h4>
+  <h5>Devices</h5>
   <ul>
     <li>Nintendo Switch (improved) – 2020</li>
     <li>PlayStation 4 Pro – 2021</li>
