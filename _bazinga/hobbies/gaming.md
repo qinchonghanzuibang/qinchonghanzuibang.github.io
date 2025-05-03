@@ -11,14 +11,16 @@ date: 2098-01-12 00:01:00 +0800
   </p>
 
   <h5>My Favorite Games</h5>
-    <ul>
-        <li>League of Legends (2012)</li>
-        <li>Counter-Strike: Global Offensive (2013)</li>
-        <li>Overwatch (2016)</li>
-        <li>Valorant (2020)</li>
-        <li>Genshin Impact (2020)</li>
-        <li>Honkai: Star Rail (2023)</li>
-    </ul>
+
+  <h6>League of Legends</h6>
+  <p>
+      I've been playing LoL since middle school and mainly play as a mid-laner. My favorite champions are Ahri, Syndra, and Yone. I also enjoy watching international tournaments like MSI and Worlds every year.
+  </p>
+
+  <h6>Elden Ring</h6>
+  <p>
+      One of the most immersive open-world experiences I've ever had. I defeated Malenia after 50+ tries and still feel proud about it. The lore, exploration, and boss fights are simply unmatched.
+  </p>
 
 
   <h5>Devices</h5>
