@@ -40,14 +40,14 @@ date: 2098-01-12 00:01:00 +0800
 
   <h5>Devices</h5>
   <p>
-    Below are the devices I have used to play games.
+    Below are the devices I have used to play games. This list will keep updating as I get new devices.
   </p>
   <ul>
-    <li>Nintendo Switch (improved) – 2020</li>
-    <li>PlayStation 4 Pro – 2021</li>
-    <li>Nintendo New 3DS LL – 2023</li>
+    <li><strong>Nintendo Switch (improved)</strong> – 2020</li>
+    <li><strong>PlayStation 4 Pro</strong> – 2021</li>
+    <li><strong>Nintendo New 3DS LL</strong> – 2023</li>
     <li>
-      Custom-built PC – 2025
+      <strong>Custom-built PC</strong> – 2025
       <ul>
         <li><strong>CPU</strong>: AMD Ryzen 5 9600X</li>
         <li><strong>Motherboard</strong>: MSI MAG B650M Mortar WIFI</li>
