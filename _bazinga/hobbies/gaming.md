@@ -19,7 +19,9 @@ date: 2098-01-12 00:01:00 +0800
     src="{{ '/assets/images/empty_300x200.png' | relative_url }}" 
     data-toggle="tooltip" 
     data-placement="top" 
-    title="你怎么知道我小号73胜率大师大号700分差点宗师了">
+    title="你怎么知道我小号73胜率大师大号700分差点宗师了"
+    style="margin-bottom: 2rem;"
+  >
 
 
   <h5>Elden Ring</h5>
@@ -32,11 +34,14 @@ date: 2098-01-12 00:01:00 +0800
     src="{{ '/assets/images/empty_300x200.png' | relative_url }}" 
     data-toggle="tooltip" 
     data-placement="top" 
-    title="FULL ACHIEVEMENT!">
+    title="FULL ACHIEVEMENT!"
+    style="margin-bottom: 2rem;"
+  >
 
-
-
-  <h4>Devices</h4>
+  <h5>Devices</h5>
+  <p>
+    Below are the devices I have used to play games.
+  </p>
   <ul>
     <li>Nintendo Switch (improved) – 2020</li>
     <li>PlayStation 4 Pro – 2021</li>
