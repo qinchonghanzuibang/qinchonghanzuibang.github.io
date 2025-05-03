@@ -14,13 +14,29 @@ date: 2098-01-12 00:01:00 +0800
 
   <h5>League of Legends</h5>
   <p>
-      I've been playing LoL since middle school and mainly play as a mid-laner. My favorite champions are Ahri, Syndra, and Yone. I also enjoy watching international tournaments like MSI and Worlds every year.
+      I've been playing LoL since primary school. At that time, I have to sneak out to play it because my parents forbade me from playing video games. I felt bad about it, but I didn't regret it at all. I believe that playing video games is an amazing way to relax and meet new friends. 
   </p>
+  <img 
+    data-src="{{ 'assets/images/bazinga/hobbies/league.png' | relative_url }}" 
+    class="lazy w-100 rounded" 
+    src="{{ '/assets/images/empty_300x200.png' | relative_url }}" 
+    data-toggle="tooltip" 
+    data-placement="top" 
+    title="你怎么知道我小号73胜率大师大号700分差点宗师了">
+
 
   <h5>Elden Ring</h5>
   <p>
-      One of the most immersive open-world experiences I've ever had. I defeated Malenia after 50+ tries and still feel proud about it. The lore, exploration, and boss fights are simply unmatched.
+      One of the most immersive open-world experiences I've ever had. Not extremely challenging but very rewarding. I highly recommend it to anyone even you are not a fan of the genre. This is very beginner-friendly according to me. 
   </p>
+  <img 
+    data-src="{{ 'assets/images/bazinga/hobbies/elden.png' | relative_url }}" 
+    class="lazy w-100 rounded" 
+    src="{{ '/assets/images/empty_300x200.png' | relative_url }}" 
+    data-toggle="tooltip" 
+    data-placement="top" 
+    title="FULL ACHIEVEMENT!">
+
 
 
   <h4>Devices</h4>
