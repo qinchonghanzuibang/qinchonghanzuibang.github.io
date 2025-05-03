@@ -1,8 +1,3 @@
----
-show: true
-width: 8
-date: 2098-01-12 00:01:00 +0800
----
 <div class="p-4">
   <h3>Gaming</h3>
   <hr />
@@ -17,20 +12,17 @@ date: 2098-01-12 00:01:00 +0800
     <li>Nintendo New 3DS LL – 2023</li>
     <li>
       Custom-built PC – 2025
-      <details>
-        <summary style="cursor: pointer; font-weight: 500; margin-top: 5px;">View PC Specs</summary>
-        <ul style="margin-top: 5px;">
-          <li><strong>CPU</strong>: AMD Ryzen 5 9600X</li>
-          <li><strong>Motherboard</strong>: MSI MAG B650M Mortar WIFI</li>
-          <li><strong>GPU</strong>: Colorful GeForce RTX 5070 Ti NB EX 16GB-V</li>
-          <li><strong>RAM</strong>: Asgard 16GBx2 DDR5 6000 C28 A-die</li>
-          <li><strong>SSD</strong>: Kioxia SD10 TLC 2TB</li>
-          <li><strong>PSU</strong>: SeaSonic 2024 Focus 850W Gold Full Modular</li>
-          <li><strong>Cooling</strong>: Deepcool Ice Cube 500S Digital Edition (Air Cooler)</li>
-          <li><strong>Case</strong>: Jonsbo Z20 Black MATX</li>
-          <li><strong>Accessories</strong>: Thermalright TL-S12 RGB Ring 12cm ARGB x3</li>
-        </ul>
-      </details>
+      <ul>
+        <li><strong>CPU</strong>: AMD Ryzen 5 9600X</li>
+        <li><strong>Motherboard</strong>: MSI MAG B650M Mortar WIFI</li>
+        <li><strong>GPU</strong>: Colorful GeForce RTX 5070 Ti NB EX 16GB-V</li>
+        <li><strong>RAM</strong>: Asgard 16GBx2 DDR5 6000 C28 A-die</li>
+        <li><strong>SSD</strong>: Kioxia SD10 TLC 2TB</li>
+        <li><strong>PSU</strong>: SeaSonic 2024 Focus 850W Gold Full Modular</li>
+        <li><strong>Cooling</strong>: Deepcool Ice Cube 500S Digital Edition (Air Cooler)</li>
+        <li><strong>Case</strong>: Jonsbo Z20 Black MATX</li>
+        <li><strong>Accessories</strong>: Thermalright TL-S12 RGB Ring 12cm ARGB x3</li>
+      </ul>
     </li>
     <li>
       Peripherals
