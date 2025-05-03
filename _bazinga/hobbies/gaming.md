@@ -10,7 +10,18 @@ date: 2098-01-12 00:01:00 +0800
       I'm sooooo passionate about games and have been playing them since primary school. I am thrilled to share some of the best games I've played over the years, and I hope you find them as enjoyable as I did!
   </p>
 
-  <h5>Devices</h5>
+  <h4>My Favorite Games</h4>
+    <ul>
+        <li>League of Legends (2012)</li>
+        <li>Counter-Strike: Global Offensive (2013)</li>
+        <li>Overwatch (2016)</li>
+        <li>Valorant (2020)</li>
+        <li>Genshin Impact (2020)</li>
+        <li>Honkai: Star Rail (2023)</li>
+    </ul>
+
+
+  <h4>Devices</h4>
   <ul>
     <li>Nintendo Switch (improved) – 2020</li>
     <li>PlayStation 4 Pro – 2021</li>
