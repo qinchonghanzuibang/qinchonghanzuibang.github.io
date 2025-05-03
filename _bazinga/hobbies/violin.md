@@ -12,7 +12,7 @@ date: 2097-01-12 00:01:00 +0800
     </p>
     
 <img 
-  data-src="{{ 'assets/images/bazinga/hobbies/badminton.png' | relative_url }}" 
+  data-src="{{ 'assets/images/bazinga/hobbies/violin.png' | relative_url }}" 
   class="lazy w-100 rounded" 
   src="{{ '/assets/images/empty_300x200.png' | relative_url }}" 
   data-toggle="tooltip" 
