@@ -8,6 +8,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
+# change the version from 3.9 to 4.4
 # gem "jekyll", "~> 3.9"
 gem "jekyll", "~> 4.4"
 
