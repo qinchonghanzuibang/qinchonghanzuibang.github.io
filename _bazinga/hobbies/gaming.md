@@ -61,7 +61,7 @@ date: 2098-01-12 00:01:00 +0800
       </ul>
     </li>
     <li>
-      Peripherals
+      <strong>Peripherals</strong>
       <ul>
         <li><strong>Keyboard</strong>: ROG Azoth Blue</li>
         <li><strong>Mouse</strong>: Logitech G Pro Wireless</li>
