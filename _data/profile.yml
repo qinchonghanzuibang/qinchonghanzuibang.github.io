@@ -65,13 +65,13 @@ education:
 experience:
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
-  position: Student Teaching Assistant
-  date: Jan 2025 - May 2025
-
-- name: The University of Hong Kong
-  logo: /assets/images/badges/HKU.png
   position: Student Research Assistant
   date: Oct. 2024 - Present
+  
+- name: The University of Hong Kong
+  logo: /assets/images/badges/HKU.png
+  position: Student Teaching Assistant
+  date: Jan 2025 - May 2025
 
 - name: Fudan University
   logo: /assets/images/badges/FDU.png
