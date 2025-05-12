@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% if page.title == "Homepage" %}Chonghan Qin | Personal Website{% else %}{{ page.title }} | Chonghan Qin{% endif %}</title>
+    <title>{% if page.title == "Homepage" %}Chonghan Qin{% else %}Chonghan Qin | {{ page.title }}{% endif %}</title>
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.jonathan-qin.com{{ page.url | replace: 'index.html', '' }}" />
