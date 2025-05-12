@@ -6,12 +6,12 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.jonathan-qin.com/bazinga.html</loc>
+    <loc>https://www.jonathan-qin.com/bazinga</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jonathan-qin.com/footprint.html</loc>
+    <loc>https://www.jonathan-qin.com/footprint</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
