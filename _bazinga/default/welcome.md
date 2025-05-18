@@ -8,6 +8,6 @@ date: 2100-01-12 00:01:00 +0800
     <h3>Welcome to my WORLD!</h3>
     <hr />
     <p>
-        I am just gonna put <code>whatever</code> I want to here. Layout is done by the <a href="https://masonry.desandro.com/" target="_blank">Masonry</a> library. Feel free to explore who I truly am outside of school and research.
+        I am just gonna put <code>whatever</code> I want here. Feel free to explore who I truly am.
     </p>
 </div>
