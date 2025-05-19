@@ -12,7 +12,7 @@ date: 2000-08-02 00:00:00 +0800
   <!-- About the Book ---------------------------------------------------->
   <h4>About the Book</h4>
   <p>
-    <a href="https://en.wikipedia.org/wiki/The_Curious_Incident_of_the_Dog_in_the_Night-Time">This book</a> (The Curious Incident of the Dog in the Night-Time) is written by
+    <a href="https://en.wikipedia.org/wiki/The_Curious_Incident_of_the_Dog_in_the_Night-Time">This book</a> (<i>The Curious Incident of the Dog in the Night-Time</i>) is written by
     <a href="https://en.wikipedia.org/wiki/Mark_Haddon">Mark Haddon</a> in 2003,
     an English novelist. It has won the
     <a href="https://en.wikipedia.org/wiki/Whitbread_Book_Awards">Whitebread Book Awards</a>
