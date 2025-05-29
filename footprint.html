@@ -5,7 +5,7 @@ navbar_title: Footprint
 container_class: container-xl
 ---
 
-{% assign cards_by_group = site.footprint | sort: "date" | reverse | where: "show", true | group_by_exp: "item", "item.group" %}
+{% assign cards_by_group = site.footprint | sort: "date" | where: "show", true | group_by_exp: "item", "item.group" %}
 
 {% for group in cards_by_group %}
 <h1>{{ group.name }}</h1>
