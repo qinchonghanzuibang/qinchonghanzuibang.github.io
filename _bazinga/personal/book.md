@@ -6,7 +6,7 @@ date: 2000-08-02 00:00:00 +0800
 ---
 
 <div class="p-4">
-  <h3>My recent favorite book!</h3>
+  <h2 style="font-family: 'Great Vibes', cursive; font-weight: 700; letter-spacing: 0.08em; color:rgb(0, 0, 0);">My recent favorite book!</h2>
   <hr />
 
   <!-- About the Book ---------------------------------------------------->

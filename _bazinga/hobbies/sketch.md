@@ -5,7 +5,7 @@ date: 2099-01-12 00:01:00 +0800
 ---
 
 <div class="p-4">
-  <h3>Sketch</h3>
+  <h2 style="font-family: 'Great Vibes', cursive; font-weight: 700; letter-spacing: 0.08em; color:rgb(0, 0, 0);">Sketch</h2>
   <hr />
   <p>
     Surprise! I have a hidden talent for sketching. I have been learning to draw since primary school. 

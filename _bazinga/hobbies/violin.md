@@ -5,7 +5,7 @@ date: 2096-01-12 00:01:00 +0800
 ---
 
 <div class="p-4">
-    <h3>Violin</h3>
+    <h2 style="font-family: 'Great Vibes', cursive; font-weight: 700; letter-spacing: 0.08em; color:rgb(0, 0, 0);">Violin</h2>
     <hr />
     <p>
         I believe even very few of my close friends know that I have once played the violin.
