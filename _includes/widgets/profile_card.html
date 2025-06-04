@@ -93,6 +93,12 @@
                             <i class="fab fa-orcid"></i> ORCID
                         </a>
                         {% endif %}
+
+                        {% if site.data.profile.feedback %}
+                        <a class="pr-3 no-break" target="_blank" href="{{ site.data.profile.feedback }}">
+                            <i class="fas fa-comment-dots"></i> Feedback
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
