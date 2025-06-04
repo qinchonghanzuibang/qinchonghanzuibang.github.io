@@ -5,7 +5,7 @@ date: 2095-01-12 00:01:00 +0800
 ---
 
 <div class="p-4">
-    <h2 style="font-family: 'Great Vibes', cursive; font-weight: 700; letter-spacing: 0.08em; color:rgb(0, 0, 0);">Music</h2>
+    <h3>Music</h3>
     <hr />
     <p>
         Here are some of my favorite songs. For the detailed list, please check out my <a href="https://open.spotify.com/user/31kamsikj6fdl3dnfp3o3i25by7u?si=9fe506fab4be4b23" target='_blank'>Spotify</a> profile.

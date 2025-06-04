@@ -4,7 +4,7 @@ width: 8
 date: 2098-01-12 00:01:00 +0800
 ---
 <div class="p-4">
-  <h2 style="font-family: 'Great Vibes', cursive; font-weight: 700; letter-spacing: 0.08em; color:rgb(0, 0, 0);">Gaming</h2>
+  <h3>Gaming</h3>
   <hr />
   <p>
       I'm sooooo passionate about games and have been playing them since primary school. I am thrilled to share some of the best games I've played over the years, and I hope you find them as enjoyable as I did! Please let me know if you have any recommendations!
