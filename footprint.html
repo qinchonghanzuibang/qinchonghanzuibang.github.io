@@ -8,7 +8,7 @@ container_class: container-xl
 {% assign cards_by_group = site.footprint | sort: "date" | where: "show", true | group_by_exp: "item", "item.group" %}
 
 {% for group in cards_by_group %}
-<h1>{{ group.name }}</h1>
+<h1 class="text-center fw-bold" style="font-family: 'Great Vibes', cursive; color: #000000; margin: 1rem 0;">{{ group.name }}</h1>
 <div class="row grid mb-4">
     <div class="grid-sizer col-1"></div>
     {% for item in group.items %}
