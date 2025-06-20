@@ -26,7 +26,7 @@ date: 2099-01-12 00:01:00 +0800
         link.textContent = 'Hide my drawing';
       } else {
         container.style.display = 'none';
-        link.textContent = 'Check out my best drawing';
+        link.textContent = 'Check out my drawing';
       }
     }
 
