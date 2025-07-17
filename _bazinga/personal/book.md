@@ -27,7 +27,7 @@ date: 2000-08-02 00:00:00 +0800
   </p>
 
   <!-- Jottings --------------------------------------------------------->
-  <h5>Jottings</h5>
+  <h4>Jottings</h4>
   <p>
     Actually I haven't been reading for a considerable amount of time. Admittedly,
     this might be the first book I read (except for textbooks) in years.
