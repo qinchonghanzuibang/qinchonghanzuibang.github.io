@@ -49,15 +49,8 @@ education:
   logo: /assets/images/badges/UCB.png
   position: >- 
     Department of EECS <br/>
-    Fall Exchange Student
-  date: Aug 2024 - Dec 2024
-
-- name: University of California, Berkeley
-  logo: /assets/images/badges/UCB.png
-  position: >- 
-    Department of EECS <br/>
-    Summer Exchange Student
-  date: June 2023 - Aug 2023
+    Exchange Student
+  date: Aug 2024 - Dec 2024; June 2023 - Aug 2023
 
 # - name: High School Affiliated to Fudan University
 #   logo: /assets/images/badges/FDFZ.png

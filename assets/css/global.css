@@ -70,3 +70,581 @@ div.lazy {
 .card-body .h1 {
     font-family: "Georgia", serif !important;
 }
+
+
+
+/* Education List Styles */
+.education-list {
+    margin-top: 15px;
+}
+
+.education-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #007bff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.education-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.education-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.education-title {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.education-content {
+    color: #666;
+}
+
+.education-position {
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #495057;
+    line-height: 1.6;
+}
+
+.education-date {
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Experience Timeline Styles */
+.experience-timeline {
+    position: relative;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #007bff, #6c757d);
+    transform: translateX(-50%);
+}
+
+/* clearfix to extend container height to last floated item */
+.experience-timeline::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.experience-item {
+    position: relative;
+    margin-bottom: 60px;
+    width: 45%;
+    clear: both;
+}
+
+.experience-item.left {
+    float: left;
+    text-align: right;
+}
+
+.experience-item.right {
+    float: right;
+    text-align: left;
+}
+
+.experience-item::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.experience-content {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 120px;
+}
+
+.experience-item.left .experience-content {
+    margin-right: 30px;
+    border-right: 3px solid #007bff;
+}
+
+.experience-item.right .experience-content {
+    margin-left: 30px;
+    border-left: 3px solid #007bff;
+}
+
+.experience-item.left .experience-content::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 25px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #f8f9fa;
+}
+
+.experience-item.right .experience-content::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 25px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #f8f9fa;
+}
+
+.experience-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.experience-item.left .experience-header {
+    justify-content: flex-end;
+}
+
+.experience-title {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.experience-body {
+    color: #666;
+}
+
+.experience-position {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #495057;
+    line-height: 1.5;
+}
+
+.experience-date {
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Hover effects */
+.experience-item:hover .experience-content {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Awards Styles */
+.awards-list {
+    margin-top: 15px;
+}
+
+.award-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 3px solid #28a745;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.award-title {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.award-date {
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .experience-timeline::before {
+        left: 20px;
+    }
+    
+    .experience-item {
+        width: 100%;
+        float: none;
+        text-align: left;
+        margin-left: 40px;
+        margin-bottom: 40px;
+    }
+    
+    .experience-item.left .experience-content,
+    .experience-item.right .experience-content {
+        margin-left: 0;
+        margin-right: 0;
+        border-left: 3px solid #007bff;
+        border-right: none;
+    }
+    
+    .experience-item.left .experience-content::after,
+    .experience-item.right .experience-content::after {
+        left: -8px;
+        right: auto;
+        border-left: 8px solid #f8f9fa;
+        border-right: none;
+    }
+}
+
+/* Single-side Experience Timeline */
+.experience-timeline.single {
+    position: relative;
+}
+
+.experience-timeline.single .experience-row {
+    display: grid;
+    grid-template-columns: 268px 40px 1fr;
+    align-items: start;
+    gap: 10px 16px;
+    padding: 22px 0;
+    position: relative;
+}
+
+/* middle vertical line */
+.experience-timeline.single .exp-line {
+    position: relative;
+}
+
+.experience-timeline.single::before {
+    content: '';
+    position: absolute;
+    left: calc(280px + 20px);
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #007bff, #6c757d);
+    transform: translateX(-50%);
+}
+
+/* row-level line no longer needed; keep dot only */
+.experience-timeline.single .exp-line::before { display: none; }
+
+.experience-timeline.single .exp-dot {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px #007bff;
+}
+
+.experience-timeline.single .exp-left {
+    text-align: right;
+    padding-right: 8px;
+}
+
+.experience-timeline.single .exp-date {
+    font-weight: 700;
+    color: #343a40;
+}
+
+.experience-timeline.single .exp-title {
+    color: #6c757d;
+}
+
+.experience-timeline.single .exp-company {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.experience-timeline.single .exp-right .exp-content {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px 18px;
+    border-left: 3px solid #007bff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.experience-timeline.single .exp-summary {
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+.experience-timeline.single .exp-bullets {
+    margin: 0;
+    padding-left: 18px;
+    color: #666;
+}
+
+.experience-timeline.single .exp-bullets li {
+    margin-bottom: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .experience-timeline.single .experience-row {
+        grid-template-columns: 1fr 24px 1fr;
+        gap: 10px 12px;
+    }
+
+    .experience-timeline.single .exp-left {
+        text-align: left;
+        padding-right: 0;
+        padding-left: 8px;
+    }
+
+    .experience-timeline.single .exp-line::before {
+        left: 50%;
+        top: -18px;
+        bottom: -18px;
+    }
+
+    .experience-timeline.single .exp-dot {
+        top: 12px;
+    }
+}
+
+.experience-timeline.single .exp-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.experience-timeline.single .exp-title {
+    font-weight: 700;
+    color: #212529;
+}
+
+.experience-timeline.single .exp-date {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* tighten left column visual */
+.experience-timeline.single .exp-company {
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;       /* prevent wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;   /* if too long, show ellipsis */
+}
+
+/* optional: if you prefer wrapping by words instead of ellipsis, replace above with word-break */
+/* .experience-timeline.single .exp-company { white-space: normal; word-break: keep-all; } */
+
+/* slightly reduce middle gutter so overall looks further right */
+.experience-timeline.single .experience-row { gap: 10px 12px; }
+
+/* spacing tweaks */
+.experience-timeline.single .experience-row { padding: 28px 0; }
+.experience-timeline.single .exp-right .exp-content { padding: 18px 20px; }
+.experience-timeline.single .exp-bullets li { margin-bottom: 8px; }
+
+/* shift whole experience section slightly to the right */
+.experience-timeline.single { margin-left: 36px; }
+
+/* remove right card-like background */
+.experience-timeline.single .exp-right .exp-content {
+    background: transparent;
+    border-left: none;
+    box-shadow: none;
+    padding: 6px 0 0 0;
+    border-radius: 0;
+}
+
+/* ensure dot sits exactly on the center line */
+.experience-timeline.single .exp-dot {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 3px solid #fff; /* white inner gap */
+    box-shadow: none; /* avoid visual offset */
+    transform: translate(-50%, -50%);
+}
+
+/* left column date back in place styling */
+.experience-timeline.single .exp-date { color: #6c757d; font-size: 0.95rem; margin-top: 4px; }
+
+/* optional: tighten bullets spacing after removing box */
+.experience-timeline.single .exp-bullets { margin-top: 6px; }
+
+/* dot size for better visibility */
+.experience-timeline.single .exp-dot { width: 10px; height: 10px; box-shadow: 0 0 0 3px #0d6efd; }
+
+/* right content no extra top offset */
+.experience-timeline.single .exp-right .exp-content { padding: 0; }
+
+/* hollow ring dot centered on the line */
+.experience-timeline.single .exp-dot {
+    left: 50%;
+    top: 0.85em;             /* roughly aligns with first text line */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    border: 4px solid #ff7700;
+    box-shadow: none;
+    transform: translate(-50%, -50%);
+}
+
+/* normalize first-line typography on both sides */
+.experience-timeline.single .exp-title,
+.experience-timeline.single .exp-company { margin: 0; line-height: 1.25; }
+
+.experience-timeline.single .exp-left { display: flex; flex-direction: column; gap: 4px; padding-top: 2px; }
+.experience-timeline.single .exp-title { font-size: 1rem; }
+.experience-timeline.single .exp-company { font-size: 1rem; }
+
+/* container-level vertical line color */
+.experience-timeline.single::before {
+    content: '';
+    position: absolute;
+    left: calc(280px + 20px);
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #e1e5ea; /* light gray, no gradient */
+    transform: translateX(-50%);
+}
+
+/* hollow ring dot with white center (line not visible inside) */
+.experience-timeline.single .exp-dot {
+    left: 50%;
+    top: 0.85em;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;        /* mask the line inside */
+    border: 2px solid #ff6b6b;  /* warm accent color */
+    box-shadow: none;
+    transform: translate(-50%, -50%);
+}
+
+/* --- Overrides: bigger typography and education border-only --- */
+/* Experience font sizes */
+.experience-timeline.single .exp-title { font-size: 1.125rem; }
+.experience-timeline.single .exp-summary,
+.experience-timeline.single .exp-bullets,
+.experience-timeline.single .exp-bullets li { font-size: 1rem; }
+
+/* Education: no frame and no left line */
+.education-item {
+    background: transparent;
+    border: none;
+    border-left: none;
+    box-shadow: none;
+}
+.education-title { font-size: 1.125rem; }
+.education-content { font-size: 1rem; }
+.education-date { font-size: 0.95rem; }
+
+/* Bigger section titles */
+.section-title { font-size: 1.5rem; font-weight: 600; }
+.section-title--education { margin-bottom: 12px; }
+.section-title--experience { margin-bottom: 12px; }
+
+/* Education: move date to top-right on desktop to use right space */
+.education-item { position: relative; padding-right: 28px; }
+.education-header { margin-bottom: 8px; margin-right: 160px; }
+.education-date {
+	position: absolute;
+	right: 16px;
+	top: 16px;
+	font-style: italic;
+	color: #6c757d;
+}
+
+@media (max-width: 768px) {
+	.education-header { margin-right: 0; }
+	.education-date { position: static; right: auto; top: auto; margin-top: 6px; }
+}
+
+/* Education header split: left title, right degree/department */
+.education-header{ display:flex; align-items:flex-start; justify-content:flex-start; gap: 24px; }
+.education-titlewrap{ display:flex; align-items:center; gap:8px; min-width:0; }
+.education-meta{ color:#495057; font-weight:500; white-space:normal; }
+
+/* Date flows with content, not fixed to top-right anymore */
+.education-item { position: relative; padding-right: 0; }
+.education-header { margin-right: 0; }
+.education-date { position: static; right: auto; top: auto; margin-top: 6px; }
+
+/* --- Education aligned 3-column layout --- */
+  :root { --edu-left-width: 420px; --edu-gap-x: 100px; --edu-offset-x: 42px; }
+ .education-item { display: grid; grid-template-columns: var(--edu-left-width) 1fr auto; column-gap: var(--edu-gap-x); row-gap: 6px; padding: 4px 0; }
+ /* flatten children into grid */
+.education-header, .education-content { display: contents; }
+/* place elements into columns */
+.education-titlewrap { grid-column: 1; display: flex; align-items: center; gap: 8px; }
+.education-meta { grid-column: 2; text-align: left; }
+.education-date { grid-column: 3; justify-self: end; align-self: start; white-space: nowrap; }
+
+@media (max-width: 768px) {
+  .education-item { grid-template-columns: 1fr; }
+  .education-date { grid-column: 1; justify-self: start; margin-top: 4px; }
+}
+
+/* indent school title a bit */
+.education-titlewrap { padding-left: 6px; }
+
+/* push meta slightly to the right */
+.education-meta { padding-left: 10px; }
+
+/* move date under the school name (column 1, below title) */
+.education-date { grid-column: 1; justify-self: start; align-self: end; margin: 2px 0 0 6px; color:#6c757d; }
+
+/* Education: align date left edge with school text start */
+:root {
+	--edu-title-indent: 0px;
+	--edu-icon-size: 24px;
+	--edu-icon-gap: 8px; /* Bootstrap .mr-2 equals 0.5rem ≈ 8px; keep consistent */
+	--edu-text-start: calc(var(--edu-title-indent) + var(--edu-icon-size) + var(--edu-icon-gap));
+}
+.education-titlewrap { padding-left: var(--edu-title-indent); }
+.education-date {
+	grid-column: 1;
+	justify-self: start;
+	align-self: start;
+	margin: 2px 0 0 var(--edu-text-start);
+}
+@media (max-width: 768px) {
+	.education-date { margin-left: var(--edu-text-start); }
+}
+
+/* ensure no double spacing: use mr-2 only, not flex gap */
+.education-titlewrap { gap: 0; }
+
+/* tighten spacing between school name and date */
+.education-date { margin-top: 2px; }
+.education-item { row-gap: 2px; }
+
+/* increase space between school name and meta (middle column) */
+.education-meta { padding-left: calc(var(--edu-offset-x) + 24px); }
+
+/* tuck date closer to school title */
+.education-date { margin-top: 0; margin-left: calc(var(--edu-text-start) - 2px); }
+
+/* slightly reduce overall row gap for tighter school/date grouping */
+.education-item { row-gap: 1px; }
