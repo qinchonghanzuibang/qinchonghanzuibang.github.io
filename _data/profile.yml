@@ -62,37 +62,56 @@ experience:
   logo: /assets/images/badges/SHAILAB.png
   position: Research Intern
   date: June 2025 - Present
+  bullets:
+    - "Multimodal LLM Reasoning"
+    - "Reinforcement Learning Algorithm"
 
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
   position: Student Research Assistant
   date: Oct. 2024 - Present
-  
+  bullets:
+    - "Demographic Level LLM"
+    - "Diplomacy LLM"
+    - "LLM Pretraining"
+    - "Reinforcement Learning Algorithm"
+    - "LLM Memory"
+
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
   position: Student Teaching Assistant
   date: Jan 2025 - May 2025
+  bullets:
+    - "Artificial Intelligence Literacy I"
 
 - name: Fudan University
   logo: /assets/images/badges/FDU.png
   position: Research Intern
   date: July 2024 - Dec 2024
+  bullets:
+    - "Knowledge Graph Construction"
   
 - name: E Fund Management (HK) Co., Ltd
   logo: /assets/images/badges/EFUND.png
   position: Quantitative Research Intern
   date: June 2024 - Aug 2024
+  bullets:
+    - "Momemtun-driven factor analysis"
+    - "Convertible bond pricing model"
 
 - name: Tishman Speyer
   logo: /assets/images/badges/TS.png
   position: Acquisition Intern
   date: Dec 2023 - Jan 2024
+  bullets:
+    - "Business Modeling and Analysis"
 
 - name: The University of Hong Kong
   logo: /assets/images/badges/HKU.png
   position: Student Research Assistant
   date: Aug 2023 - July 2024
-
+  bullets:
+    - "HGNN/GCN-based prediction model for infection type"
 # awards:
 # - name: Award Name 2
 #   date: 2024
