@@ -578,8 +578,8 @@ div.lazy {
      * 1.25rem 是一个非常标准的值，很可能就是您需要的。
      * 如果对齐后还有微小偏差，您可以微调这个数字，比如改成 1.3rem 或 1.2rem。
      */
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1.35rem;
+    padding-right: 1.35rem;
 }
 
 /* ===== [最终间距调整] 统一调整页面垂直间隔 ===== */
@@ -588,8 +588,8 @@ div.lazy {
 /*    通过增加每个 .education-item 的上下内边距来拉开距离 */
 .education-item {
     /* 将 4px 增大为ma望的数值，比如 16px */
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* 2. 调整 "Education" 区块和 "Experience" 标题之间的间隔 */
@@ -603,7 +603,7 @@ div.lazy {
 /*    通过修改 "Experience" 标题的下外边距来实现 */
 .section-title--experience {
     /* 将 12px 增大为您希望的数值，比如 24px */
-    margin-bottom: 12px;
+    margin-bottom: -20px;
 }
 
 
@@ -809,4 +809,23 @@ div.lazy {
         transform: translateX(-50%);
         top: -3.5em;
     }
+}
+
+/* Typography tuning */
+.section-title { font-size: 1.4rem; font-weight: 550; }            /* 模块标题变细一点 */
+.education-title { font-size: 1.1rem; font-weight: 550; }          /* 学校名（UHK/UCB） */
+.education-meta { font-weight: 400; }                               /* 右侧合并行 */
+.education-date { font-size: 0.95rem; font-weight: 400; }
+
+.experience-timeline.single .exp-company {                          /* 左列机构名 */
+  font-size: 1.1rem;
+  font-weight: 600;   /* 觉得太粗可降到 500 */
+}
+/* .experience-timeline.single .exp-title { font-weight: 600; }        右列职位变细 */
+/* .experience-timeline.single .exp-summary { font-weight: 400; } */
+/* .experience-timeline.single .exp-bullets li { font-size: 0.95rem; } */
+
+@media (max-width: 768px) {
+  .education-title { font-size: 1.0rem; }
+  .experience-timeline.single .exp-company { font-size: 1.0rem; }
 }
