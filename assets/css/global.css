@@ -679,6 +679,53 @@ div.lazy {
 .education-titlewrap { grid-column: 1; display: flex; align-items: center; gap: 8px; }
 .education-meta { grid-column: 2; text-align: left; }
 
+/* --- 总控制台：在这里修改所有关于时间轴布局的变量 --- */
+:root {
+    /* 控制「线和圈的整体位置」：左边栏的宽度。值越大，线和圈越靠右。 */
+    --exp-left-column-width: 300px;
+
+    /* 控制「线和圈所在区域的宽度」：中间栏的宽度。 */
+    --exp-gutter-width: 20px;
+
+    /* 控制「文字和线的距离」：左右文字区域与中间线的间距。 */
+    --exp-column-gap: 30.5px;
+}
+
+/* --- 将控制台应用到布局中 --- */
+.experience-timeline.single .experience-row {
+    display: grid;
+    /* 使用上面的变量来定义布局 */
+    grid-template-columns: var(--exp-left-column-width) var(--exp-gutter-width) 1fr;
+    align-items: start;
+    /* 使用变量来定义间距 */
+    gap: 10px var(--exp-column-gap);
+    padding: 22px 0; /* 您也可以在这里调整每一行上下的间距 */
+    position: relative;
+}
+
+/* --- container-level vertical line color (REVISED AND CORRECTED) --- */
+.experience-timeline.single::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px; /* 时间线的粗细 */
+    background: #e1e5ea; /* 时间线的颜色 */
+
+    /* 
+     * 核心修复：使用我们定义好的变量来动态计算线的精确位置。
+     * 公式 = 左栏宽度 + 列间距 + 中间栏宽度的一半
+     */
+    left: calc(var(--exp-left-column-width) + var(--exp-column-gap) + (var(--exp-gutter-width) / 2) + 10.5px);
+
+    /* 
+     * 保持这个 transform 不变，它能确保线的中心点对齐到我们计算出的 left 位置。
+     */
+    transform: translateX(-50%);
+}
+
+
+
 @media (max-width: 768px) {
   .education-item { grid-template-columns: 1fr; }
   .education-date { grid-column: 1; justify-self: start; margin-top: 4px; }
