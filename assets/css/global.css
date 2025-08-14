@@ -568,6 +568,45 @@ div.lazy {
 .education-item { position: relative; padding-right: 28px; }
 .education-header { margin-bottom: 8px; margin-right: 160px; }
 
+/* ===== [最终对齐方案] 为 Education 和 Experience 区块添加水平内边距 ===== */
+
+.section-title,
+.education-list,
+.experience-timeline.single {
+    /* 
+     * 在这里设置左右内边距，使其与上方内容对齐。
+     * 1.25rem 是一个非常标准的值，很可能就是您需要的。
+     * 如果对齐后还有微小偏差，您可以微调这个数字，比如改成 1.3rem 或 1.2rem。
+     */
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+/* ===== [最终间距调整] 统一调整页面垂直间隔 ===== */
+
+/* 1. 调整 HKU 和 UCB 之间的间隔 */
+/*    通过增加每个 .education-item 的上下内边距来拉开距离 */
+.education-item {
+    /* 将 4px 增大为ma望的数值，比如 16px */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* 2. 调整 "Education" 区块和 "Experience" 标题之间的间隔 */
+/*    通过给 "Experience" 标题增加上外边距来实现 */
+.section-title--experience {
+    /* 增加这个值来把 "Experience" 标题往下推，比如 3rem */
+    margin-top: 2rem; 
+}
+
+/* 3. 调整 "Experience" 标题和下方内容（时间轴）的间隔 */
+/*    通过修改 "Experience" 标题的下外边距来实现 */
+.section-title--experience {
+    /* 将 12px 增大为您希望的数值，比如 24px */
+    margin-bottom: 12px;
+}
+
+
 @media (max-width: 768px) {
 	.education-header { margin-right: 0; }
 	.education-date { position: static; right: auto; top: auto; margin-top: 6px; }
@@ -632,7 +671,7 @@ div.lazy {
 }
 
 
-  :root { --edu-left-width: 420px; --edu-gap-x: 100px; --edu-offset-x: 42px; }
+  :root { --edu-left-width: 420px; --edu-gap-x: 0px; --edu-offset-x: 42px; }
  .education-item { display: grid; grid-template-columns: var(--edu-left-width) 1fr auto; column-gap: var(--edu-gap-x); row-gap: 6px; padding: 4px 0; }
  /* flatten children into grid */
 .education-header, .education-content { display: contents; }
@@ -741,4 +780,33 @@ div.lazy {
 	/* 24(icon)+8(gap)=32 左缩进 */
 	.education-meta { grid-column: 1 !important; padding-left: 40px !important; margin: 2px 0 0 0 !important; text-align: left !important; }
 	.education-date { grid-column: 1 !important; position: static !important; margin: 0 0 0 40px !important; font-size: 0.95rem !important; color: #6c757d !important; }
+}
+
+/* ===== [最终修复] Experience 时间轴圆点居中对齐 (桌面和移动端) ===== */
+/* ===== [最终修复] Experience 时间轴圆点精确居中 (桌面与移动端) ===== */
+
+/* --- 桌面端圆点居中 --- */
+.experience-timeline.single .exp-dot {
+    position: absolute;
+    left: 00%; /* 定位在父容器（中间列）的中心线上 */
+    top: 0.4em; /* 垂直位置，使其与右侧文字的第一行对齐 */
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border: 2px solid #ff6b6b; /* 您截图中的圆点颜色 */
+    border-radius: 50%;
+    box-shadow: none;
+    
+    /* 核心修复：将圆点向左移动自身宽度的一半，使其圆心对齐到 left: 50% 的位置 */
+    transform: translateX(-50%);
+}
+
+/* --- 移动端圆点居中 --- */
+@media (max-width: 768px) {
+    .experience-timeline.single .exp-dot {
+        /* 移动端的 left 值由 :root 里的变量控制，我们只需添加 transform */
+        /* 核心修复：同样添加 transform 来实现居中 */
+        transform: translateX(-50%);
+        top: -3.5em;
+    }
 }

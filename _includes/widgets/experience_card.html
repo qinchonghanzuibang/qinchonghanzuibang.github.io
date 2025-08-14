@@ -1,7 +1,7 @@
-<div class="row mt-3">
+<div class="row mt-3 edu-exp-shift">
     <div class="col">
         <div class="card border-0 shadow-sm bg-white">
-            <div class="card-body p-4">
+            <div class="card-body p-4 edu-exp-offset">
                 {% if site.data.profile.education %}
                 <div class="mb-4">
                     <h6 class="section-title section-title--education">Education</h6>
@@ -13,7 +13,15 @@
                                     <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" style="width: 24px; height: 24px;" class="mr-2 align-text-bottom">
                                     <span class="education-title">{{ item.name }}</span>
                                 </div>
-                                <div class="education-meta">{{ item.position }}</div>
+                                {% assign _pos = item.position | strip %}
+                                {% assign _lines = _pos | split: '<br/>' %}
+                                <div class="education-meta">
+                                    {% if _lines.size > 1 %}
+                                        {{ _lines[1] | strip }}, {{ _lines[0] | strip }}
+                                    {% else %}
+                                        {{ _pos }}
+                                    {% endif %}
+                                </div>
                             </div>
                             <div class="education-content">
                                 <div class="education-date">{{ item.date }}</div>
