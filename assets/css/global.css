@@ -588,8 +588,8 @@ div.lazy {
 /*    通过增加每个 .education-item 的上下内边距来拉开距离 */
 .education-item {
     /* 将 4px 增大为ma望的数值，比如 16px */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /* 2. 调整 "Education" 区块和 "Experience" 标题之间的间隔 */
