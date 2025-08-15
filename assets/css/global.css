@@ -873,6 +873,14 @@ div.lazy {
 /* .experience-timeline.single .exp-bullets li { font-size: 0.95rem; } */
 
 @media (max-width: 768px) {
-  .education-title { font-size: 1.0rem; }
-  .experience-timeline.single .exp-company { font-size: 1.0rem; }
+    /* Typography tuning */
+    .section-title { font-size: 1.4rem; font-weight: 550; }            /* 模块标题变细一点 */
+    .education-title { font-size: 1.1rem; font-weight: 550; }          /* 学校名（UHK/UCB） */
+    .education-meta { font-weight: 400; }                               /* 右侧合并行 */
+    .education-date { font-size: 0.95rem; font-weight: 400; }
+
+    .experience-timeline.single .exp-company {                          /* 左列机构名 */
+    font-size: 1.3rem;
+    font-weight: 600;   /* 觉得太粗可降到 500 */
+    }
 }
