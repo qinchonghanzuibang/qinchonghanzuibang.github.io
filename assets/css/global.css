@@ -884,3 +884,13 @@ div.lazy {
     font-weight: 600;   /* 觉得太粗可降到 500 */
     }
 }
+
+/* FINAL mobile overflow guard for Experience */
+@media (max-width: 768px) {
+	.experience-timeline.single { overflow-x: hidden; }
+	.experience-timeline.single .experience-row,
+	.experience-timeline.single .exp-right,
+	.experience-timeline.single .exp-right .exp-content { box-sizing: border-box; width: 100% !important; max-width: 100% !important; margin-right: 0 !important; }
+	/* allow long organization names to wrap instead of pushing layout */
+	.experience-timeline.single .exp-company { white-space: normal !important; word-break: break-word; overflow: visible; }
+}
