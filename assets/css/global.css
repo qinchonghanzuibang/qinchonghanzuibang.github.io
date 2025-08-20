@@ -572,7 +572,8 @@ div.lazy {
 
 .section-title,
 .education-list,
-.experience-timeline.single {
+.experience-timeline.single,
+.service-list {
     /* 
      * 在这里设置左右内边距，使其与上方内容对齐。
      * 1.25rem 是一个非常标准的值，很可能就是您需要的。
@@ -893,4 +894,19 @@ div.lazy {
 	.experience-timeline.single .exp-right .exp-content { box-sizing: border-box; width: 100% !important; max-width: 100% !important; margin-right: 0 !important; }
 	/* allow long organization names to wrap instead of pushing layout */
 	.experience-timeline.single .exp-company { white-space: normal !important; word-break: break-word; overflow: visible; }
+}
+
+/* Service section styles */
+.section-title--service { margin-bottom: 12px; }
+.service-list { list-style: none; padding: 0; margin: 0; }
+.service-item { padding: 10px 1.4rem; border-bottom: 1px solid #f1f3f5; }
+.service-item:last-child { border-bottom: none; }
+.service-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.service-role { font-weight: 600; color: #212529; }
+.service-date { color: #6c757d; white-space: nowrap; }
+.service-desc { margin-top: 6px; color: #495057; }
+
+@media (max-width: 768px) {
+  .service-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .service-date { white-space: normal; }
 }

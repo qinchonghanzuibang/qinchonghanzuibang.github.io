@@ -68,6 +68,25 @@
                 </div>
                 {% endif %}
 
+                {% if site.data.profile.service %}
+                <div class="mb-4">
+                    <h6 class="section-title section-title--service">Service</h6>
+                    <ul class="service-list">
+                        {% for item in site.data.profile.service %}
+                        <li class="service-item">
+                            <div class="service-row">
+                                <div class="service-role">{{ item.role }}</div>
+                                {% if item.date %}<div class="service-date">{{ item.date }}</div>{% endif %}
+                            </div>
+                            {% if item.description %}
+                            <div class="service-desc">{{ item.description }}</div>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
                 {% if site.data.profile.awards %}
                 <div class="mb-4">
                     <h6>Honors & Awards</h6>
