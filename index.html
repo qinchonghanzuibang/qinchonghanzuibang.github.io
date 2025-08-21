@@ -31,4 +31,17 @@ navbar_title: Home
     %}
 {% endif %}
 
-<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=5598db&w=400&t=tt&d=thWAtz8Bcwt_Yb6twhuYiVFHLl0sqI09jKB4fCxyoLM&co=f8f9fa&cmo=635c5c&cmn=000000&ct=000000'></script>
+<div id="clustrmaps-container"></div>
+<script>
+(function() {
+  var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+  var w = isMobile ? 300 : 400; // adjust sizes if needed
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.id = 'clustrmaps';
+  s.src = '//cdn.clustrmaps.com/map_v2.js?cl=5598db&w=' + w + '&t=tt&d=thWAtz8Bcwt_Yb6twhuYiVFHLl0sqI09jKB4fCxyoLM&co=f8f9fa&cmo=635c5c&cmn=000000&ct=000000';
+  document.getElementById('clustrmaps-container').appendChild(s);
+})();
+</script>
+
+<!-- <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=ffffff&w=888&t=n&d=BoKUWoEuK02DZI0BFIdqSuHE5B8OtB63gOkohvso9NE&co=3788c1'></script> -->
