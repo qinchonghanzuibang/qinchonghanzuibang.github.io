@@ -88,7 +88,7 @@ experience:
   position: Research Intern
   date: July 2024 - Dec 2024
   bullets:
-    - "Knowledge Graph Construction"
+    - "Knowledge Graph"
   
 - name: E Fund Management (HK) Co., Ltd
   logo: /assets/images/badges/EFUND.png
@@ -110,7 +110,7 @@ experience:
   position: Student Research Assistant
   date: Aug 2023 - July 2024
   bullets:
-    - "HGNN/GCN-based prediction model for infection type"
+    - "Hypergraph neural network"
 # awards:
 # - name: Award Name 2
 #   date: 2024
@@ -121,7 +121,7 @@ experience:
 
 service:
 
-- role: Student Teaching Assistant
+- role: Lead Student Teaching Assistant
   date: 2025 Fall, 2026 Spring
   description: >-
     AILT1001: Artificial Intelligence Literacy I
