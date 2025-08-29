@@ -459,7 +459,7 @@ div.lazy {
 .experience-timeline.single .exp-bullets li { margin-bottom: 8px; }
 
 /* shift whole experience section slightly to the right */
-.experience-timeline.single { margin-left: 36px; }
+.experience-timeline.single { margin-left: 117px; }
 
 /* remove right card-like background */
 .experience-timeline.single .exp-right .exp-content {
