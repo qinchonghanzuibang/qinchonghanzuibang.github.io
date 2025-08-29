@@ -513,7 +513,7 @@ div.lazy {
 .experience-timeline.single .exp-title,
 .experience-timeline.single .exp-company { margin: 0; line-height: 1.25; }
 
-.experience-timeline.single .exp-left { display: flex; flex-direction: column; gap: 4px; padding-top: 2px; }
+.experience-timeline.single .exp-left { display: flex; flex-direction: column; gap: 4px; padding-top: 0px; }
 .experience-timeline.single .exp-title { font-size: 0.8rem; }
 .experience-timeline.single .exp-company { font-size: 1.125rem; }
 
