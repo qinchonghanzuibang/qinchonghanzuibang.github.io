@@ -87,6 +87,22 @@
                 </div>
                 {% endif %}
 
+                <!-- Map directly under Service (no extra section header) -->
+                <div class="mb-4 d-flex justify-content-center">
+                    <div id="clustrmaps-container"></div>
+                </div>
+                <script>
+                (function() {
+                  var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+                  var w = isMobile ? 300 : 500;
+                  var s = document.createElement('script');
+                  s.type = 'text/javascript';
+                  s.id = 'clustrmaps';
+                  s.src = '//cdn.clustrmaps.com/map_v2.js?cl=1182ff&w=' + w + '&t=tt&d=thWAtz8Bcwt_Yb6twhuYiVFHLl0sqI09jKB4fCxyoLM&co=ffffff&ct=000000&cmn=ca78ff&cmo=715cff';
+                  document.getElementById('clustrmaps-container') && document.getElementById('clustrmaps-container').appendChild(s);
+                })();
+                </script>
+
                 {% if site.data.profile.awards %}
                 <div class="mb-4">
                     <h6>Honors & Awards</h6>
