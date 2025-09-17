@@ -11,6 +11,10 @@ navbar_title: Home
 
 <!-- comment out feedback card -->
 
+{% if site.data.display.homepage.show_education %}
+    {% include widgets/education_card.html %}
+{% endif %}
+
 {% if site.data.display.homepage.show_experience %}
     {% include widgets/experience_card.html %}
 {% endif %}
