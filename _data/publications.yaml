@@ -9,17 +9,17 @@ papers:
     # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # video: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # project: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     selected: y
 
-  - title: "Think to Draw, Draw to Think: Reasoning- Guided Factual Data Synthesis for Scientific Reasoning"
-    authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Juekai Lin, Lijun Wu"
-    venue: "Submitted to Annual Conference of the Association for Computational Linguistics (ACL) 2026"
-    paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    selected: y
+  # - title: "Think to Draw, Draw to Think: Reasoning- Guided Factual Data Synthesis for Scientific Reasoning"
+  #   authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Juekai Lin, Lijun Wu"
+  #   venue: "Submitted to Annual Conference of the Association for Computational Linguistics (ACL) 2026"
+  #   paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+  #   code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+  #   data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+  #   selected: y
 
   - title: "A Hierarchical Filtering Framework for Curating High-Quality Visual Instruction Data"
     authors: "Yun Zhu, Honglin Lin, Yu Li, <b>Chonghan Qin</b>, Zheng Liu, Xiaoyang Wang, Lijun Wu"

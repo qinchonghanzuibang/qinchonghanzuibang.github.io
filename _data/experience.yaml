@@ -1,33 +1,33 @@
 experiences:
 
-- place: "The Chinese University of Hong Kong"
-  time: "2026 Sept."
-  title: "Ph.D Student in Information Engineering"
-  subtitle: "Multimodal Learning"
-  category: "school"
+# - place: "The Chinese University of Hong Kong"
+#   time: "2026 Sept."
+#   title: "Ph.D. Student"
+#   subtitle: "Multimedia Laboratory, Information Engineering"
+#   category: "school"
 
 - place: "Shanghai Artificial Intelligence Lab"
   time: "2025 June - now"
   title: "Research Intern"
-  subtitle: "Multimodal LLM Reasoning<br/>Reinforcement Learning<br/>Data Synthesis/Augmentation"
+  subtitle: "OpenDataLab"
   category: "work"
 
-- place: "HKUNLP"
+- place: "The University of Hong Kong"
   time: "2024 Oct. - now"
   title: "Research Intern"
-  subtitle: "LLM Pretraining<br/>Reinforcement Learning<br/>LLM Memory"
+  subtitle: "HKUNLP Group"
   category: "work"
 
 - place: "Fudan University"
   time: "2024 July - 2024 Dec."
   title: "Research Intern"
-  subtitle: "Knowledge Graph"
+  subtitle: "Intelligent Medicine Institute"
   category: "work"
   
 - place: "University of California, Berkeley"
   time: "2023 Su, 2024 Fa"
   title: "Exchange Student"
-  subtitle: "Computer Science"
+  subtitle: "Electronic Engineering and Computer Science"
   category: "school"
 
 - place: "The University of Hong Kong"

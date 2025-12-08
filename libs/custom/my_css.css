@@ -201,3 +201,9 @@ h4 {
   border-top: 0;
   padding-top: 2rem;
 }
+
+/* Footprint page: remove top border to match Misc */
+#footprint.docs-section {
+  border-top: 0;
+  padding-top: 2rem;
+}
