@@ -161,4 +161,23 @@ title: Home
 <div class="docs-section" id="template">
   <h3>Acknowledgements</h3>
   This website is inspired by <a href="https://github.com/msaveski/www_personal" target="_blank">Martin Saveski's website</a> (huge gratitude!).
+  <br/>
+  <br/>
+  <div style="text-align: center;">
+    <div id="clustrmaps-container"></div>
+  </div>
+  <script>
+  (function() {
+    var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    var w = isMobile ? 350 : 500;
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.id = 'clustrmaps';
+    s.src = '//cdn.clustrmaps.com/map_v2.js?cl=1382ff&w=' + w + '&t=tt&d=thWAtz8Bcwt_Yb6twhuYiVFHLl0sqI09jKB4fCxyoLM&co=ffffff&cmo=f1771b&cmn=f1771b&ct=000000';
+    var c = document.getElementById('clustrmaps-container');
+    if (c) { c.appendChild(s); }
+  })();
+  </script>
 </div>  
+
+</div>
