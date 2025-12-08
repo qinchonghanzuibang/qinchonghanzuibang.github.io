@@ -65,6 +65,17 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- Global fixed topbar -->
+  <nav class="topbar">
+    <div class="container">
+      <ul class="topbar-list">
+        <li class="topbar-item"><a class="topbar-link" href={{ "/" | prepend: site.baseurl }}>Home</a></li>
+        <li class="topbar-item"><a class="topbar-link" href={{ "/misc/index.html" | prepend: site.baseurl }}>Misc</a></li>
+        <li class="topbar-item"><a class="topbar-link" href={{ "/footprint/index.html" | prepend: site.baseurl }}>Footprint</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="topbar-spacer"></div>
   <div class="container">
 
     <section class="header">
