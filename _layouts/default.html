@@ -110,6 +110,7 @@
           <li class="navbar-item"><a class="navbar-link" href={{ "/index.html#publications" | prepend: site.baseurl }}>Publications</a></li>
           <!--<li class="navbar-item"><a class="navbar-link" href={{ "/index.html#projects" | prepend: site.baseurl }}>Projects</a></li>-->
           <li class="navbar-item"><a class="navbar-link" href={{ "/index.html#resume" | prepend: site.baseurl }}>Vita</a></li>
+          <li class="navbar-item"><a class="navbar-link" href={{ "/misc/index.html" | prepend: site.baseurl }}>Miscellaneous</a></li>
         </ul>
       </div>
     </nav>
@@ -118,13 +119,16 @@
 
     <div class="footer">
       <div class="row">
-        <div class="four columns">
+        <div class="twelve columns">
+          Last updated: {{ site.time | date: '%Y-%m-%d' }}
+        </div>
+        <!-- <div class="six columns">
           {{ site.data.main_info.name }}
         </div>
-        <div class="four columns">
+        <div class="six columns">
           {{ site.data.main_info.email }}
-        </div>
-        <div class="four columns">
+        </div> -->
+        <!-- <div class="four columns">
           <span onclick="window.open('{{ site.data.main_info.bsky }}')" style="cursor: pointer">
             <i class="fa-brands fa-bluesky fa-sm" style="padding-top: 10px"></i>
           </span>
@@ -144,7 +148,7 @@
           <span onclick="window.open('{{ site.data.main_info.google_scholar }}')" style="cursor: pointer">
             <i class="ai ai-google-scholar" aria-hidden="true"></i>
           </span>
-        </div>
+        </div> -->
       </div>
     </div>
 

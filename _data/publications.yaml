@@ -13,7 +13,7 @@ papers:
     code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     selected: y
 
-  - title: "Detecting Network Effects: Randomizing Over Randomized Experiments"
+  - title: "Think to Draw, Draw to Think: Reasoning- Guided Factual Data Synthesis for Scientific Reasoning"
     authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Juekai Lin, Lijun Wu"
     venue: "Submitted to Annual Conference of the Association for Computational Linguistics (ACL) 2026"
     paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
