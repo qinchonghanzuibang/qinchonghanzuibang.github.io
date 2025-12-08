@@ -262,3 +262,6 @@ h4 {
     display: none;
   }
 }
+
+/* Stars styling */
+.stars i { color: #000000; margin-right: 2px; }
