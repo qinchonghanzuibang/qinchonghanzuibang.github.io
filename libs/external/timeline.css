@@ -324,11 +324,87 @@
     z-index: 15;
   }
 }
-
+/* 400–660px：单列布局下，控制 desc 与线的距离、与 place/time 的间距 */
 @media screen and (min-width: 400px) and (max-width: 660px) {
+
+  /* 让 title/subtitle 距离左边时间线更近一些，并和 place/time 左对齐 */
+  .flag-wrapper {
+    text-align: left;
+    margin-left: 40px; /* 原来 40px，越小越贴近那条竖线 */
+  }
+
+  /* 覆盖掉原来 4em 的大左右 margin，同时减小上方间距 */
   .direction-l .desc,
   .direction-r .desc {
-    margin: 1em 4em 0 4em;
+    margin: 0.4em 0 0 40px;  /* 上面从 1em → 0.4em，左边对齐 flag-wrapper */
+    padding: 0;              /* 不要再额外加 padding，让 title/subtitle 更紧凑 */
   }
 }
 
+/* Override for very small screens: single-column left-aligned timeline with line on the left */
+@media screen and (max-width: 660px) {
+  .timeline {
+    width: 100%;
+    padding: 1em 0;
+  }
+
+  .timeline:before {
+    left: 12px;
+    margin-left: 2;
+    width: 4px;
+  }
+
+  .timeline li {
+    padding: 0.8em 0;
+  }
+
+  .direction-l,
+  .direction-r {
+    float: none;
+    width: auto;
+    text-align: left;
+  }
+
+  /* 这里不再设 margin-left，交给上面的 400–660px 那个 media 来管；
+     <400px 的极小屏幕就保持原来默认就行 */
+  .flag-wrapper {
+    text-align: left;
+  }
+
+  .flag {
+    background: #ffffff;
+    box-shadow: 0 0 1px rgba(0,0,0,0.15);
+  }
+
+  .direction-l .flag:before,
+  .direction-r .flag:before {
+    left: -30px;
+    right: auto;
+    top: 50%;
+    margin-top: -10px;
+  }
+
+  .direction-l .flag:after,
+  .direction-r .flag:after {
+    display: none;
+  }
+
+  .time-wrapper {
+    display: block;
+    float: none;
+    margin: 4px 0 0 0;
+    text-align: left;
+  }
+
+  .direction-l .time-wrapper,
+  .direction-r .time-wrapper {
+    text-align: left;
+    margin: 4px 0 0 0;
+  }
+
+  .desc {
+    background: transparent;
+    box-shadow: none;
+    text-align: left;
+  }
+}
