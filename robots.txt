@@ -1,5 +1,3 @@
 User-agent: *
-Disallow: /footprint/
-Disallow: /bazinga/
 Disallow: /old/
 Disallow: /deprecated/
