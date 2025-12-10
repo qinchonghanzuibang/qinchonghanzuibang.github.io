@@ -184,6 +184,30 @@
     width: 290px;
     float: right;
   }
+  /* Keep labels within width: stack time under place for consistency */
+  .time-wrapper {
+    display: block;
+    float: none !important;
+    margin: 4px 0 0 0;
+  }
+  /* Align place & time towards the center line, not centered in the box */
+  .direction-l .flag-wrapper {
+    text-align: right;
+  }
+  .direction-r .flag-wrapper {
+    text-align: left;
+  }
+  .direction-l .time-wrapper {
+    text-align: right;
+  }
+  .direction-r .time-wrapper {
+    text-align: left;
+  }
+  .flag {
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -301,9 +325,10 @@
   }
 }
 
-@media screen and (min-width: 400px ?? max-width: 660px) {
+@media screen and (min-width: 400px) and (max-width: 660px) {
   .direction-l .desc,
   .direction-r .desc {
     margin: 1em 4em 0 4em;
   }
 }
+
