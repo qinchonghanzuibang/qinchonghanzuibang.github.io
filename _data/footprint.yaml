@@ -1,4 +1,29 @@
 trips:
+  - id: 2023_03_guangxi
+    title: "Guangxi, China"
+    date: "2023 Mar"
+    rating: 3.5
+    locations:
+      - city: "Guilin"
+        coordinate: [25.28, 110.28]
+        rating: 3.5
+        cover: /assets/footprint/2023_03_guangxi/food.webp
+      - city: "Yangshuo"
+        coordinate: [24.47, 110.29]
+        rating: 3.5
+        cover: /assets/footprint/2023_03_guangxi/raft.webp
+    photos:
+      - /assets/footprint/2023_03_guangxi/duck.webp
+      - /assets/footprint/2023_03_guangxi/food.webp
+      - /assets/footprint/2023_03_guangxi/hole.webp
+      - /assets/footprint/2023_03_guangxi/night.webp
+      - /assets/footprint/2023_03_guangxi/oyster.webp
+      - /assets/footprint/2023_03_guangxi/raft.webp
+      - /assets/footprint/2023_03_guangxi/snail.webp
+      - /assets/footprint/2023_03_guangxi/squid.webp
+      - /assets/footprint/2023_03_guangxi/tower.webp
+
+  
   - id: 2023_08_boston
     title: "Boston, USA"
     date: "2023 Aug"
