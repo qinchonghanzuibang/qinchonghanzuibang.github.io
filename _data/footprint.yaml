@@ -1,0 +1,156 @@
+trips:
+  - id: 2023_08_boston
+    title: "Boston, USA"
+    date: "2023 Aug"
+    lat: 42.36
+    lng: -71.06
+    rating: 4.0
+    cover: /assets/footprint/2023_08_boston/copley.webp
+    photos:
+      - /assets/footprint/2023_08_boston/art.webp
+      - /assets/footprint/2023_08_boston/boat.webp
+      - /assets/footprint/2023_08_boston/copley.webp
+      - /assets/footprint/2023_08_boston/crab.webp
+      - /assets/footprint/2023_08_boston/harvard.webp
+      - /assets/footprint/2023_08_boston/hat.webp
+      - /assets/footprint/2023_08_boston/isabelle.webp
+      - /assets/footprint/2023_08_boston/lobster.webp
+      - /assets/footprint/2023_08_boston/market.webp
+      - /assets/footprint/2023_08_boston/mit.webp
+      - /assets/footprint/2023_08_boston/museum.webp
+      - /assets/footprint/2023_08_boston/zoo.webp
+
+  - id: 2024_03_australia
+    title: "Australia"
+    date: "2024 Mar"
+    rating: 4.5
+    locations:
+      - city: "Sydney"
+        coordinate: [-33.85, 151.21]
+        rating: 4.5
+        cover: /assets/footprint/2024_03_australia/penguin.webp
+      - city: "Melbourne"
+        coordinate: [-37.81, 144.96]
+        rating: 4.0
+        cover: /assets/footprint/2024_03_australia/church.webp
+    photos:
+      - /assets/footprint/2024_03_australia/church.webp
+      - /assets/footprint/2024_03_australia/dog.webp
+      - /assets/footprint/2024_03_australia/dolphin.webp
+      - /assets/footprint/2024_03_australia/forest.webp
+      - /assets/footprint/2024_03_australia/koala.webp
+      - /assets/footprint/2024_03_australia/mushroom.webp
+      - /assets/footprint/2024_03_australia/night.webp
+      - /assets/footprint/2024_03_australia/opera.webp
+      - /assets/footprint/2024_03_australia/paint.webp
+      - /assets/footprint/2024_03_australia/penguin.webp
+      - /assets/footprint/2024_03_australia/rock.webp
+      - /assets/footprint/2024_03_australia/sand.webp
+      - /assets/footprint/2024_03_australia/sea1.webp
+      - /assets/footprint/2024_03_australia/sea2.webp
+      - /assets/footprint/2024_03_australia/shrimp.webp
+      - /assets/footprint/2024_03_australia/uni.webp
+      - /assets/footprint/2024_03_australia/white_kangaroo.webp
+
+  - id: 2024_05_xizang
+    title: "Tibet, China"
+    date: "2024 May"
+    lat: 29.64
+    lng: 91.14
+    rating: 4.5
+    cover: /assets/footprint/2024_05_xizang/potala.webp
+    photos:
+      - /assets/footprint/2024_05_xizang/skull.webp
+      - /assets/footprint/2024_05_xizang/fall.webp
+      - /assets/footprint/2024_05_xizang/jokhang.webp
+      - /assets/footprint/2024_05_xizang/mountain.webp
+      - /assets/footprint/2024_05_xizang/pig.webp
+      - /assets/footprint/2024_05_xizang/potala.webp
+      - /assets/footprint/2024_05_xizang/dog.webp
+      - /assets/footprint/2024_05_xizang/snow.webp
+
+  - id: 2024_10_la
+    title: "Los Angeles, USA"
+    date: "2024 Oct"
+    lat: 34.05
+    lng: -118.24
+    rating: 4.0
+    cover: /assets/footprint/2024_10_la/beach.webp
+    photos:
+      - /assets/footprint/2024_10_la/beach.webp
+      - /assets/footprint/2024_10_la/blue.webp
+      - /assets/footprint/2024_10_la/car.webp
+      - /assets/footprint/2024_10_la/dog.webp
+      - /assets/footprint/2024_10_la/hogwarts.webp
+      - /assets/footprint/2024_10_la/imagine.webp
+      - /assets/footprint/2024_10_la/mirror1.webp
+      - /assets/footprint/2024_10_la/mirror2.webp
+      - /assets/footprint/2024_10_la/musical.webp
+      - /assets/footprint/2024_10_la/night.webp
+
+  - id: 2024_11_alaska
+    title: "Alaska, USA"
+    date: "2024 Nov"
+    rating: 4.0
+    locations:
+      - city: "Anchorage"
+        coordinate: [61.22, -149.86]
+        rating: 4.0
+        cover: /assets/footprint/2024_11_alaska/butt.webp
+      - city: "Fairbanks"
+        coordinate: [64.84, -147.77]
+        rating: 4.5
+        cover: /assets/footprint/2024_11_alaska/aurora.webp
+    photos:
+      - /assets/footprint/2024_11_alaska/aurora.webp
+      - /assets/footprint/2024_11_alaska/butt.webp
+      - /assets/footprint/2024_11_alaska/chowder.webp
+      - /assets/footprint/2024_11_alaska/dog.webp
+      - /assets/footprint/2024_11_alaska/fish.webp
+      - /assets/footprint/2024_11_alaska/glacier.webp
+      - /assets/footprint/2024_11_alaska/polar.webp
+
+  - id: 2025_01_egypt
+    title: "Egypt"
+    date: "2025 Jan"
+    rating: 4.0
+    locations:
+      - city: "Cairo"
+        coordinate: [30.03, 31.23]
+        rating: 4.0
+        cover: /assets/footprint/2025_01_egypt/pyramid.webp
+      - city: "Luxor"
+        coordinate: [25.69, 32.64]
+        rating: 4.5
+        cover: /assets/footprint/2025_01_egypt/evening.webp
+      - city: "Hurghada"
+        coordinate: [27.26, 33.82]
+        rating: 3.5
+        cover: /assets/footprint/2025_01_egypt/snorkeling.webp
+    photos:
+      - /assets/footprint/2025_01_egypt/air.webp
+      - /assets/footprint/2025_01_egypt/castle.webp
+      - /assets/footprint/2025_01_egypt/cave.webp
+      - /assets/footprint/2025_01_egypt/cocktail.webp
+      - /assets/footprint/2025_01_egypt/evening.webp
+      - /assets/footprint/2025_01_egypt/mask.webp
+      - /assets/footprint/2025_01_egypt/pyramid.webp
+      - /assets/footprint/2025_01_egypt/snorkeling.webp
+      - /assets/footprint/2025_01_egypt/sphinx.webp
+
+  - id: 2025_12_vienam
+    title: "Vietnam"
+    date: "2025 Dec"
+    rating: 3.5
+    blurb: The ratings were quite low because of the severe pollution in Hanoi and terrible weather in Da Nang during my visit.
+    locations:
+      - city: "Hanoi"
+        coordinate: [21.03, 105.80]
+        rating: 2.0
+        # cover: /assets/footprint/2025_12_vienam/hanoi.webp
+      - city: "Da Nang"
+        coordinate: [16.05, 108.20]
+        rating: 3.5
+        # cover: /assets/footprint/2025_12_vienam/danang.webp
+    photos: []
+

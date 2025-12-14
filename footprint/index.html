@@ -10,41 +10,340 @@ title: Footprint
     If you have great recommendations (or want some!) on the next destination, feel free to reach out!
     I’m always happy to chat about travel (especially the amazing local food)!
   </p>
+
   <p>
-    Still updating...
+    <b><i>Remark:</i></b> The ratings are purely based on my personal experience and are quite <b>subjective</b>.
   </p>
-  <hr />
-  <div class="row">
-    <div class="six columns">
-      <div class="footprint-card">
-        <h4>2025</h4>
-        <ul>
-          <li>Hanoi & Danang, Vietnam</li>
-          <li>Cairo & Luxor & Hurghada, Egpyt{% include stars.html rating=4.5 %}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="six columns">
-      <div class="footprint-card">
-        <h4>2024</h4>
-        <ul>
-          <li>Sydney & Melbourne, Australia{% include stars.html rating=4.5 %}</li>
-          <li>Tibet, China{% include stars.html rating=4 %}</li>
-          <li>Los Angeles, USA{% include stars.html rating=4 %}</li>
-          <li>Alaska, USA{% include stars.html rating=4.5 %}</li>
-        </ul>
-      </div>
-    </div>
+  <!-- Map -->
+  <div class="footprint-map-wrap">
+    <div id="footprint-map" class="footprint-map" aria-label="Travel map"></div>
   </div>
-  <div class="row">
-    <div class="six columns">
-      <div class="footprint-card">
-        <h4>2023</h4>
-        <ul>
-          <li>Boston, USA {% include stars.html rating=4 %}</li>
-        </ul>
-      </div>
+
+  <!-- Gallery -->
+  {% assign trips = site.data.footprint.trips %}
+  {% for trip in trips %}
+    <div class="footprint-trip" id="trip-{{ trip.id }}">
+      <h4 class="footprint-trip-title">
+        {{ trip.title }}
+        <span class="footprint-trip-meta">· {{ trip.date }} · {% include stars.html rating=trip.rating %}</span>
+      </h4>
+      {% if trip.blurb %}
+        <p class="footprint-trip-blurb">{{ trip.blurb }}</p>
+      {% endif %}
+
+      {% if trip.photos and trip.photos.size > 0 %}
+        <div class="footprint-grid">
+          {% for p in trip.photos %}
+            <a class="footprint-thumb" href="{{ p | prepend: site.baseurl }}" data-trip="{{ trip.id }}" data-order="{{ forloop.index0 }}">
+              <img loading="lazy" src="{{ p | prepend: site.baseurl }}" alt="{{ trip.title }} photo">
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="footprint-empty">Photos coming soon.</p>
+      {% endif %}
     </div>
-  </div>
+  {% endfor %}
+
+  <!-- Trips data as JSON for safe parsing -->
+  <script type="application/json" id="trips-json">
+  [
+    {% for trip in trips %}
+    {
+      "id": {{ trip.id | jsonify }},
+      "title": {{ trip.title | jsonify }},
+      "date": {{ trip.date | jsonify }},
+      "rating": {{ trip.rating | jsonify }},
+      "cover": {% if trip.cover %}{{ trip.cover | prepend: site.baseurl | jsonify }}{% elsif trip.photos and trip.photos.size > 0 %}{{ trip.photos.first | prepend: site.baseurl | jsonify }}{% else %}null{% endif %},
+      "locations": [
+        {% if trip.locations and trip.locations.size > 0 %}
+          {% for loc in trip.locations %}
+          {
+            "city": {{ loc.city | jsonify }},
+            "lat": {{ loc.coordinate[0] }},
+            "lng": {{ loc.coordinate[1] }},
+            "rating": {{ loc.rating | jsonify }},
+            "cover": {% if loc.cover %}{{ loc.cover | prepend: site.baseurl | jsonify }}{% else %}null{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        {% else %}
+          {
+            "city": null,
+            "lat": {% if trip.lat != nil %}{{ trip.lat }}{% else %}null{% endif %},
+            "lng": {% if trip.lng != nil %}{{ trip.lng }}{% else %}null{% endif %},
+            "rating": {{ trip.rating | jsonify }},
+            "cover": {% if trip.cover %}{{ trip.cover | prepend: site.baseurl | jsonify }}{% elsif trip.photos and trip.photos.size > 0 %}{{ trip.photos.first | prepend: site.baseurl | jsonify }}{% else %}null{% endif %}
+          }
+        {% endif %}
+      ]
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  </script>
+
+  <!-- Leaflet (map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function () {
+      var mapEl = document.getElementById('footprint-map');
+      if (!mapEl || !window.L) return;
+
+      var tripsEl = document.getElementById('trips-json');
+      var trips = [];
+      try {
+        trips = JSON.parse(tripsEl ? tripsEl.textContent : '[]');
+      } catch (e) {
+        trips = [];
+      }
+
+      var map = L.map('footprint-map', { scrollWheelZoom: false, worldCopyJump: true });
+      // Use an English-labeled basemap (no API key required)
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        attribution: 'Tiles &copy; Esri'
+      }).addTo(map);
+
+      var bounds = [];
+      var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      // Prevent dragging into "grey" non-world area
+      var worldBounds = L.latLngBounds(L.latLng(-85, -180), L.latLng(85, 180));
+      map.setMaxBounds(worldBounds);
+      map.options.maxBoundsViscosity = 1.0;
+
+      function popupHtml(t) {
+        var stars = '';
+        // simple mapping for our supported ratings
+        var r = Number(t.rating);
+        if (r === 0.5) stars = '★½☆☆☆';
+        else if (r === 1) stars = '★☆☆☆☆';
+        else if (r === 1.5) stars = '★½☆☆☆';
+        else if (r === 2) stars = '★★☆☆☆';
+        else if (r === 2.5) stars = '★★½☆☆';
+        else if (r === 3) stars = '★★★☆☆';
+        else if (r === 3.5) stars = '★★★½☆';
+        else if (r === 4) stars = '★★★★☆';
+        else if (r === 4.5) stars = '★★★★½';
+        else if (r === 5) stars = '★★★★★';
+        else stars = '☆☆☆☆☆';
+
+        var img = t.cover ? ('<img class="footprint-popup-img" src="' + t.cover + '" alt="cover">') : '';
+        var displayTitle = t.city ? (t.city + ', ' + t.tripTitle) : t.title;
+        return '' +
+          '<div class="footprint-popup">' +
+          '  <div class="footprint-popup-title">' + displayTitle + '</div>' +
+          '  <div class="footprint-popup-sub">' + t.date + ' · <span class="footprint-popup-stars">' + stars + '</span></div>' +
+             img +
+          '  <a class="footprint-popup-link" href="#trip-' + t.tripId + '">View gallery</a>' +
+          '</div>';
+      }
+
+      // Flatten trip.locations into map markers (multiple cities per trip)
+      var markers = [];
+      trips.forEach(function (trip) {
+        if (!trip || !trip.locations || !trip.locations.length) return;
+        trip.locations.forEach(function (loc) {
+          if (!loc || typeof loc.lat !== 'number' || typeof loc.lng !== 'number') return;
+          markers.push({
+            tripId: trip.id,
+            tripTitle: trip.title,
+            title: trip.title,
+            date: trip.date,
+            city: loc.city,
+            lat: loc.lat,
+            lng: loc.lng,
+            rating: (loc.rating != null ? loc.rating : trip.rating),
+            cover: (loc.cover || trip.cover || null)
+          });
+        });
+      });
+
+      markers.forEach(function (t) {
+        bounds.push([t.lat, t.lng]);
+
+        var m = L.circleMarker([t.lat, t.lng], {
+          radius: 5,
+          weight: 2,
+          color: '#33006f',
+          fillColor: '#ffffff',
+          fillOpacity: 1
+        }).addTo(map);
+
+        // Use tooltip instead of popup so it can auto-flip (top/bottom) and doesn't pan the map.
+        m.bindTooltip(popupHtml(t), {
+          direction: 'auto',
+          opacity: 1,
+          interactive: true,
+          className: 'footprint-tooltip',
+          offset: [0, 0]
+        });
+        m.on('click', function () {
+          // click opens on both desktop and mobile
+          m.openTooltip();
+        });
+        if (!isTouch) {
+          var closeTimer = null;
+          var isOverTooltip = false;
+          function clearClose() {
+            if (closeTimer) {
+              clearTimeout(closeTimer);
+              closeTimer = null;
+            }
+          }
+          m.on('mouseover', function () {
+            clearClose();
+            m.openTooltip();
+          });
+          m.on('mouseout', function () {
+            clearClose();
+            closeTimer = setTimeout(function () {
+              if (!isOverTooltip) m.closeTooltip();
+            }, 200);
+          });
+          m.on('tooltipopen', function (e) {
+            var el = e.tooltip && e.tooltip.getElement ? e.tooltip.getElement() : null;
+            if (!el) return;
+            el.addEventListener('mouseenter', function () {
+              isOverTooltip = true;
+              clearClose();
+            });
+            el.addEventListener('mouseleave', function () {
+              isOverTooltip = false;
+              m.closeTooltip();
+            });
+          });
+        }
+      });
+
+      // On touch devices, tapping the map closes the open tooltip.
+      if (isTouch) {
+        map.on('click', function () {
+          map.closeTooltip();
+        });
+      }
+
+      if (bounds.length) {
+        map.fitBounds(bounds, { padding: [40, 40] });
+        // Allow a more zoomed-out default view
+        if (map.getZoom() < 1) map.setZoom(1);
+      } else {
+        map.setView([20, 0], 1);
+      }
+
+      // --- Mobile gallery layout helpers (portrait 2-up, landscape full-width) ---
+      function markOrientation(img) {
+        if (!img || !img.closest) return;
+        var a = img.closest('a.footprint-thumb');
+        if (!a) return;
+        if (!img.naturalWidth || !img.naturalHeight) return;
+        var isLandscape = img.naturalWidth > img.naturalHeight;
+        a.classList.toggle('landscape', isLandscape);
+        a.classList.toggle('portrait', !isLandscape);
+      }
+
+      var imgs = document.querySelectorAll('#footprint .footprint-thumb img');
+      imgs.forEach(function (img) {
+        if (img.complete) {
+          markOrientation(img);
+        } else {
+          img.addEventListener('load', function () { markOrientation(img); }, { once: true });
+        }
+      });
+
+      // Reorder for mobile grid: keep portrait photos in pairs, avoid half-empty rows.
+      var mmMobile = window.matchMedia && window.matchMedia('(max-width: 750px)');
+      var relayoutTimer = null;
+      function scheduleRelayout() {
+        if (relayoutTimer) clearTimeout(relayoutTimer);
+        relayoutTimer = setTimeout(relayoutMobileGrids, 50);
+      }
+
+      function ensureOrientationForThumb(a) {
+        if (!a) return;
+        var img = a.querySelector('img');
+        if (!img || !img.naturalWidth || !img.naturalHeight) return;
+        var isLandscape = img.naturalWidth > img.naturalHeight;
+        a.classList.toggle('landscape', isLandscape);
+        a.classList.toggle('portrait', !isLandscape);
+      }
+
+      function relayoutMobileGrids() {
+        if (!mmMobile || !mmMobile.matches) return;
+        var grids = document.querySelectorAll('#footprint .footprint-grid');
+        grids.forEach(function (grid) {
+          var items = Array.prototype.slice.call(grid.querySelectorAll('a.footprint-thumb'));
+          items.forEach(ensureOrientationForThumb);
+
+          // Keep original order index for restoration / stable reordering.
+          items.sort(function (a, b) {
+            var oa = parseInt(a.getAttribute('data-order') || '0', 10);
+            var ob = parseInt(b.getAttribute('data-order') || '0', 10);
+            return oa - ob;
+          });
+
+          // Build new sequence:
+          // - portrait photos are paired in rows
+          // - landscape photos always take a full row
+          // - if a portrait would be left alone, make it full-width (class "full")
+          var out = [];
+          var pending = null;
+
+          function pushPendingAsFull() {
+            if (!pending) return;
+            pending.classList.add('full');
+            out.push(pending);
+            pending = null;
+          }
+
+          for (var i = 0; i < items.length; i++) {
+            var it = items[i];
+            it.classList.remove('full');
+            var isLand = it.classList.contains('landscape');
+
+            if (isLand) {
+              // If we have a single portrait pending, try to steal the next portrait to complete the row.
+              if (pending) {
+                var swapIdx = -1;
+                for (var j = i + 1; j < items.length; j++) {
+                  if (!items[j].classList.contains('landscape')) { swapIdx = j; break; }
+                }
+                if (swapIdx !== -1) {
+                  var nextPortrait = items.splice(swapIdx, 1)[0];
+                  nextPortrait.classList.remove('full');
+                  out.push(pending);
+                  out.push(nextPortrait);
+                  pending = null;
+                } else {
+                  // No portrait left to pair with -> make this one full-width so no empty slot.
+                  pushPendingAsFull();
+                }
+              }
+              out.push(it);
+            } else {
+              // portrait
+              if (!pending) pending = it;
+              else {
+                out.push(pending);
+                out.push(it);
+                pending = null;
+              }
+            }
+          }
+          if (pending) pushPendingAsFull();
+
+          // Apply DOM order
+          out.forEach(function (node) { grid.appendChild(node); });
+        });
+      }
+
+      // Run once and also whenever images finish loading / viewport changes
+      scheduleRelayout();
+      imgs.forEach(function (img) {
+        if (!img.complete) img.addEventListener('load', scheduleRelayout, { once: true });
+      });
+      if (mmMobile && mmMobile.addEventListener) mmMobile.addEventListener('change', scheduleRelayout);
+      window.addEventListener('resize', scheduleRelayout);
+    })();
+  </script>
 </div>
 

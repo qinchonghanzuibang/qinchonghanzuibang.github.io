@@ -2,18 +2,33 @@
 Simple star renderer supporting ratings: 3, 3.5, 4, 4.5, 5
 Usage: {% include stars.html rating=4.5 %}
 {% endcomment %}
-{% assign r = include.rating | append: '' %}
-<span class="stars" aria-label="{{ r }} of 5 stars">
-{% case r %}
-  {% when '3' %}
+{% assign r_raw = include.rating | append: '' %}
+{% if r_raw contains '.' %}
+  {% assign r_str = r_raw %}
+{% else %}
+  {% assign r_str = r_raw | append: '.0' %}
+{% endif %}
+<span class="stars" aria-label="{{ r_str }} of 5 stars">
+{% case r_str %}
+  {% when '0.5' %}
+    <i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  {% when '1.0' %}
+    <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  {% when '1.5' %}
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  {% when '2.0' %}
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  {% when '2.5' %}
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+  {% when '3.0' %}
     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
   {% when '3.5' %}
     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
-  {% when '4' %}
+  {% when '4.0' %}
     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
   {% when '4.5' %}
     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-  {% when '5' %}
+  {% when '5.0' %}
     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
   {% else %}
     <!-- Fallback: empty -->
