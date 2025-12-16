@@ -355,32 +355,6 @@ img.lazy {
   border-top-color: rgba(0,0,0,0.12);
 }
 
-/* Footprint map markers (cluster-friendly DivIcon) */
-.footprint-marker-icon {
-  background: transparent;
-  border: 0;
-}
-.footprint-marker-dot {
-  display: block;
-  width: 12px;
-  height: 12px;
-  margin: 3px;
-  border-radius: 999px;
-  background: #ffffff;
-  border: 2px solid #33006f;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-/* Cluster styling to match the footprint theme */
-.marker-cluster.footprint-cluster {
-  background-color: rgba(51, 0, 111, 0.18);
-}
-.marker-cluster.footprint-cluster div {
-  background-color: rgba(51, 0, 111, 0.70);
-  color: #fff;
-  font-weight: 600;
-}
-
 /* Anchor offset so "View gallery" shows the title, not just the grid */
 #footprint .footprint-trip { scroll-margin-top: calc(3.5rem + 1rem); }
 @media (min-width: 750px) {

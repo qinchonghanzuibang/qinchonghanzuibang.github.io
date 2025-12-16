@@ -91,11 +91,31 @@ $(document).ready(function() {
 
   // Lightweight lazy-loading initializer (works with jquery.lazy-lite.js)
   function initLazy() {
-    if (!$.fn || !$.fn.Lazy) return;
-    // Default: only load when near the viewport.
-    $('img.lazy, div.lazy:not(.always-load)').Lazy({ visibleOnly: true });
-    // Force-load: useful for hero covers or elements that should load immediately.
-    $('img.lazy.always-load, div.lazy.always-load').Lazy({ visibleOnly: false });
+    var hasLazy = $.fn && $.fn.Lazy;
+    if (hasLazy) {
+      // Default: only load when near the viewport.
+      $('img.lazy, div.lazy:not(.always-load)').Lazy({ visibleOnly: true });
+      // Force-load: useful for hero covers or elements that should load immediately.
+      $('img.lazy.always-load, div.lazy.always-load').Lazy({ visibleOnly: false });
+    }
+
+    // Hard fallback: after a short delay, ensure above-the-fold lazy images actually start loading.
+    // This prevents "stuck on placeholder" if IntersectionObserver/plugins don't fire in some environments.
+    setTimeout(function () {
+      var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+      $('img.lazy[data-src]').each(function () {
+        try {
+          var rect = this.getBoundingClientRect ? this.getBoundingClientRect() : null;
+          if (rect && rect.top > vh + 300) return; // not near viewport
+          var ds = $(this).attr('data-src');
+          if (!ds) return;
+          var cur = $(this).attr('src') || '';
+          if (/empty_300x200\.png$/.test(cur)) {
+            $(this).attr('src', ds);
+          }
+        } catch (_e) {}
+      });
+    }, 1000);
   }
 
   init();
