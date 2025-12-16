@@ -24,6 +24,7 @@ $(document).ready(function() {
     $document.on('click', closePopover)
     $('a[href^="#"]').on('click', smoothScroll)
     buildSnippets();
+    initLazy();
   }
 
   function smoothScroll(e) {
@@ -88,6 +89,14 @@ $(document).ready(function() {
     })
   }
 
+  // Lightweight lazy-loading initializer (works with jquery.lazy-lite.js)
+  function initLazy() {
+    if (!$.fn || !$.fn.Lazy) return;
+    // Default: only load when near the viewport.
+    $('img.lazy, div.lazy:not(.always-load)').Lazy({ visibleOnly: true });
+    // Force-load: useful for hero covers or elements that should load immediately.
+    $('img.lazy.always-load, div.lazy.always-load').Lazy({ visibleOnly: false });
+  }
 
   init();
 

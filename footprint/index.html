@@ -35,7 +35,13 @@ title: Footprint
         <div class="footprint-grid">
           {% for p in trip.photos %}
             <a class="footprint-thumb" href="{{ p | prepend: site.baseurl }}" data-trip="{{ trip.id }}" data-order="{{ forloop.index0 }}">
-              <img loading="lazy" src="{{ p | prepend: site.baseurl }}" alt="{{ trip.title }} photo">
+              <img
+                class="lazy"
+                loading="lazy"
+                decoding="async"
+                src="{{ '/assets/empty_300x200.png' | prepend: site.baseurl }}"
+                data-src="{{ p | prepend: site.baseurl }}"
+                alt="{{ trip.title }} photo">
             </a>
           {% endfor %}
         </div>
@@ -81,6 +87,9 @@ title: Footprint
   ]
   </script>
 
+  <!-- Placeholder URL for lazy-loaded images (keeps Liquid out of inline JS for linters) -->
+  <span id="footprint-lazy-placeholder" data-src="{{ '/assets/empty_300x200.png' | prepend: site.baseurl }}" hidden></span>
+
   <!-- Leaflet (map) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -88,6 +97,9 @@ title: Footprint
     (function () {
       var mapEl = document.getElementById('footprint-map');
       if (!mapEl || !window.L) return;
+
+      var phEl = document.getElementById('footprint-lazy-placeholder');
+      var lazyPlaceholder = (phEl && phEl.getAttribute('data-src')) || '/assets/empty_300x200.png';
 
       var tripsEl = document.getElementById('trips-json');
       var trips = [];
@@ -127,7 +139,9 @@ title: Footprint
         else if (r === 5) stars = '★★★★★';
         else stars = '☆☆☆☆☆';
 
-        var img = t.cover ? ('<img class="footprint-popup-img" src="' + t.cover + '" alt="cover">') : '';
+        var img = t.cover
+          ? ('<img class="footprint-popup-img lazy" src="' + lazyPlaceholder + '" data-src="' + t.cover + '" alt="cover">')
+          : '';
         var displayTitle = t.city ? (t.city + ', ' + t.tripTitle) : t.title;
         return '' +
           '<div class="footprint-popup">' +
@@ -176,6 +190,16 @@ title: Footprint
           interactive: true,
           className: 'footprint-tooltip',
           offset: [0, 0]
+        });
+        // Tooltip content is created dynamically; kick Lazy for images inside when it opens.
+        m.on('tooltipopen', function (e) {
+          try {
+            var el = e && e.tooltip && e.tooltip.getElement ? e.tooltip.getElement() : null;
+            if (!el) return;
+            if (window.jQuery && window.jQuery.fn && window.jQuery.fn.Lazy) {
+              window.jQuery(el).find('img.lazy, div.lazy').Lazy({ visibleOnly: false });
+            }
+          } catch (_err) {}
         });
         m.on('click', function () {
           // click opens on both desktop and mobile
