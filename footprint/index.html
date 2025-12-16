@@ -122,7 +122,7 @@ title: Footprint
       var worldBounds = L.latLngBounds(L.latLng(-85, -180), L.latLng(85, 180));
       map.setMaxBounds(worldBounds);
       map.options.maxBoundsViscosity = 1.0;
-      var lastTooltip = null;
+      var lastPopup = null;
 
       function popupHtml(t) {
         var stars = '';
@@ -188,19 +188,188 @@ title: Footprint
           bubblingMouseEvents: false
         }).addTo(map);
 
-        // Use tooltip instead of popup so it can auto-flip (top/bottom) and doesn't pan the map.
-        m.bindTooltip(popupHtml(t), {
-          direction: 'auto',
-          opacity: 1,
-          interactive: true,
-          className: 'footprint-tooltip',
+        // Use a popup (not tooltip) so it doesn't auto-close on marker mouseout (desktop UX).
+        m.bindPopup(popupHtml(t), {
+          // We'll handle "flip" ourselves (no auto-pan).
+          autoPan: false,
+          closeButton: false,
+          closeOnClick: false,
+          className: 'footprint-popup-leaflet',
           offset: [0, 0]
         });
-        // Track the last opened tooltip so we can close it safely on touch devices.
-        m.on('tooltipopen', function (e) { lastTooltip = e && e.tooltip ? e.tooltip : lastTooltip; });
-        m.on('tooltipclose', function (e) {
-          if (lastTooltip && e && e.tooltip && lastTooltip === e.tooltip) lastTooltip = null;
+
+        var closeTimer = null;
+        var isOverPopup = false;
+        function clearClose() {
+          if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+          }
+        }
+        function scheduleClose() {
+          clearClose();
+          closeTimer = setTimeout(function () {
+            if (!isOverPopup) m.closePopup();
+          }, 220);
+        }
+
+        m.on('popupopen', function (e) {
+          lastPopup = e && e.popup ? e.popup : lastPopup;
+          clearClose();
+          try {
+            var el = e.popup && e.popup.getElement ? e.popup.getElement() : null;
+            if (!el) return;
+
+            // --- Popup auto placement (up/down/left/right) ---
+            var dirClass = {
+              up: 'footprint-popup-dir-up',
+              down: 'footprint-popup-dir-down',
+              left: 'footprint-popup-dir-left',
+              right: 'footprint-popup-dir-right'
+            };
+
+            function setDirClass(dir) {
+              try {
+                el.classList.remove(dirClass.up, dirClass.down, dirClass.left, dirClass.right);
+                el.classList.add(dirClass[dir] || dirClass.up);
+              } catch (_e) {}
+            }
+
+            function computeOffsets(w, h, margin) {
+              // Leaflet popup is positioned as: x = anchorX - w/2 + offsetX, y = anchorY - h + offsetY
+              // We choose offset values to place popup around the anchor (marker).
+              return {
+                up:    { x: 0, y: -margin },
+                down:  { x: 0, y: h + margin },
+                left:  { x: -(w / 2 + margin), y: h / 2 },
+                right: { x:  (w / 2 + margin), y: h / 2 }
+              };
+            }
+
+            function rectForDir(anchor, w, h, margin, dir) {
+              // anchor is in viewport coords (px)
+              if (dir === 'up') {
+                return { left: anchor.x - w / 2, right: anchor.x + w / 2, top: anchor.y - h - margin, bottom: anchor.y - margin };
+              }
+              if (dir === 'down') {
+                return { left: anchor.x - w / 2, right: anchor.x + w / 2, top: anchor.y + margin, bottom: anchor.y + margin + h };
+              }
+              if (dir === 'left') {
+                return { left: anchor.x - margin - w, right: anchor.x - margin, top: anchor.y - h / 2, bottom: anchor.y + h / 2 };
+              }
+              // right
+              return { left: anchor.x + margin, right: anchor.x + margin + w, top: anchor.y - h / 2, bottom: anchor.y + h / 2 };
+            }
+
+            function overflowScore(r, bounds, pad) {
+              var overL = Math.max(0, (bounds.left + pad) - r.left);
+              var overR = Math.max(0, r.right - (bounds.right - pad));
+              var overT = Math.max(0, (bounds.top + pad) - r.top);
+              var overB = Math.max(0, r.bottom - (bounds.bottom - pad));
+              return { score: overL + overR + overT + overB, overL: overL, overR: overR, overT: overT, overB: overB };
+            }
+
+            function chooseBestDir() {
+              var mapContainer = map.getContainer ? map.getContainer() : null;
+              if (!mapContainer || !el.getBoundingClientRect) return 'up';
+              var mr = mapContainer.getBoundingClientRect();
+              var pr = el.getBoundingClientRect();
+              var w = pr.width || el.offsetWidth || 0;
+              var h = pr.height || el.offsetHeight || 0;
+              if (!w || !h) return 'up';
+
+              // anchor in viewport coords
+              var latlng = (e.popup && e.popup.getLatLng) ? e.popup.getLatLng() : null;
+              if (!latlng || !map.latLngToContainerPoint) return 'up';
+              var pt = map.latLngToContainerPoint(latlng);
+              var anchor = { x: mr.left + pt.x, y: mr.top + pt.y };
+
+              var pad = 8;
+              var margin = 10;
+
+              var dirs = ['up', 'down', 'right', 'left'];
+              var best = { dir: 'up', score: Infinity };
+              for (var i = 0; i < dirs.length; i++) {
+                var d = dirs[i];
+                var rr = rectForDir(anchor, w, h, margin, d);
+                var sc = overflowScore(rr, mr, pad);
+                if (sc.score < best.score) best = { dir: d, score: sc.score };
+                if (sc.score === 0) return d; // perfect fit
+              }
+              return best.dir;
+            }
+
+            function applyDir(dir) {
+              try {
+                var pr = el.getBoundingClientRect();
+                var w = pr.width || el.offsetWidth || 0;
+                var h = pr.height || el.offsetHeight || 0;
+                var margin = 10;
+                var off = computeOffsets(w, h, margin)[dir] || { x: 0, y: -margin };
+                setDirClass(dir);
+                // Leaflet Popup doesn't reliably expose setOffset() across versions.
+                // The supported approach is to mutate options.offset and call update().
+                if (window.L && window.L.point) {
+                  e.popup.options.offset = window.L.point(off.x, off.y);
+                } else {
+                  e.popup.options.offset = [off.x, off.y];
+                }
+                if (e.popup.update) e.popup.update();
+                // Some versions require a position refresh after update.
+                if (e.popup._updatePosition) e.popup._updatePosition();
+              } catch (_e) {}
+            }
+
+            function adjustPlacement() {
+              try {
+                var dir = chooseBestDir();
+                applyDir(dir);
+              } catch (_e) {}
+            }
+
+            // Prevent clicks inside the popup from bubbling to the map.
+            if (window.L && window.L.DomEvent) {
+              window.L.DomEvent.disableClickPropagation(el);
+              window.L.DomEvent.disableScrollPropagation(el);
+            }
+
+            var link = el.querySelector ? el.querySelector('a.footprint-popup-link') : null;
+            if (link && window.L && window.L.DomEvent) {
+              window.L.DomEvent.on(link, 'click', window.L.DomEvent.stopPropagation);
+              window.L.DomEvent.on(link, 'mousedown', window.L.DomEvent.stopPropagation);
+              window.L.DomEvent.on(link, 'touchstart', window.L.DomEvent.stopPropagation);
+            }
+
+            if (!isTouch) {
+              el.addEventListener('mouseenter', function () {
+                isOverPopup = true;
+                clearClose();
+              });
+              el.addEventListener('mouseleave', function () {
+                isOverPopup = false;
+                m.closePopup();
+              });
+            }
+
+            // Adjust placement after first paint and after the cover image loads (size changes).
+            setTimeout(adjustPlacement, 0);
+            try {
+              var coverImg = el.querySelector ? el.querySelector('img.footprint-popup-img') : null;
+              if (coverImg) coverImg.addEventListener('load', adjustPlacement, { once: true });
+            } catch (_eimg) {}
+            // Keep a reference so we can remove exactly this handler on close.
+            e.popup.__footprintAdjustPlacement = adjustPlacement;
+            map.on('moveend zoomend', adjustPlacement);
+          } catch (_e) {}
         });
+        m.on('popupclose', function (e) {
+          if (lastPopup && e && e.popup && lastPopup === e.popup) lastPopup = null;
+          try {
+            var fn = e && e.popup ? e.popup.__footprintAdjustPlacement : null;
+            if (fn) map.off('moveend zoomend', fn);
+          } catch (_e) {}
+        });
+
         m.on('click', function (evt) {
           // Prevent map click handler from firing on the same tap/click.
           try {
@@ -208,39 +377,15 @@ title: Footprint
               window.L.DomEvent.stopPropagation(evt.originalEvent);
             }
           } catch (_e) {}
-          // click opens on both desktop and mobile
-          m.openTooltip();
+          m.openPopup();
         });
         if (!isTouch) {
-          var closeTimer = null;
-          var isOverTooltip = false;
-          function clearClose() {
-            if (closeTimer) {
-              clearTimeout(closeTimer);
-              closeTimer = null;
-            }
-          }
           m.on('mouseover', function () {
             clearClose();
-            m.openTooltip();
+            m.openPopup();
           });
           m.on('mouseout', function () {
-            clearClose();
-            closeTimer = setTimeout(function () {
-              if (!isOverTooltip) m.closeTooltip();
-            }, 200);
-          });
-          m.on('tooltipopen', function (e) {
-            var el = e.tooltip && e.tooltip.getElement ? e.tooltip.getElement() : null;
-            if (!el) return;
-            el.addEventListener('mouseenter', function () {
-              isOverTooltip = true;
-              clearClose();
-            });
-            el.addEventListener('mouseleave', function () {
-              isOverTooltip = false;
-              m.closeTooltip();
-            });
+            scheduleClose();
           });
         }
       });
@@ -249,9 +394,17 @@ title: Footprint
       if (isTouch) {
         map.on('click', function () {
           try {
-            if (lastTooltip) map.closeTooltip(lastTooltip);
+            if (lastPopup) map.closePopup(lastPopup);
           } catch (_e) {}
-          lastTooltip = null;
+          lastPopup = null;
+        });
+      } else {
+        // Desktop: clicking the map closes the last tooltip (behaves like a popover)
+        map.on('click', function () {
+          try {
+            if (lastPopup) map.closePopup(lastPopup);
+          } catch (_e) {}
+          lastPopup = null;
         });
       }
 
