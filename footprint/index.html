@@ -93,6 +93,10 @@ title: Footprint
   <!-- Leaflet (map) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Leaflet MarkerCluster (cluster + spiderfy) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script>
     (function () {
       var mapEl = document.getElementById('footprint-map');
@@ -122,6 +126,26 @@ title: Footprint
       var worldBounds = L.latLngBounds(L.latLng(-85, -180), L.latLng(85, 180));
       map.setMaxBounds(worldBounds);
       map.options.maxBoundsViscosity = 1.0;
+
+      // Cluster group (auto spiderfy on max zoom)
+      var hasCluster = typeof L.markerClusterGroup === 'function';
+      var cluster = hasCluster ? L.markerClusterGroup({
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        chunkedLoading: true,
+        // tweak for usability when points are close
+        maxClusterRadius: 45,
+        iconCreateFunction: function (c) {
+          var count = c.getChildCount();
+          var size = (count < 10) ? 'small' : (count < 100 ? 'medium' : 'large');
+          return L.divIcon({
+            html: '<div><span>' + count + '</span></div>',
+            className: 'marker-cluster marker-cluster-' + size + ' footprint-cluster',
+            iconSize: L.point(40, 40)
+          });
+        }
+      }) : null;
 
       function popupHtml(t) {
         var stars = '';
@@ -175,13 +199,16 @@ title: Footprint
       markers.forEach(function (t) {
         bounds.push([t.lat, t.lng]);
 
-        var m = L.circleMarker([t.lat, t.lng], {
-          radius: 5,
-          weight: 2,
-          color: '#33006f',
-          fillColor: '#ffffff',
-          fillOpacity: 1
-        }).addTo(map);
+        // Use a DivIcon marker so it can be clustered.
+        var icon = L.divIcon({
+          className: 'footprint-marker-icon',
+          html: '<span class="footprint-marker-dot" aria-hidden="true"></span>',
+          iconSize: [18, 18],
+          iconAnchor: [9, 9]
+        });
+        var m = L.marker([t.lat, t.lng], { icon: icon, keyboard: false });
+        if (cluster) cluster.addLayer(m);
+        else m.addTo(map);
 
         // Use tooltip instead of popup so it can auto-flip (top/bottom) and doesn't pan the map.
         m.bindTooltip(popupHtml(t), {
@@ -239,6 +266,10 @@ title: Footprint
         }
       });
 
+      if (cluster) {
+        cluster.addTo(map);
+      }
+
       // On touch devices, tapping the map closes the open tooltip.
       if (isTouch) {
         map.on('click', function () {
@@ -247,7 +278,9 @@ title: Footprint
       }
 
       if (bounds.length) {
-        map.fitBounds(bounds, { padding: [40, 40] });
+        // Prefer cluster bounds (more accurate if plugin is enabled)
+        var b = (cluster && cluster.getLayers && cluster.getLayers().length) ? cluster.getBounds() : bounds;
+        map.fitBounds(b, { padding: [40, 40] });
         // Allow a more zoomed-out default view
         if (map.getZoom() < 1) map.setZoom(1);
       } else {
