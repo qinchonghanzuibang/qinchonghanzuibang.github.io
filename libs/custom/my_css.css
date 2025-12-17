@@ -254,12 +254,69 @@ h4 {
 /* Clear floats inside container */
 .topbar .container::after { content: ""; display: table; clear: both; }
 
+/* Back-to-top button (mobile: in topbar) */
+.topbar-backtotop-link {
+  padding: 0 16px; /* keep spacing consistent with other topbar links */
+  height: 3.5rem;
+  display: inline-flex;
+  align-items: center; /* equal top/bottom spacing */
+}
+.topbar-backtotop-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.92);
+  color: rgba(0,0,0,0.55);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  vertical-align: middle;
+}
+.topbar-backtotop-link:hover .topbar-backtotop-square {
+  color: rgba(0,0,0,0.75);
+  border-color: rgba(0,0,0,0.16);
+}
+
 /* Hide topbar on desktop, keep only on mobile */
 @media (min-width: 750px) {
   .topbar,
   .topbar-spacer {
     display: none;
   }
+}
+
+/* Back-to-top floating action button (desktop only, Footprint page via layout) */
+.back-to-top-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.92);
+  color: rgba(0,0,0,0.55);
+  text-decoration: none;
+  display: none; /* enabled on desktop */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1200;
+}
+.back-to-top-fab:hover {
+  color: rgba(0,0,0,0.78);
+  border-color: rgba(0,0,0,0.16);
+  transform: translateY(-1px);
+}
+.back-to-top-fab:active {
+  transform: translateY(0);
+}
+@media (min-width: 750px) {
+  .back-to-top-fab { display: inline-flex; }
 }
 
 /* Stars styling */

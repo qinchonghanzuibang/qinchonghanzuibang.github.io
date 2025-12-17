@@ -63,6 +63,7 @@
 
 </head>
 <body>
+  <div id="top"></div>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -73,6 +74,13 @@
         <li class="topbar-item"><a class="topbar-link" href={{ "/" | prepend: site.baseurl }}>Home</a></li>
         <li class="topbar-item"><a class="topbar-link" href={{ "/misc/index.html" | prepend: site.baseurl }}>Bazinga</a></li>
         <li class="topbar-item"><a class="topbar-link" href={{ "/footprint/index.html" | prepend: site.baseurl }}>Footprint</a></li>
+        <li class="topbar-item">
+          <a class="topbar-link topbar-backtotop-link" href="#top" aria-label="Back to top" title="Back to top">
+            <span class="topbar-backtotop-square" aria-hidden="true">
+              <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+            </span>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -166,6 +174,10 @@
     </div>
 
   </div>
+
+  <a class="back-to-top-fab" href="#top" aria-label="Back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </a>
 
   <!-- Google Analytics -->
   {% include google_analytics.html %}

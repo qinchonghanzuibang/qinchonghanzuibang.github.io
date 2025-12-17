@@ -33,9 +33,15 @@ $(document).ready(function() {
     var target = this.hash,
         menu = target;
     $target = $(target);
+    // Smooth scroll for "Back to top"
+    var duration = (target === '#top') ? 420 : 0;
+    var top = 0;
+    if (target !== '#top' && $target && $target.length) {
+      top = $target.offset().top - 40;
+    }
     $('html, body').stop().animate({
-        'scrollTop': $target.offset().top-40
-    }, 0, 'swing', function () {
+        'scrollTop': top
+    }, duration, 'swing', function () {
         window.location.hash = target;
         $(document).on("scroll", onScroll);
     });
