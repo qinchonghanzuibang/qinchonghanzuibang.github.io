@@ -2,7 +2,7 @@ papers:
 
   - title: "ImplicitMemBench: A Comprehensive Benchmark for Evaluating Implicit Memory in Large Language Models"
     authors: "<b>Chonghan Qin</b>, Xiachong Feng, Weitao Ma, Xiaocheng Feng, Lingpeng Kong"
-    venue: "Submitted to Annual Conference of the Association for Computational Linguistics (ACL) 2026"
+    venue: "Annual Conference of the Association for Computational Linguistics (ACL) 2026, under review"
     # paper_pdf: "/assets/publications/2025_implicitmembench/paper.pdf"
     # slides: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # poster: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
