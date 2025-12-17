@@ -22,21 +22,56 @@ $(document).ready(function() {
     $window.on('resize', resize)
     $popoverLink.on('click', openPopover)
     $document.on('click', closePopover)
-    $('a[href^="#"]').on('click', smoothScroll)
+    // Smooth-scroll for:
+    // - "#section"
+    // - "/index.html#section" (same-page hash links used by the navbar)
+    $('a[href*="#"]').on('click', smoothScroll)
     buildSnippets();
     initLazy();
   }
 
   function smoothScroll(e) {
+    // Don't hijack modified clicks (new tab/window, etc.)
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || (e.button != null && e.button !== 0)) return;
+    var href = this.getAttribute ? this.getAttribute('href') : null;
+    if (!href || href.indexOf('#') === -1) return;
+
+    // Only intercept if the link points to the current page (same origin + same path).
+    var url = null;
+    try { url = new URL(href, window.location.href); } catch (_e) { url = null; }
+    if (!url || url.origin !== window.location.origin) return;
+
+    function normPath(p) {
+      if (!p) return '/';
+      // treat "/index.html" and "/" as equivalent
+      p = p.replace(/\/index\.html$/, '/');
+      if (p.length > 1 && p.endsWith('/')) return p;
+      return p;
+    }
+
+    if (normPath(url.pathname) !== normPath(window.location.pathname)) return;
+
+    var target = url.hash || '';
+    if (!target) return;
+
     e.preventDefault();
     $(document).off("scroll");
-    var target = this.hash,
-        menu = target;
-    $target = $(target);
-    // Smooth scroll for "Back to top"
-    var duration = (target === '#top') ? 420 : 0;
+    var $target = $(target);
+    // Smooth scroll for all in-page anchors (Bio/Publications/Vita/etc.)
+    var reduceMotion = false;
+    try {
+      reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (_e) {}
+
+    var duration = reduceMotion ? 0 : 420;
     var top = 0;
-    if (target !== '#top' && $target && $target.length) {
+    if (target !== '#top') {
+      if (!$target || !$target.length) {
+        // If anchor doesn't exist, fall back to default hash behavior.
+        window.location.hash = target;
+        $(document).on("scroll", onScroll);
+        return;
+      }
       top = $target.offset().top - 40;
     }
     $('html, body').stop().animate({
