@@ -75,10 +75,21 @@ $(document).ready(function() {
       top = $target.offset().top - 40;
     }
     $('html, body').stop().animate({
-        'scrollTop': top
+      'scrollTop': top
     }, duration, 'swing', function () {
-        window.location.hash = target;
-        $(document).on("scroll", onScroll);
+      // Update the hash without causing a second native jump.
+      try {
+        if (window.history && window.history.replaceState) {
+          var newUrl = window.location.pathname + target + window.location.search;
+          window.history.replaceState(null, '', newUrl);
+        } else {
+          // Fallback: set hash but immediately restore scroll position.
+          var currentTop = $(window).scrollTop();
+          window.location.hash = target;
+          $(window).scrollTop(currentTop);
+        }
+      } catch (_e2) {}
+      $(document).on("scroll", onScroll);
     });
   }
 
