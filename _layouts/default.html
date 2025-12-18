@@ -5,7 +5,13 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>{{ site.data.main_info.name }} | {{ page.title }}</title>
+  <title>
+    {% if page.url == "/" or page.title == "Home" %}
+      {{ site.data.main_info.name }}
+    {% else %}
+      {{ site.data.main_info.name }} | {{ page.title }}
+    {% endif %}
+  </title>
   <meta name="description" content="Chonghan Qin">
   <meta name="author" content="Chonghan Qin">
   <meta property="og:title" content="Chonghan Qin" />
