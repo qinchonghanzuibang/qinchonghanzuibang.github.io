@@ -535,6 +535,37 @@ img.lazy {
   display: none;
 }
 
+/* Custom cluster marker (no plugin) */
+.footprint-cluster-icon {
+  background: transparent;
+  border: 0;
+}
+.footprint-cluster-bubble {
+  width: 50%;
+  height: 50%;
+  border-radius: 999px;
+  /* Match the original point style: white fill + purple ring */
+  background: rgba(255,255,255,0.98);
+  border: 3px solid rgba(51, 0, 111, 0.95);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footprint-cluster-bubble span {
+  color: rgba(51, 0, 111, 0.95);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+}
+.footprint-cluster-popup .footprint-cluster-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.footprint-cluster-popup .footprint-cluster-list li {
+  margin: 4px 0;
+}
+
 /* Base arrow pseudo-elements */
 .leaflet-popup.footprint-popup-leaflet .leaflet-popup-content-wrapper::before,
 .leaflet-popup.footprint-popup-leaflet .leaflet-popup-content-wrapper::after {
