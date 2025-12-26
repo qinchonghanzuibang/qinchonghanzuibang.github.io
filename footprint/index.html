@@ -51,6 +51,23 @@ title: Footprint
     </div>
   {% endfor %}
 
+  <!-- Lightbox (in-page viewer so clicking photos won't navigate to the raw .webp URL) -->
+  <div class="footprint-lightbox" id="footprint-lightbox" aria-hidden="true">
+    <div class="footprint-lightbox-backdrop" data-action="close"></div>
+    <div class="footprint-lightbox-content" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="footprint-lightbox-close" type="button" data-action="close" aria-label="Close">×</button>
+      <div class="footprint-lightbox-header">
+        <div class="footprint-lightbox-title" id="footprint-lightbox-title"></div>
+        <div class="footprint-lightbox-meta" id="footprint-lightbox-meta"></div>
+      </div>
+      <div class="footprint-lightbox-stage">
+        <img class="footprint-lightbox-img" id="footprint-lightbox-img" alt="">
+      </div>
+      <button class="footprint-lightbox-nav footprint-lightbox-prev" type="button" data-action="prev" aria-label="Previous">‹</button>
+      <button class="footprint-lightbox-nav footprint-lightbox-next" type="button" data-action="next" aria-label="Next">›</button>
+    </div>
+  </div>
+
   <!-- Trips data as JSON for safe parsing -->
   <script type="application/json" id="trips-json">
   [
@@ -61,6 +78,13 @@ title: Footprint
       "date": {{ trip.date | jsonify }},
       "rating": {{ trip.rating | jsonify }},
       "cover": {% if trip.cover %}{{ trip.cover | prepend: site.baseurl | jsonify }}{% elsif trip.photos and trip.photos.size > 0 %}{{ trip.photos.first | prepend: site.baseurl | jsonify }}{% else %}null{% endif %},
+      "photos": [
+        {% if trip.photos and trip.photos.size > 0 %}
+          {% for p in trip.photos %}
+            {{ p | prepend: site.baseurl | jsonify }}{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        {% endif %}
+      ],
       "locations": [
         {% if trip.locations and trip.locations.size > 0 %}
           {% for loc in trip.locations %}
@@ -529,6 +553,236 @@ title: Footprint
       });
       if (mmMobile && mmMobile.addEventListener) mmMobile.addEventListener('change', scheduleRelayout);
       window.addEventListener('resize', scheduleRelayout);
+
+      // ---- Lightbox ----
+      var lb = document.getElementById('footprint-lightbox');
+      var lbImg = document.getElementById('footprint-lightbox-img');
+      var lbTitle = document.getElementById('footprint-lightbox-title');
+      var lbMeta = document.getElementById('footprint-lightbox-meta');
+      var lbStage = document.querySelector('#footprint-lightbox .footprint-lightbox-stage');
+      var currentGlobalIndex = 0;
+      var globalPhotos = [];
+      var tripById = {};
+      var tripStart = {};
+
+      // When the full-res image finishes loading, re-fit to the current viewport.
+      try {
+        if (lbImg) lbImg.addEventListener('load', function () { fitToViewport(); });
+      } catch (_e) {}
+
+      function starsText(rating) {
+        var r = Number(rating);
+        if (r === 0.5) return '★½☆☆☆';
+        if (r === 1) return '★☆☆☆☆';
+        if (r === 1.5) return '★½☆☆☆';
+        if (r === 2) return '★★☆☆☆';
+        if (r === 2.5) return '★★½☆☆';
+        if (r === 3) return '★★★☆☆';
+        if (r === 3.5) return '★★★½☆';
+        if (r === 4) return '★★★★☆';
+        if (r === 4.5) return '★★★★½';
+        if (r === 5) return '★★★★★';
+        return '';
+      }
+
+      function getTripDisplay(tripId) {
+        for (var i = 0; i < trips.length; i++) {
+          if (trips[i] && trips[i].id === tripId) return trips[i];
+        }
+        return null;
+      }
+
+      // Build global photo list in trip order so next/prev continues across trips.
+      (function buildGlobal() {
+        var start = 0;
+        for (var i = 0; i < trips.length; i++) {
+          var t = trips[i];
+          if (!t || !t.id) continue;
+          tripById[t.id] = t;
+          tripStart[t.id] = start;
+          var photos = (t.photos && t.photos.length) ? t.photos : [];
+          for (var j = 0; j < photos.length; j++) {
+            globalPhotos.push({ tripId: t.id, href: photos[j], localIndex: j });
+            start++;
+          }
+        }
+      })();
+
+      function renderLightbox(globalIdx) {
+        if (!lb || !globalPhotos.length) return;
+        currentGlobalIndex = (globalIdx + globalPhotos.length) % globalPhotos.length;
+        var item = globalPhotos[currentGlobalIndex];
+        var t = tripById[item.tripId] || getTripDisplay(item.tripId);
+        lbTitle.textContent = (t && t.title) ? t.title : item.tripId;
+
+        var meta = [];
+        if (t && t.date) meta.push(t.date);
+        if (t && t.rating != null) meta.push(starsText(t.rating));
+        var totalInTrip = (t && t.photos && t.photos.length) ? t.photos.length : null;
+        if (totalInTrip) meta.push((item.localIndex + 1) + '/' + totalInTrip);
+        lbMeta.textContent = meta.filter(Boolean).join(' · ');
+
+        lbImg.src = item.href;
+        lbImg.alt = lbTitle.textContent + ' photo ' + (item.localIndex + 1);
+
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('footprint-no-scroll');
+
+        // Ensure the image ALWAYS fits in the visible stage (desktop + mobile).
+        requestAnimationFrame(fitToViewport);
+      }
+
+      function fitToViewport() {
+        if (!lb || !lb.classList.contains('open')) return;
+        if (!lbStage || !lbImg) return;
+        // Stage is the only area the image can occupy.
+        var rect = lbStage.getBoundingClientRect ? lbStage.getBoundingClientRect() : null;
+        if (!rect) return;
+        var w = Math.max(0, Math.floor(rect.width));
+        var h = Math.max(0, Math.floor(rect.height));
+        // Account for stage padding, otherwise the image can overflow and get clipped.
+        try {
+          var cs = window.getComputedStyle ? window.getComputedStyle(lbStage) : null;
+          if (cs) {
+            var pl = parseFloat(cs.paddingLeft || '0') || 0;
+            var pr = parseFloat(cs.paddingRight || '0') || 0;
+            var pt = parseFloat(cs.paddingTop || '0') || 0;
+            var pb = parseFloat(cs.paddingBottom || '0') || 0;
+            w = Math.max(0, w - pl - pr);
+            h = Math.max(0, h - pt - pb);
+          }
+        } catch (_e) {}
+        // Reserve a tiny margin so we never clip due to rounding.
+        var pad = 2;
+        lbImg.style.maxWidth = Math.max(0, w - pad) + 'px';
+        lbImg.style.maxHeight = Math.max(0, h - pad) + 'px';
+      }
+
+      function openLightboxByTripOrder(tripId, orderIdx) {
+        if (!globalPhotos.length) return;
+        var base = tripStart[tripId];
+        if (typeof base !== 'number') return;
+        var idx = base + Math.max(0, (orderIdx || 0));
+        renderLightbox(idx);
+      }
+
+      function closeLightbox() {
+        if (!lb) return;
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('footprint-no-scroll');
+        if (lbImg) lbImg.src = '';
+      }
+
+      function nav(delta) {
+        if (!globalPhotos.length) return;
+        renderLightbox(currentGlobalIndex + delta);
+      }
+
+      // thumbnail click: prevent navigating to the raw image url; open lightbox instead
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a.footprint-thumb') : null;
+        if (!a) return;
+        e.preventDefault();
+        openLightboxByTripOrder(a.getAttribute('data-trip'), parseInt(a.getAttribute('data-order') || '0', 10));
+      });
+
+      // lightbox controls
+      lb.addEventListener('click', function (e) {
+        var t = e.target;
+        var action = t && t.getAttribute ? t.getAttribute('data-action') : null;
+        if (!action) return;
+        e.preventDefault();
+        if (action === 'close') closeLightbox();
+        if (action === 'prev') nav(-1);
+        if (action === 'next') nav(1);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (!lb || !lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') nav(-1);
+        if (e.key === 'ArrowRight') nav(1);
+      });
+
+      // Swipe to navigate (mobile/tablet)
+      (function initSwipe() {
+        if (!lbStage) return;
+        var startX = 0, startY = 0;
+        var lastX = 0, lastY = 0;
+        var tracking = false;
+        var lockedAxis = null; // 'x' | 'y' | null
+
+        function onStart(x, y) {
+          tracking = true;
+          lockedAxis = null;
+          startX = lastX = x;
+          startY = lastY = y;
+        }
+        function onMove(x, y) {
+          if (!tracking) return;
+          lastX = x; lastY = y;
+          var dx = x - startX;
+          var dy = y - startY;
+          if (!lockedAxis) {
+            if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+              lockedAxis = (Math.abs(dx) > Math.abs(dy) * 1.2) ? 'x' : 'y';
+            }
+          }
+        }
+        function onEnd() {
+          if (!tracking) return;
+          tracking = false;
+          var dx = lastX - startX;
+          var dy = lastY - startY;
+          if (lockedAxis === 'x' && Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+            if (dx < 0) nav(1);
+            else nav(-1);
+          }
+        }
+
+        // Touch (most reliable on mobile)
+        lbStage.addEventListener('touchstart', function (e) {
+          if (!lb.classList.contains('open')) return;
+          var t = e && e.touches && e.touches[0];
+          if (!t) return;
+          onStart(t.clientX, t.clientY);
+        }, { passive: true });
+        lbStage.addEventListener('touchmove', function (e) {
+          if (!lb.classList.contains('open')) return;
+          var t = e && e.touches && e.touches[0];
+          if (!t) return;
+          onMove(t.clientX, t.clientY);
+          // If it is a horizontal swipe, prevent page scrolling.
+          if (lockedAxis === 'x') {
+            try { e.preventDefault(); } catch (_e) {}
+          }
+        }, { passive: false });
+        lbStage.addEventListener('touchend', function () { onEnd(); }, { passive: true });
+        lbStage.addEventListener('touchcancel', function () { tracking = false; lockedAxis = null; }, { passive: true });
+
+        // Pointer fallback (desktop trackpads / some Android)
+        lbStage.addEventListener('pointerdown', function (e) {
+          if (!lb.classList.contains('open')) return;
+          onStart(e.clientX, e.clientY);
+        });
+        lbStage.addEventListener('pointermove', function (e) {
+          if (!lb.classList.contains('open')) return;
+          onMove(e.clientX, e.clientY);
+        });
+        lbStage.addEventListener('pointerup', function () { onEnd(); });
+        lbStage.addEventListener('pointercancel', function () { tracking = false; lockedAxis = null; });
+      })();
+
+      // Re-fit on resize / orientation change while open
+      window.addEventListener('resize', function () {
+        if (!lb || !lb.classList.contains('open')) return;
+        fitToViewport();
+      });
+      window.addEventListener('orientationchange', function () {
+        if (!lb || !lb.classList.contains('open')) return;
+        setTimeout(fitToViewport, 50);
+      });
     })();
   </script>
 </div>

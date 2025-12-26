@@ -417,6 +417,105 @@ img.lazy {
   border-top-color: rgba(0,0,0,0.12);
 }
 
+/* Footprint lightbox (prevents getting "stuck" on raw image URLs) */
+.footprint-no-scroll { overflow: hidden; }
+.footprint-lightbox { display: none; position: fixed; inset: 0; z-index: 2000; }
+.footprint-lightbox.open { display: block; }
+.footprint-lightbox-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.75); }
+.footprint-lightbox-content {
+  position: fixed;
+  inset: 14px;
+  margin: auto;
+  width: min(1100px, calc(100vw - 28px));
+  height: min(94vh, calc(100vh - 28px));
+  background: #111;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  padding: 12px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+  overflow: hidden; /* always keep the image fully inside the viewport */
+}
+.footprint-lightbox-header { color: rgba(255,255,255,0.92); padding: 0 40px 0 6px; }
+.footprint-lightbox-title { font-weight: 600; }
+.footprint-lightbox-meta { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+.footprint-lightbox-stage {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* swipe-only on mobile; do not offset the photo */
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 0; /* important for grid children so it can shrink */
+  touch-action: pan-y; /* allow vertical scroll outside, we handle horizontal swipe */
+}
+.footprint-lightbox-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  background: #111;
+  border-radius: 8px;
+}
+
+/* Desktop arrows (hidden on mobile) */
+.footprint-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  font-size: 28px;
+  line-height: 46px;
+  padding: 0;
+}
+.footprint-lightbox-prev { left: 16px; }
+.footprint-lightbox-next { right: 16px; }
+
+@media (min-width: 751px) {
+  /* reserve side gutters so arrows don't cover the photo */
+  .footprint-lightbox-stage { padding: 0 66px; }
+}
+.footprint-lightbox-close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  font-size: 22px;
+  line-height: 32px;
+  padding: 0;
+}
+@media (max-width: 750px) {
+  /* Keep a strict viewport-bounded box on mobile too (do NOT use height:auto) */
+  .footprint-lightbox-content { inset: 10px; width: auto; height: min(96vh, calc(100vh - 20px)); border-radius: 12px; }
+  /* mobile is swipe-only */
+  .footprint-lightbox-nav { display: none; }
+}
+
+/* Prefer dynamic viewport units when supported (better on mobile address bar) */
+@supports (height: 100dvh) {
+  .footprint-lightbox-content { height: min(94dvh, calc(100dvh - 28px)); }
+  @media (max-width: 750px) {
+    .footprint-lightbox-content { height: min(96dvh, calc(100dvh - 20px)); }
+  }
+}
+
 /* Leaflet popup styling for footprint (replaces tooltip on desktop to keep it clickable) */
 .leaflet-popup.footprint-popup-leaflet .leaflet-popup-content-wrapper {
   background: #fff;
