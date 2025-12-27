@@ -64,7 +64,7 @@ title: Bazinga
       <div class="misc-card">
         <h5>Sketch</h5>
         <p>Surprise! I have a hidden talent for sketching. I have been learning to draw since primary school.</p>
-        <a class="button" href="/assets/misc/Agrippa.png" target="_blank">Check out my best drawing</a>
+        <a class="button misc-preview-btn" href="/assets/misc/Agrippa.png" data-image="/assets/misc/Agrippa.png" data-title="My best drawing">Check out my best drawing</a>
       </div>
     </div>
     <div class="four columns">
@@ -141,4 +141,108 @@ title: Bazinga
     </div>
   </div>
 </div>
+
+<!-- Lightbox for image preview -->
+<div class="footprint-lightbox" id="misc-lightbox" aria-hidden="true">
+  <div class="footprint-lightbox-backdrop" data-action="close"></div>
+  <div class="footprint-lightbox-content" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="footprint-lightbox-close" type="button" data-action="close" aria-label="Close">×</button>
+    <div class="footprint-lightbox-header">
+      <div class="footprint-lightbox-title" id="misc-lightbox-title"></div>
+    </div>
+    <div class="footprint-lightbox-stage">
+      <img class="footprint-lightbox-img" id="misc-lightbox-img" alt="">
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var lb = document.getElementById('misc-lightbox');
+    var lbImg = document.getElementById('misc-lightbox-img');
+    var lbTitle = document.getElementById('misc-lightbox-title');
+    if (!lb || !lbImg || !lbTitle) return;
+
+    function openLightbox(imgSrc, title) {
+      if (!imgSrc) return;
+      lbImg.src = imgSrc;
+      lbTitle.textContent = title || '';
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('footprint-no-scroll');
+      
+      // Fit image to viewport
+      function fitToViewport() {
+        if (!lb || !lb.classList.contains('open')) return;
+        var lbStage = lb.querySelector('.footprint-lightbox-stage');
+        if (!lbStage) return;
+        var rect = lbStage.getBoundingClientRect();
+        if (!rect) return;
+        var w = Math.max(0, Math.floor(rect.width));
+        var h = Math.max(0, Math.floor(rect.height));
+        try {
+          var cs = window.getComputedStyle(lbStage);
+          if (cs) {
+            var pl = parseFloat(cs.paddingLeft || '0') || 0;
+            var pr = parseFloat(cs.paddingRight || '0') || 0;
+            var pt = parseFloat(cs.paddingTop || '0') || 0;
+            var pb = parseFloat(cs.paddingBottom || '0') || 0;
+            w = Math.max(0, w - pl - pr);
+            h = Math.max(0, h - pt - pb);
+          }
+        } catch (_e) {}
+        var pad = 2;
+        lbImg.style.maxWidth = Math.max(0, w - pad) + 'px';
+        lbImg.style.maxHeight = Math.max(0, h - pad) + 'px';
+      }
+      
+      // Wait for image to load, then fit
+      if (lbImg.complete) {
+        requestAnimationFrame(fitToViewport);
+      } else {
+        lbImg.onload = function() {
+          requestAnimationFrame(fitToViewport);
+        };
+      }
+      
+      // Also fit on resize
+      window.addEventListener('resize', fitToViewport);
+    }
+
+    function closeLightbox() {
+      if (!lb) return;
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('footprint-no-scroll');
+      if (lbImg) lbImg.src = '';
+    }
+
+    // Handle button clicks
+    document.addEventListener('click', function(e) {
+      var btn = e.target && e.target.closest ? e.target.closest('a.misc-preview-btn') : null;
+      if (btn) {
+        e.preventDefault();
+        var imgSrc = btn.getAttribute('data-image') || btn.getAttribute('href');
+        var title = btn.getAttribute('data-title') || '';
+        openLightbox(imgSrc, title);
+      }
+    });
+
+    // Handle lightbox close
+    lb.addEventListener('click', function(e) {
+      var t = e.target;
+      var action = t && t.getAttribute ? t.getAttribute('data-action') : null;
+      if (action === 'close') {
+        e.preventDefault();
+        closeLightbox();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (!lb || !lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
 
