@@ -3,7 +3,7 @@
 
   <!-- Home Page -->
   <url>
-    <loc>https://www.jonathan-qin.com/</loc>
+    <loc>https://www.chonghanqin.com/</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- Misc Page -->
   <url>
-    <loc>https://www.jonathan-qin.com/misc/index.html</loc>
+    <loc>https://www.chonghanqin.com/misc/index.html</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -19,7 +19,7 @@
 
   <!-- Footprint Page -->
   <url>
-    <loc>https://www.jonathan-qin.com/footprint/index.html</loc>
+    <loc>https://www.chonghanqin.com/footprint/index.html</loc>
     <lastmod>2025-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
