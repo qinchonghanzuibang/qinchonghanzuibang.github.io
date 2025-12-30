@@ -138,7 +138,7 @@ trips:
   - id: 2025_01_egypt
     title: "Egypt"
     date: "2025 Jan"
-    rating: 4.0
+    rating: 4.5
     locations:
       - city: "Cairo"
         coordinate: [30.03, 31.23]
@@ -150,7 +150,7 @@ trips:
         cover: /assets/footprint/2025_01_egypt/evening.webp
       - city: "Hurghada"
         coordinate: [27.26, 33.82]
-        rating: 3.5
+        rating: 4.5
         cover: /assets/footprint/2025_01_egypt/snorkeling.webp
     photos:
       - /assets/footprint/2025_01_egypt/air.webp
@@ -166,7 +166,7 @@ trips:
   - id: 2025_12_vienam
     title: "Vietnam"
     date: "2025 Dec"
-    rating: 3.5
+    rating: 3.0
     blurb: The ratings were quite low because of the severe pollution in Hanoi and terrible weather in Da Nang during my visit.
     locations:
       - city: "Hanoi"
