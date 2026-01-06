@@ -13,13 +13,21 @@ papers:
     # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     selected: y
 
-  # - title: "Think to Draw, Draw to Think: Reasoning- Guided Factual Data Synthesis for Scientific Reasoning"
-  #   authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Juekai Lin, Lijun Wu"
-  #   venue: "Submitted to Annual Conference of the Association for Computational Linguistics (ACL) 2026"
-  #   paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-  #   code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-  #   data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-  #   selected: y
+  - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
+    authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
+    venue: "Annual Conference of the Association for Computational Linguistics (ACL) 2026, under review"
+    # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    selected: y
+
+  - title: "SAVOIR: Learning Social Savoir-Faire via Shapley-based Reward Attribution"
+    authors: "Xiachong Feng, Yi Jiang, Xiaocheng Feng, Deyi Yin, Libo Qin, Yangfan Ye, Lei Huang, Weitao Ma, Yuxuan Gu, <b>Chonghan Qin</b>, Bing Qin, Lingpeng Kong"
+    venue: "Annual Conference of the Association for Computational Linguistics (ACL) 2026, under review"
+    # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    selected: n
 
   - title: "A Hierarchical Filtering Framework for Curating High-Quality Visual Instruction Data"
     authors: "Yun Zhu, Honglin Lin, Yu Li, <b>Chonghan Qin</b>, Zheng Liu, Xiaoyang Wang, Lijun Wu"
