@@ -173,13 +173,17 @@ title: Home
     var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
     var w = isMobile ? 350 : 500;
     var s = document.createElement('script');
+    var oceancolor = 'ffffff'
+    var landcolor = '3d3d3d'
+    var visitorcolor = '7aa9df'
+    var textcolor = '000000'
+    // var id = 'thWAtz8Bcwt_Yb6twhuYiVFHLl0sqI09jKB4fCxyoLM' // jonathan-qin
+    var id = 'n2tsj1r2tAUT7bVQyR1-wb-cB9BHoaMv0i8rCB-KYlc' // chonghanqin
     s.type = 'text/javascript';
     s.id = 'clustrmaps';
-    s.src = '//cdn.clustrmaps.com/map_v2.js?cl=3d3d3d&w=' + w + '&t=tt&d=thWAtz8Bcwt_Yb6twhuYiVFHLl0sqI09jKB4fCxyoLM&co=ffffff&cmo=7aa9dd&cmn=7aa9dd&ct=000000';
+    s.src = '//cdn.clustrmaps.com/map_v2.js?cl=' + landcolor + '&w=' + w + '&t=tt&d=' + id + '&co=' + oceancolor + '&cmo=' + visitorcolor + '&cmn=' + visitorcolor + '&ct=' + textcolor;
     var c = document.getElementById('clustrmaps-container');
     if (c) { c.appendChild(s); }
   })();
   </script>
-</div>  
-
 </div>
