@@ -34,4 +34,4 @@ papers:
     venue: "Technical Report, NeurIPS Workshop 2025"
     paper_pdf: "/assets/publications/dcvlr_technical_report.pdf"
     data: "https://huggingface.co/datasets/Dream000/high_quality_data_10k_multisource"
-    selected: n
+    selected: y
