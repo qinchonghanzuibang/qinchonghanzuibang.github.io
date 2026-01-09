@@ -2,7 +2,7 @@ papers:
 
   - title: "ImplicitMemBench: A Comprehensive Benchmark for Evaluating Implicit Memory in Large Language Models"
     authors: "<b>Chonghan Qin</b>, Xiachong Feng, Weitao Ma, Xiaocheng Feng, Lingpeng Kong"
-    venue: "Annual Conference of the Association for Computational Linguistics (ACL) 2026, under review"
+    venue: "Under review, ACL-ARR"
     # paper_pdf: "/assets/publications/2025_implicitmembench/paper.pdf"
     # slides: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # poster: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
@@ -15,7 +15,7 @@ papers:
 
   - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
     authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
-    venue: "Annual Conference of the Association for Computational Linguistics (ACL) 2026, under review"
+    venue: "Under review, ACL-ARR"
     # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
@@ -23,7 +23,7 @@ papers:
 
   - title: "SAVOIR: Learning Social Savoir-Faire via Shapley-based Reward Attribution"
     authors: "Xiachong Feng, Yi Jiang, Xiaocheng Feng, Deyi Yin, Libo Qin, Yangfan Ye, Lei Huang, Weitao Ma, Yuxuan Gu, <b>Chonghan Qin</b>, Bing Qin, Lingpeng Kong"
-    venue: "Annual Conference of the Association for Computational Linguistics (ACL) 2026, under review"
+    venue: "Under review, ACL-ARR"
     # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
