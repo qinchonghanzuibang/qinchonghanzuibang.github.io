@@ -1,33 +1,33 @@
 papers:
 
-  - title: "ImplicitMemBench: A Comprehensive Benchmark for Evaluating Implicit Memory in Large Language Models"
-    authors: "<b>Chonghan Qin</b>, Xiachong Feng, Weitao Ma, Xiaocheng Feng, Lingpeng Kong"
-    venue: "Under review, ACL-ARR"
-    # paper_pdf: "/assets/publications/2025_implicitmembench/paper.pdf"
-    # slides: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # poster: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # video: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # project: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    selected: y
+#   - title: "ImplicitMemBench: A Comprehensive Benchmark for Evaluating Implicit Memory in Large Language Models"
+#     authors: "<b>Chonghan Qin</b>, Xiachong Feng, Weitao Ma, Xiaocheng Feng, Lingpeng Kong"
+#     venue: "Under review, ACL-ARR"
+#     # paper_pdf: "/assets/publications/2025_implicitmembench/paper.pdf"
+#     # slides: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # poster: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # video: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # project: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     selected: y
 
-  - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
-    authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
-    venue: "Under review, ACL-ARR"
-    # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    selected: y
+#   - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
+#     authors: "Honglin Lin<sup>‡</sup>, <b>Chonghan Qin<sup>‡</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
+#     venue: "Under review, ACL-ARR"
+#     # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+#     selected: y
 
-  - title: "SAVOIR: Learning Social Savoir-Faire via Shapley-based Reward Attribution"
-    authors: "Xiachong Feng, Yi Jiang, Xiaocheng Feng, Deyi Yin, Libo Qin, Yangfan Ye, Lei Huang, Weitao Ma, Yuxuan Gu, <b>Chonghan Qin</b>, Bing Qin, Lingpeng Kong"
-    venue: "Under review, ACL-ARR"
-    # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    selected: n
+  # - title: "SAVOIR: Learning Social Savoir-Faire via Shapley-based Reward Attribution"
+  #   authors: "Xiachong Feng, Yi Jiang, Xiaocheng Feng, Deyi Yin, Libo Qin, Yangfan Ye, Lei Huang, Weitao Ma, Yuxuan Gu, <b>Chonghan Qin</b>, Bing Qin, Lingpeng Kong"
+  #   venue: "Under review, ACL-ARR"
+  #   # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+  #   # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+  #   # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+  #   selected: n
 
   - title: "A Hierarchical Filtering Framework for Curating High-Quality Visual Instruction Data"
     authors: "Yun Zhu, Honglin Lin, Yu Li, <b>Chonghan Qin</b>, Zheng Liu, Xiaoyang Wang, Lijun Wu"
