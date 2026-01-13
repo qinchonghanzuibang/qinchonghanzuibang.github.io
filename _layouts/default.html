@@ -16,9 +16,17 @@
   <meta name="author" content="Chonghan Qin">
   <meta property="og:title" content="Chonghan Qin" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.chonghanqin.com{{ page.url }}" />
+  {% assign canonical_url = page.url %}
+  {% comment %} Ensure canonical URL matches actual page URL (with index.html suffix for subdirectory index pages) {% endcomment %}
+  {% if canonical_url != "/" and canonical_url != "" and canonical_url != "/index.html" %}
+    {% assign url_last_char = canonical_url | slice: -1 %}
+    {% if url_last_char == "/" %}
+      {% assign canonical_url = canonical_url | append: "index.html" %}
+    {% endif %}
+  {% endif %}
+  <meta property="og:url" content="https://www.chonghanqin.com{{ canonical_url }}" />
   <meta property="og:site_name" content="Chonghan Qin" />
-  <link rel="canonical" href="https://www.chonghanqin.com{{ page.url }}" />
+  <link rel="canonical" href="https://www.chonghanqin.com{{ canonical_url }}" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
