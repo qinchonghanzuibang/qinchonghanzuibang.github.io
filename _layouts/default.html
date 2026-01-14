@@ -17,11 +17,16 @@
   <meta property="og:title" content="Chonghan Qin" />
   <meta property="og:type" content="website" />
   {% assign canonical_url = page.url %}
-  {% comment %} Ensure canonical URL matches actual page URL (with index.html suffix for subdirectory index pages) {% endcomment %}
-  {% if canonical_url != "/" and canonical_url != "" and canonical_url != "/index.html" %}
+  {% comment %} Convert to Clean URLs: remove index.html suffix and ensure trailing slash for subdirectories {% endcomment %}
+  {% if canonical_url == "/index.html" %}
+    {% assign canonical_url = "/" %}
+  {% elsif canonical_url != "/" and canonical_url != "" %}
+    {% if canonical_url contains "index.html" %}
+      {% assign canonical_url = canonical_url | replace: "index.html", "" %}
+    {% endif %}
     {% assign url_last_char = canonical_url | slice: -1 %}
-    {% if url_last_char == "/" %}
-      {% assign canonical_url = canonical_url | append: "index.html" %}
+    {% if url_last_char != "/" %}
+      {% assign canonical_url = canonical_url | append: "/" %}
     {% endif %}
   {% endif %}
   <meta property="og:url" content="https://www.chonghanqin.com{{ canonical_url }}" />
@@ -86,8 +91,8 @@
     <div class="container">
       <ul class="topbar-list">
         <li class="topbar-item"><a class="topbar-link" href={{ "/" | prepend: site.baseurl }}>Home</a></li>
-        <li class="topbar-item"><a class="topbar-link" href={{ "/misc/index.html" | prepend: site.baseurl }}>Bazinga</a></li>
-        <li class="topbar-item"><a class="topbar-link" href={{ "/footprint/index.html" | prepend: site.baseurl }}>Footprint</a></li>
+        <li class="topbar-item"><a class="topbar-link" href={{ "/misc/" | prepend: site.baseurl }}>Bazinga</a></li>
+        <li class="topbar-item"><a class="topbar-link" href={{ "/footprint/" | prepend: site.baseurl }}>Footprint</a></li>
         <li class="topbar-item">
           <a class="topbar-link topbar-backtotop-link" href="#top" aria-label="Back to top" title="Back to top">
             <span class="topbar-backtotop-square" aria-hidden="true">
@@ -139,13 +144,13 @@
     <nav class="navbar">
       <div class="container">
         <ul class="navbar-list">
-          <li class="navbar-item"><a class="navbar-link" href={{ "/index.html#bio" | prepend: site.baseurl }}>Bio</a></li>
-          <!-- <li class="navbar-item"><a class="navbar-link" href={{ "/index.html#prospective-students" | prepend: site.baseurl }}>Prospective Students</a></li> -->
-          <li class="navbar-item"><a class="navbar-link" href={{ "/index.html#publications" | prepend: site.baseurl }}>Publications</a></li>
-          <!--<li class="navbar-item"><a class="navbar-link" href={{ "/index.html#projects" | prepend: site.baseurl }}>Projects</a></li>-->
-          <li class="navbar-item"><a class="navbar-link" href={{ "/index.html#resume" | prepend: site.baseurl }}>Vita</a></li>
-          <li class="navbar-item"><a class="navbar-link" href={{ "/misc/index.html" | prepend: site.baseurl }}>Bazinga</a></li>
-          <li class="navbar-item"><a class="navbar-link" href={{ "/footprint/index.html" | prepend: site.baseurl }}>Footprint</a></li>
+          <li class="navbar-item"><a class="navbar-link" href={{ "/#bio" | prepend: site.baseurl }}>Bio</a></li>
+          <!-- <li class="navbar-item"><a class="navbar-link" href={{ "/#prospective-students" | prepend: site.baseurl }}>Prospective Students</a></li> -->
+          <li class="navbar-item"><a class="navbar-link" href={{ "/#publications" | prepend: site.baseurl }}>Publications</a></li>
+          <!--<li class="navbar-item"><a class="navbar-link" href={{ "/#projects" | prepend: site.baseurl }}>Projects</a></li>-->
+          <li class="navbar-item"><a class="navbar-link" href={{ "/#resume" | prepend: site.baseurl }}>Vita</a></li>
+          <li class="navbar-item"><a class="navbar-link" href={{ "/misc/" | prepend: site.baseurl }}>Bazinga</a></li>
+          <li class="navbar-item"><a class="navbar-link" href={{ "/footprint/" | prepend: site.baseurl }}>Footprint</a></li>
         </ul>
       </div>
     </nav>
