@@ -324,9 +324,9 @@ h4 {
 
 /* Footprint map + gallery */
 .footprint-map-wrap { margin: 1rem 0 2rem; }
-.footprint-map { width: 100%; height: 360px; border: 1px solid #eee; border-radius: 8px; }
+.footprint-map { width: 100%; height: 420px; border: 1px solid #eee; border-radius: 8px; }
 @media (max-width: 750px) {
-  .footprint-map { height: 280px; }
+  .footprint-map { height: 320px; }
 }
 
 .footprint-trip { margin-top: 2.5rem; }
@@ -395,6 +395,21 @@ img.lazy {
 .footprint-popup-title { font-weight: 600; margin-bottom: 2px; }
 .footprint-popup-sub { font-size: 12px; color: rgba(0,0,0,0.6); margin-bottom: 6px; }
 .footprint-popup-img { width: 100%; height: 110px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(0,0,0,0.08); margin: 6px 0; }
+
+/* Desktop: popup image keeps original aspect ratio */
+@media (min-width: 751px) {
+  .footprint-popup-img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 180px;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .footprint-popup-link {
   display: block;
   margin-top: 8px;
@@ -528,6 +543,14 @@ img.lazy {
 .leaflet-popup.footprint-popup-leaflet .leaflet-popup-content {
   margin: 10px 12px;
   max-width: 260px;
+}
+
+/* Desktop: larger popup */
+@media (min-width: 751px) {
+  .leaflet-popup.footprint-popup-leaflet .leaflet-popup-content {
+    min-width: 240px;
+    max-width: 360px;
+  }
 }
 
 /* We draw our own arrow so we can flip it up/down/left/right */
