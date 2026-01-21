@@ -581,12 +581,16 @@ img.lazy {
   font-size: 12px;
   line-height: 1;
 }
+.footprint-cluster-popup .footprint-popup-title {
+  font-size: 18px;
+}
 .footprint-cluster-popup .footprint-cluster-list {
   margin: 8px 0 0;
   padding-left: 18px;
 }
 .footprint-cluster-popup .footprint-cluster-list li {
   margin: 4px 0;
+  font-size: 16px;
 }
 
 /* Base arrow pseudo-elements */

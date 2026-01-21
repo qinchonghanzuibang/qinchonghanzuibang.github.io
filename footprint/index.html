@@ -405,28 +405,62 @@ title: Footprint
           iconAnchor: [size / 2, size / 2]
         });
         var m = L.marker(cluster.latlng, { icon: icon, keyboard: false });
-        m.bindPopup(clusterPopupHtml(cluster.items), {
-          autoPan: false,
-          closeButton: false,
-          closeOnClick: false,
-          className: 'footprint-popup-leaflet footprint-cluster-popup-leaflet',
-          offset: [0, 0]
-        });
+
+        // Desktop only: bind popup with hover logic
+        if (!isTouch) {
+          m.bindPopup(clusterPopupHtml(cluster.items), {
+            autoPan: false,
+            closeButton: false,
+            closeOnClick: false,
+            className: 'footprint-popup-leaflet footprint-cluster-popup-leaflet',
+            offset: [0, 0]
+          });
+
+          var closeTimer = null;
+          var isOverPopup = false;
+          function clearClose() {
+            if (closeTimer) {
+              clearTimeout(closeTimer);
+              closeTimer = null;
+            }
+          }
+          function scheduleClose() {
+            clearClose();
+            closeTimer = setTimeout(function () {
+              if (!isOverPopup) m.closePopup();
+            }, 220);
+          }
+
+          m.on('popupopen', function (e) {
+            clearClose();
+            try {
+              var el = e.popup && e.popup.getElement ? e.popup.getElement() : null;
+              if (!el) return;
+              if (window.L && window.L.DomEvent) {
+                window.L.DomEvent.disableClickPropagation(el);
+                window.L.DomEvent.disableScrollPropagation(el);
+              }
+              el.addEventListener('mouseenter', function () { isOverPopup = true; clearClose(); });
+              el.addEventListener('mouseleave', function () { isOverPopup = false; m.closePopup(); });
+            } catch (_e) {}
+          });
+
+          m.on('mouseover', function () { clearClose(); m.openPopup(); });
+          m.on('mouseout', function () { scheduleClose(); });
+        }
+
+        // Click: zoom in to reveal individual points (both desktop and mobile)
         m.on('click', function (evt) {
           try {
             if (evt && evt.originalEvent && window.L && window.L.DomEvent) window.L.DomEvent.stopPropagation(evt.originalEvent);
           } catch (_e) {}
-          // Click cluster: zoom in to reveal individual points.
           try {
             map.fitBounds(cluster.bounds, { padding: [40, 40], maxZoom: map.getZoom() + 3 });
           } catch (_e2) {
             map.setView(cluster.latlng, map.getZoom() + 2);
           }
         });
-        if (!isTouch) {
-          m.on('mouseover', function () { try { m.openPopup(); } catch (_e) {} });
-          m.on('mouseout', function () { try { m.closePopup(); } catch (_e) {} });
-        }
+
         return m;
       }
 
