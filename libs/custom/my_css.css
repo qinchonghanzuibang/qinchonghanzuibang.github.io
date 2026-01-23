@@ -10,6 +10,14 @@ h4 {
   margin-bottom: 0px; }
 .main-description p {
   margin-bottom: 0px; }
+.main-description .chinese-name {
+  font-family: "Ma Shan Zheng", serif;
+  font-size: 2.0em;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.75);
+  /* margin-top: 0.2rem; */
+  /* margin-bottom: 0.2rem; */
+}
 .main-description .fa {
   font-size: 22px;
   margin-top: 5px; }
