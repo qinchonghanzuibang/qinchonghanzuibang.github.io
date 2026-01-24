@@ -18,6 +18,10 @@ h4 {
   /* margin-top: 0.2rem; */
   /* margin-bottom: 0.2rem; */
 }
+/* Indent content below names */
+.main-description p:not(.chinese-name) {
+  margin-left: 0.2rem;
+}
 .main-description .fa {
   font-size: 22px;
   margin-top: 5px; }
