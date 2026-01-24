@@ -51,6 +51,7 @@ papers:
   - title: "A Hierarchical Filtering Framework for Curating High-Quality Visual Instruction Data"
     authors: "Yun Zhu, Honglin Lin, Yu Li, <b>Chonghan Qin</b>, Zheng Liu, Xiaoyang Wang, Lijun Wu"
     venue: "Technical Report, NeurIPS Workshop 2025"
-    paper_pdf: "/assets/publications/dcvlr_technical_report.pdf"
+    # paper_pdf: "/assets/publications/dcvlr_technical_report.pdf"
+    paper: "https://huggingface.co/datasets/Dream000/high_quality_data_10k_multisource/blob/main/technical_report.pdf"
     data: "https://huggingface.co/datasets/Dream000/high_quality_data_10k_multisource"
     selected: y
