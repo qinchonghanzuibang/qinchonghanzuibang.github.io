@@ -13,21 +13,18 @@ papers:
     # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     selected: y
 
-  # - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
-  #   authors: "Honglin Lin<sup>†</sup>, <b>Chonghan Qin<sup>†</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
-  #   venue: "Under review, ACL 2026"
-  #   # project: "https://scigenbench.github.io/"
-  #   # paper: ""
-  #   # code: "https://github.com/scigenbench/scigenbench"
-  #   # data: "https://huggingface.co/datasets/J017athan/SciGenBench"
-  #   selected: y
+  - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
+    authors: "Honglin Lin<sup>†</sup>, <b>Chonghan Qin<sup>†</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
+    venue: "Under review, ACL 2026"
+    project: "https://scigenbench.github.io/"
+    paper: "https://arxiv.org/abs/2601.17027"
+    code: "https://github.com/scigenbench/scigenbench"
+    data: "https://huggingface.co/collections/J017athan/scigenbench"
+    selected: y
 
   - title: "SAVOIR: Learning Social Savoir-Faire via Shapley-based Reward Attribution"
     authors: "Xiachong Feng, Yi Jiang, Xiaocheng Feng, Deyi Yin, Libo Qin, Yangfan Ye, Lei Huang, Weitao Ma, Yuxuan Gu, <b>Chonghan Qin</b>, Bing Qin, Lingpeng Kong"
     venue: "Under review, ACL 2026"
-    # paper: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
-    # data: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     selected: y
 
   - title: "ChartVerse: Scaling Chart Reasoning via Reliable Programmatic Synthsis from Scratch"
@@ -39,9 +36,8 @@ papers:
     data: "https://huggingface.co/collections/opendatalab/chartverse"
     selected: y
 
-
   # - title: "MMFineReason: Closing the Multimodal Reasoning Gap with Open Data-Centric Methods"
-  #   authors: "Honglin Lin, Zheng liu, <b>Chonghan Qin</b>"
+  #   authors: "Honglin Lin<sup>†</sup>, Zheng liu<sup>†</sup> Yun Zhu<sup>†</sup>, <b>Chonghan Qin</b>, Juekai Lin, Conghui He, Lijun Wu"
   #   venue: "arXiv, 2026"
   #   project: "https://mmfinereason.github.io/"
   #   paper: ""
