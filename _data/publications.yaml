@@ -36,13 +36,14 @@ papers:
     data: "https://huggingface.co/collections/opendatalab/chartverse"
     selected: y
 
-  # - title: "MMFineReason: Closing the Multimodal Reasoning Gap with Open Data-Centric Methods"
-  #   authors: "Honglin Lin<sup>†</sup>, Zheng liu<sup>†</sup> Yun Zhu<sup>†</sup>, <b>Chonghan Qin</b>, Juekai Lin, Conghui He, Lijun Wu"
-  #   venue: "arXiv, 2026"
-  #   project: "https://mmfinereason.github.io/"
-  #   paper: ""
-  #   data: "https://huggingface.co/datasets/OpenDataArena/MMFineReason"
-  #   selected: y
+  - title: "MMFineReason: Closing the Multimodal Reasoning Gap via Open Data-Centric Methods"
+    authors: "Honglin Lin<sup>†</sup>, Zheng liu<sup>†</sup> Yun Zhu<sup>†</sup>, <b>Chonghan Qin</b>, Juekai Lin, Xiaoran Shang, Conghui He, Wentao Zhang,Lijun Wu"
+    venue: "arXiv, 2026"
+    project: "https://mmfinereason.github.io/"
+    paper: "https://arxiv.org/abs/2601.21821"
+    code: "https://github.com/MMFineReason/MMFineReason"
+    data: "https://huggingface.co/collections/OpenDataArena/mmfinereason"
+    selected: y
 
   - title: "A Hierarchical Filtering Framework for Curating High-Quality Visual Instruction Data"
     authors: "Yun Zhu, Honglin Lin, Yu Li, <b>Chonghan Qin</b>, Zheng Liu, Xiaoyang Wang, Lijun Wu"
