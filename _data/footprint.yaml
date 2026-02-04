@@ -179,3 +179,40 @@ trips:
         # cover: /assets/footprint/2025_12_vienam/danang.webp
     photos: []
 
+  - id: 2026_01_europe
+    title: "Europe"
+    date: "2026 Jan"
+    rating: 4.5
+    blurb: Spain and Italy.
+    locations:
+      - city: "Madrid"
+        coordinate: [40.42, -3.70]
+        rating: 4.0
+        # cover: /assets/footprint/2026_01_europe/madrid.webp
+      - city: "Barcelona"
+        coordinate: [41.35, 2.17]
+        rating: 4.5
+        # cover: /assets/footprint/2026_01_europe/barcelona.webp
+      - city: "Milan"
+        coordinate: [45.51, 9.08]
+        rating: 4.5
+        # cover: /assets/footprint/2026_01_europe/milan.webp
+      - city: "Venice"
+        coordinate: [45.44, 12.33]
+        rating: 4.5
+        # cover: /assets/footprint/2026_01_europe/venice.webp
+      - city: "Florence"
+        coordinate: [43.78, 11.25]
+        rating: 4.5
+        # cover: /assets/footprint/2026_01_europe/florence.webp
+      - city: "Rome"
+        coordinate: [41.90, 12.50]
+        rating: 4.5
+        # cover: /assets/footprint/2026_01_europe/rome.webp
+
+    photos:
+      # - /assets/footprint/2026_01_europe/madrid.webp
+      # - /assets/footprint/2026_01_europe/barcelona.webp
+      # - /assets/footprint/2026_01_europe/rome.webp
+      # - /assets/footprint/2026_01_europe/venice.webp
+      # - /assets/footprint/2026_01_europe/florence.webp
