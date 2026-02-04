@@ -15,7 +15,7 @@ papers:
 
   - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
     authors: "Honglin Lin<sup>†</sup>, <b>Chonghan Qin<sup>†</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
-    venue: "Under review, ACL 2026"
+    venue: "arXiv, 2026"
     project: "https://scigenbench.github.io/"
     paper: "https://arxiv.org/abs/2601.17027"
     code: "https://github.com/scigenbench/scigenbench"
