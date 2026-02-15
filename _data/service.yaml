@@ -1,0 +1,22 @@
+academic_advising:
+  - name: "The University of Hong Kong"
+    role: "Class of 2029, School of Computing and Data Science, around 20 students"
+    period: "2025-2026"
+  - name: "The University of Hong Kong"
+    role: "Class of 2028, Department of Computer Science, around 15 students"
+    period: "2024"
+
+academic_service:
+  area_chair: []
+  # - venue: "Conference Name"
+  #   year: "2025"
+  
+  program_committee: []
+  # - venue: "Conference Name"
+  #   year: "2025"
+  conference_reviewer: []
+  
+  journal_reviewer:
+    - venue: "IEEE Transactions on Big Data"
+      year: "2025"
+  

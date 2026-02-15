@@ -131,6 +131,121 @@ title: Home
   </div>
 </div>
 
+<!-- ========== SERVICE ========== -->
+<div class="docs-section" id="service">
+  <h3>Service</h3>
+
+  <h5>Academic Advising</h5>
+  {% assign grouped_advising = "" | split: "," %}
+  {% for advisee in site.data.service.academic_advising %}
+    {% if advisee.name != "" %}
+      {% assign found = false %}
+      {% for group in grouped_advising %}
+        {% if group == advisee.name %}
+          {% assign found = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% unless found %}
+        {% assign grouped_advising = grouped_advising | push: advisee.name %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+  
+  {% for group_name in grouped_advising %}
+    <div class="service-item" style="margin-bottom: 15px;">
+      <p style="margin-bottom: 6px;"><b>{{ group_name }}</b></p>
+      {% for advisee in site.data.service.academic_advising %}
+        {% if advisee.name == group_name %}
+        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.7);">{{ advisee.role }}: {{ advisee.period }}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  <h5>Academic Service</h5>
+  
+  {% assign has_area_chair = false %}
+  {% if site.data.service.academic_service.area_chair %}
+    {% for item in site.data.service.academic_service.area_chair %}
+      {% if item.venue != "" %}
+        {% assign has_area_chair = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  {% if has_area_chair %}
+  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Area Chair:</b></p>
+  <ul style="list-style: none; padding-left: 0;">
+    {% for item in site.data.service.academic_service.area_chair %}
+      {% if item.venue != "" %}
+      <li style="margin-bottom: 6px;">
+        {{ item.venue }}: {{ item.year }}
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% assign has_program_committee = false %}
+  {% if site.data.service.academic_service.program_committee %}
+    {% for item in site.data.service.academic_service.program_committee %}
+      {% if item.venue != "" %}
+        {% assign has_program_committee = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  {% if has_program_committee %}
+  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Program Committee Member:</b></p>
+  <ul style="list-style: none; padding-left: 0;">
+    {% for item in site.data.service.academic_service.program_committee %}
+      {% if item.venue != "" %}
+      <li style="margin-bottom: 6px;">
+        {{ item.venue }}: {{ item.year }}
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% assign has_conference_reviewer = false %}
+  {% if site.data.service.academic_service.conference_reviewer %}
+    {% for review in site.data.service.academic_service.conference_reviewer %}
+      {% if review.venue != "" %}
+        {% assign has_conference_reviewer = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  {% if has_conference_reviewer %}
+  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Conference Reviewer:</b></p>
+  <ul style="list-style: none; padding-left: 0;">
+    {% for review in site.data.service.academic_service.conference_reviewer %}
+      {% if review.venue != "" %}
+      <li style="margin-bottom: 6px;">
+        {{ review.venue }}: {{ review.year }}
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Journal Reviewer:</b></p>
+  <ul style="list-style: none; padding-left: 0;">
+    {% for review in site.data.service.academic_service.journal_reviewer %}
+      {% if review.venue != "" %}
+      <li style="margin-bottom: 6px;">
+        {{ review.venue }}: {{ review.year }}
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
 <!-- ========== RESUME ========== -->
 <div class="docs-section" id="resume">
   <h3>Vitæ</h3>
