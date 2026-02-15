@@ -170,7 +170,7 @@ title: Home
 <div class="docs-section" id="service">
   <h3>Service</h3>
 
-  <h5>Academic Advising</h5>
+  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Academic Advising:</b></p>
   {% assign grouped_advising = "" | split: "," %}
   {% for advisee in site.data.service.academic_advising %}
     {% if advisee.name != "" %}
@@ -197,8 +197,6 @@ title: Home
       {% endfor %}
     </div>
   {% endfor %}
-
-  <h5>Academic Service</h5>
   
   {% assign has_area_chair = false %}
   {% if site.data.service.academic_service.area_chair %}
