@@ -131,6 +131,41 @@ title: Home
   </div>
 </div>
 
+<!-- ========== TEACHING ========== -->
+<div class="docs-section" id="teaching">
+  <h3>Teaching</h3>
+  
+  {% assign grouped_teaching = "" | split: "," %}
+  {% for course in site.data.teaching.courses %}
+    {% if course.name != "" and course.institution != "" %}
+      {% assign found = false %}
+      {% for group in grouped_teaching %}
+        {% if group == course.institution %}
+          {% assign found = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% unless found %}
+        {% assign grouped_teaching = grouped_teaching | push: course.institution %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+  
+  {% for group_institution in grouped_teaching %}
+    <div class="service-item" style="margin-bottom: 15px;">
+      <p style="margin-bottom: 6px;"><b>{{ group_institution }}</b></p>
+      {% for course in site.data.teaching.courses %}
+        {% if course.institution == group_institution and course.name != "" %}
+        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.7);">{{ course.name }}, {{ course.role }}: {{ course.period }}</p>
+        {% if course.description %}
+        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.6); font-size: 0.9em; margin-left: 10px;">{{ course.description }}</p>
+        {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
 <!-- ========== SERVICE ========== -->
 <div class="docs-section" id="service">
   <h3>Service</h3>
@@ -157,7 +192,7 @@ title: Home
       <p style="margin-bottom: 6px;"><b>{{ group_name }}</b></p>
       {% for advisee in site.data.service.academic_advising %}
         {% if advisee.name == group_name %}
-        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.7);">{{ advisee.role }}: {{ advisee.period }}</p>
+        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.7);">{{ advisee.subject }}: {{ advisee.period }}</p>
         {% endif %}
       {% endfor %}
     </div>
