@@ -1,5 +1,5 @@
 courses:
-  - name: "AILT1001: Artificial Intelligence Literacy I"
+  - name: "[AILT1001](https://ailt.cds.hku.hk/): Artificial Intelligence Literacy I"
     institution: "The University of Hong Kong"
     role: "Lead Student Teaching Assistant" # or "Instructor", "Guest Lecturer", etc.
     period: "2025-2026"

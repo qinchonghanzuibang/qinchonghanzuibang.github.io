@@ -189,7 +189,7 @@ title: Home
         {% if course.institution == group_institution and course.name != "" %}
         <p style="margin-bottom: 6px; color: #000000;">
           <span style="font-weight: bold; margin-right: 6px;">{{ course.period }}</span>
-          <span>{{ course.name }}, {{ course.role }}</span>
+          <span>{{ course.name | markdownify | replace: "<p>", "" | replace: "</p>", "" | strip }}, {{ course.role }}</span>
         </p>
         {% if course.description %}
         <p style="margin-bottom: 6px; color: #000000; font-size: 0.9em; margin-left: 10px;">{{ course.description }}</p>
@@ -224,7 +224,7 @@ title: Home
         {% if advisee.name == group_name %}
         <p style="margin-bottom: 6px; color: #000000;">
           <span style="font-weight: bold; margin-right: 6px;">{{ advisee.period }}</span>
-          <span>{{ advisee.subject }}</span>
+          <span>{{ advisee.subject | markdownify | replace: "<p>", "" | replace: "</p>", "" | strip }}</span>
         </p>
         {% endif %}
       {% endfor %}
@@ -247,7 +247,7 @@ title: Home
     {% for item in site.data.service.academic_service.area_chair %}
       {% if item.venue != "" %}
       <li style="margin-bottom: 6px;">
-        {{ item.venue }}: {{ item.year }}
+        {{ item.venue | markdownify | replace: "<p>", "" | replace: "</p>", "" | strip }}: {{ item.year }}
       </li>
       {% endif %}
     {% endfor %}
@@ -270,7 +270,7 @@ title: Home
     {% for item in site.data.service.academic_service.program_committee %}
       {% if item.venue != "" %}
       <li style="margin-bottom: 6px;">
-        {{ item.venue }}: {{ item.year }}
+        {{ item.venue | markdownify | replace: "<p>", "" | replace: "</p>", "" | strip }}: {{ item.year }}
       </li>
       {% endif %}
     {% endfor %}
@@ -293,7 +293,7 @@ title: Home
     {% for review in site.data.service.academic_service.conference_reviewer %}
       {% if review.venue != "" %}
       <li style="margin-bottom: 6px;">
-        {{ review.venue }}: {{ review.year }}
+        {{ review.venue | markdownify | replace: "<p>", "" | replace: "</p>", "" | strip }}: {{ review.year }}
       </li>
       {% endif %}
     {% endfor %}
@@ -305,7 +305,7 @@ title: Home
     {% for review in site.data.service.academic_service.journal_reviewer %}
       {% if review.venue != "" %}
       <li style="margin-bottom: 6px;">
-        {{ review.venue }}: {{ review.year }}
+        {{ review.venue | markdownify | replace: "<p>", "" | replace: "</p>", "" | strip }}: {{ review.year }}
       </li>
       {% endif %}
     {% endfor %}
