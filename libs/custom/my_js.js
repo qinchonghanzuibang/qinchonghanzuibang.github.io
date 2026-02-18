@@ -28,6 +28,7 @@ $(document).ready(function() {
     $('a[href*="#"]').on('click', smoothScroll)
     buildSnippets();
     initLazy();
+    initLinkTargets();
   }
 
   function smoothScroll(e) {
@@ -170,6 +171,51 @@ $(document).ready(function() {
     }, 1000);
   }
 
+  // Ensure most links open in a new tab, while keeping in-page anchors normal.
+  function initLinkTargets() {
+    $('a[href]').each(function () {
+      var href = $(this).attr('href');
+      if (!href) return;
+
+      // Keep same-page anchors (e.g., "#bio", "/#bio") opening in the same tab.
+      if (href.charAt(0) === '#' || href.indexOf('/#') === 0) return;
+
+      // Keep navigation links (topbar + navbar) that go to internal pages in the same tab
+      // (e.g., /misc/, /footprint/).
+      var inNav = $(this).closest('.topbar, .navbar').length > 0;
+      if (inNav) {
+        // Fast-path for relative/internal URLs.
+        var looksInternal =
+          href.charAt(0) === '/' ||
+          href.indexOf('./') === 0 ||
+          href.indexOf('../') === 0 ||
+          (href.indexOf('://') === -1 &&
+            href.indexOf('mailto:') !== 0 &&
+            href.indexOf('tel:') !== 0 &&
+            href.indexOf('javascript:') !== 0);
+        if (looksInternal) return;
+
+        // Otherwise fall back to origin check (handles absolute internal URLs).
+        try {
+          var navUrl = new URL(href, window.location.href);
+          if (navUrl.origin === window.location.origin) return;
+        } catch (_e) {}
+      }
+
+      // Respect existing explicit targets.
+      if (!this.hasAttribute('target')) {
+        this.setAttribute('target', '_blank');
+      }
+
+      // Add rel for security when opening new tabs.
+      var rel = $(this).attr('rel') || '';
+      if (rel.indexOf('noopener') === -1) {
+        rel = (rel ? rel + ' ' : '') + 'noopener noreferrer';
+        $(this).attr('rel', rel);
+      }
+    });
+  }
+
   init();
 
-});
+}); 

@@ -1,0 +1,16 @@
+items:
+
+  - date: "2024-10-01"
+    content: "I joined the [HKUNLP](https://hkunlp.github.io/) group as a student research assistant."
+
+  - date: "2025-06-01"
+    content: "I joined the [Shanghai Artificial Intelligence Laboratory](https://www.shlab.org.cn/) as a research intern."
+
+  - date: "2025-11-03"
+    content: "We ranked 4th in [DCVLR](https://dcvlr-neurips.github.io/) (NeurIPS 2025 Workshop), a vision-language reasoning competition. "
+
+  - date: "2026-01-27"
+    content: "We introduce [SciGenBench and ImgCoder](https://scigenbench.github.io/) for scientific image synthesis, aiming to improve structural precision and reasoning in scientific visual tasks."
+
+  - date: "2026-01-29"
+    content: "[MMFineReason](https://mmfinereason.github.io/) has been released. Our work shows that a 4B model can achieve performance comparable to 30B models. The reasoning dataset [MMFineReason-1.8M](https://huggingface.co/datasets/OpenDataArena/MMFineReason-1.8M-Qwen3-VL-235B-Thinking) is also available and ranked Top 2 on HuggingFace Datasets Trending."

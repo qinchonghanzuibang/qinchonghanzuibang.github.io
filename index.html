@@ -26,6 +26,27 @@ title: Home
   
 </div>
 
+<!-- ========== NEWS ========== -->
+<div class="docs-section" id="news">
+  <h3>News</h3>
+  
+  {% assign news_items = site.data.news.items | sort: "date" | reverse %}
+  {% for item in news_items %}
+    {% if item.content != "" %}
+    <p style="margin-bottom: 10px;">
+      <span style="color: #000000; font-weight: bold; margin-right: 6px;">{{ item.date | date: "%b %Y" }}</span>
+      {% if item.link %}
+      <a href="{{ item.link }}" target="_blank" style="color: #000000;">{{ item.content }}</a>
+      {% else %}
+      <span style="color: #000000;">
+        {% capture news_content %}{{ item.content | markdownify }}{% endcapture %}
+        {{ news_content | replace: "<p>", "" | replace: "</p>", "" | strip }}
+      </span>
+      {% endif %}
+    </p>
+    {% endif %}
+  {% endfor %}
+</div>
 
 <!-- ========== PUBLICATIONS ========== -->
 <div class="docs-section" id="publications">
@@ -131,10 +152,20 @@ title: Home
   </div>
 </div>
 
-<!-- ========== TEACHING ========== -->
-<div class="docs-section" id="teaching">
-  <h3>Teaching</h3>
+<!-- ========== SERVICE ========== -->
+<div class="docs-section" id="service">
+  <h3>Service</h3>
+
+  {% assign has_teaching = false %}
+  {% for course in site.data.teaching.courses %}
+    {% if course.name != "" and course.institution != "" %}
+      {% assign has_teaching = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
   
+  {% if has_teaching %}
+  <p style="margin-top: 15px; margin-bottom: 8px; font-size: 1.25em;"><b>Teaching:</b></p>
   {% assign grouped_teaching = "" | split: "," %}
   {% for course in site.data.teaching.courses %}
     {% if course.name != "" and course.institution != "" %}
@@ -156,21 +187,20 @@ title: Home
       <p style="margin-bottom: 6px;"><b>{{ group_institution }}</b></p>
       {% for course in site.data.teaching.courses %}
         {% if course.institution == group_institution and course.name != "" %}
-        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.7);">{{ course.name }}, {{ course.role }}: {{ course.period }}</p>
+        <p style="margin-bottom: 6px; color: #000000;">
+          <span style="font-weight: bold; margin-right: 6px;">{{ course.period }}</span>
+          <span>{{ course.name }}, {{ course.role }}</span>
+        </p>
         {% if course.description %}
-        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.6); font-size: 0.9em; margin-left: 10px;">{{ course.description }}</p>
+        <p style="margin-bottom: 6px; color: #000000; font-size: 0.9em; margin-left: 10px;">{{ course.description }}</p>
         {% endif %}
         {% endif %}
       {% endfor %}
     </div>
   {% endfor %}
-</div>
+  {% endif %}
 
-<!-- ========== SERVICE ========== -->
-<div class="docs-section" id="service">
-  <h3>Service</h3>
-
-  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Academic Advising:</b></p>
+  <p style="margin-top: 15px; margin-bottom: 8px; font-size: 1.25em;"><b>Academic Advising:</b></p>
   {% assign grouped_advising = "" | split: "," %}
   {% for advisee in site.data.service.academic_advising %}
     {% if advisee.name != "" %}
@@ -192,7 +222,10 @@ title: Home
       <p style="margin-bottom: 6px;"><b>{{ group_name }}</b></p>
       {% for advisee in site.data.service.academic_advising %}
         {% if advisee.name == group_name %}
-        <p style="margin-bottom: 6px; color: rgba(0,0,0,0.7);">{{ advisee.subject }}: {{ advisee.period }}</p>
+        <p style="margin-bottom: 6px; color: #000000;">
+          <span style="font-weight: bold; margin-right: 6px;">{{ advisee.period }}</span>
+          <span>{{ advisee.subject }}</span>
+        </p>
         {% endif %}
       {% endfor %}
     </div>
@@ -209,7 +242,7 @@ title: Home
   {% endif %}
   
   {% if has_area_chair %}
-  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Area Chair:</b></p>
+  <p style="margin-top: 15px; margin-bottom: 8px; font-size: 1.25em;"><b>Area Chair:</b></p>
   <ul style="list-style: none; padding-left: 0;">
     {% for item in site.data.service.academic_service.area_chair %}
       {% if item.venue != "" %}
@@ -232,7 +265,7 @@ title: Home
   {% endif %}
   
   {% if has_program_committee %}
-  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Program Committee Member:</b></p>
+  <p style="margin-top: 15px; margin-bottom: 8px; font-size: 1.25em;"><b>Program Committee Member:</b></p>
   <ul style="list-style: none; padding-left: 0;">
     {% for item in site.data.service.academic_service.program_committee %}
       {% if item.venue != "" %}
@@ -255,7 +288,7 @@ title: Home
   {% endif %}
   
   {% if has_conference_reviewer %}
-  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Conference Reviewer:</b></p>
+  <p style="margin-top: 15px; margin-bottom: 8px; font-size: 1.25em;"><b>Conference Reviewer:</b></p>
   <ul style="list-style: none; padding-left: 0;">
     {% for review in site.data.service.academic_service.conference_reviewer %}
       {% if review.venue != "" %}
@@ -267,7 +300,7 @@ title: Home
   </ul>
   {% endif %}
 
-  <p style="margin-top: 15px; margin-bottom: 8px;"><b>Journal Reviewer:</b></p>
+  <p style="margin-top: 15px; margin-bottom: 8px; font-size: 1.25em;"><b>Journal Reviewer:</b></p>
   <ul style="list-style: none; padding-left: 0;">
     {% for review in site.data.service.academic_service.journal_reviewer %}
       {% if review.venue != "" %}

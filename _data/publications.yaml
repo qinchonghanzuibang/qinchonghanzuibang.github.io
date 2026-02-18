@@ -16,7 +16,7 @@ papers:
   - title: "SAVOIR: Learning Social Savoir-Faire via Shapley-based Reward Attribution"
     authors: "Xiachong Feng, Yi Jiang, Xiaocheng Feng, Deyi Yin, Libo Qin, Yangfan Ye, Lei Huang, Weitao Ma, Yuxuan Gu, <b>Chonghan Qin</b>, Bing Qin, Lingpeng Kong"
     venue: "Under review, ACL 2026"
-    selected: y
+    selected: n
 
   - title: "Scientific Image Synthesis: Benchmarking, Methodologies, and Downstream Utility"
     authors: "Honglin Lin<sup>†</sup>, <b>Chonghan Qin<sup>†</sup></b>, Zheng Liu, Qizhi Pei, Yu Li, Zhanping Zhong, Xin Gao, Yanfeng Wang, Conghui He, Lijun Wu"
@@ -34,7 +34,7 @@ papers:
     paper: "https://arxiv.org/abs/2601.13606"
     code: "https://github.com/starriver030515/ChartVerse"
     data: "https://huggingface.co/collections/opendatalab/chartverse"
-    selected: y
+    selected: n
 
   - title: "MMFineReason: Closing the Multimodal Reasoning Gap via Open Data-Centric Methods"
     authors: "Honglin Lin<sup>†</sup>, Zheng liu<sup>†</sup> Yun Zhu<sup>†</sup>, <b>Chonghan Qin</b>, Juekai Lin, Xiaoran Shang, Conghui He, Wentao Zhang,Lijun Wu"
@@ -51,4 +51,4 @@ papers:
     # paper_pdf: "/assets/publications/dcvlr_technical_report.pdf"
     paper: "https://huggingface.co/datasets/Dream000/high_quality_data_10k_multisource/blob/main/technical_report.pdf"
     data: "https://huggingface.co/datasets/Dream000/high_quality_data_10k_multisource"
-    selected: y
+    selected: n
