@@ -1,10 +1,10 @@
 items:
 
-  - date: "2024-10-01"
-    content: "I joined the [HKUNLP](https://hkunlp.github.io/) group as a student research assistant."
+  # - date: "2024-10-01"
+  #   content: "I joined the [HKUNLP](https://hkunlp.github.io/) group as a student research assistant."
 
-  - date: "2025-06-01"
-    content: "I joined the [Shanghai Artificial Intelligence Laboratory](https://www.shlab.org.cn/) as a research intern."
+  # - date: "2025-06-01"
+  #   content: "I joined the [Shanghai Artificial Intelligence Laboratory](https://www.shlab.org.cn/) as a research intern."
 
   - date: "2025-11-03"
     content: "We ranked 4th in [DCVLR](https://dcvlr-neurips.github.io/) (NeurIPS 2025 Workshop), a vision-language reasoning competition. "
