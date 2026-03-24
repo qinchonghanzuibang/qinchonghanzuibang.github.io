@@ -216,3 +216,14 @@ trips:
       # - /assets/footprint/2026_01_europe/rome.webp
       # - /assets/footprint/2026_01_europe/venice.webp
       # - /assets/footprint/2026_01_europe/florence.webp
+  
+  - id: 2026_03_chongqing
+    title: "Chongqing, China"
+    date: "2026 Mar"
+    rating: 4.5
+    lat: 29.44
+    lng: 106.89
+    photos:
+      # - /assets/footprint/2026_03_chongqing/city.webp
+      # - /assets/footprint/2026_03_chongqing/night.webp
+      # - /assets/footprint/2026_03_chongqing/river.webp
