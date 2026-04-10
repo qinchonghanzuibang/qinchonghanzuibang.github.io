@@ -34,7 +34,7 @@ title: Home
   {% for item in news_items %}
     {% if item.content != "" %}
     <p style="margin-bottom: 10px;">
-      <span style="color: #000000; font-weight: bold; margin-right: 6px;">{{ item.date | date: "%b %Y" }}</span>
+      <span style="color: #000000; font-weight: bold; margin-right: 8px;">{{ item.date | date: "%b %Y" }}</span>
       {% if item.link %}
       <a href="{{ item.link }}" target="_blank" style="color: #000000;">{{ item.content }}</a>
       {% else %}
