@@ -10,7 +10,7 @@ papers:
     # video: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     # project: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     paper: "http://arxiv.org/abs/2604.08064"
-    # code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
+    code: "https://github.com/qinchonghanzuibang/ImplicitMemBench"
     selected: y
 
   - title: "SAVOIR: Learning Social Savoir-Faire via Shapley-based Reward Attribution"
