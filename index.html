@@ -385,7 +385,10 @@ title: Home
     <div class="misc-pdf-modal-backdrop" data-pdf-action="close"></div>
     <div class="misc-pdf-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="misc-pdf-modal-title">
       <div class="misc-pdf-modal-header">
-        <div class="misc-pdf-modal-title" id="misc-pdf-modal-title">Acknowledgements</div>
+        <div class="misc-pdf-modal-heading">
+          <div class="misc-pdf-modal-eyebrow">Document Viewer</div>
+          <div class="misc-pdf-modal-title" id="misc-pdf-modal-title">Acknowledgements</div>
+        </div>
         <div class="misc-pdf-modal-toolbar">
           <a class="misc-pdf-modal-link" id="misc-pdf-open-tab" href="{{ ack_pdf }}" target="_blank" rel="noopener noreferrer">Open in new tab</a>
           <a class="misc-pdf-modal-link" id="misc-pdf-download" href="{{ ack_pdf }}" download="Acknowledgement.pdf">Download</a>
@@ -393,7 +396,9 @@ title: Home
         </div>
       </div>
       <div class="misc-pdf-modal-body">
-        <iframe class="misc-pdf-iframe" id="misc-pdf-iframe" title="Acknowledgements PDF"></iframe>
+        <div class="misc-pdf-modal-stage">
+          <iframe class="misc-pdf-iframe" id="misc-pdf-iframe" title="Acknowledgements PDF"></iframe>
+        </div>
       </div>
     </div>
   </div>
