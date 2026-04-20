@@ -41,7 +41,7 @@ papers:
     venue: "arXiv, 2026"
     project: "https://mmfinereason.github.io/"
     paper: "https://arxiv.org/abs/2601.21821"
-    code: "https://github.com/MMFineReason/MMFineReason"
+    code: "https://github.com/lhl3341/MMFineReason"
     data: "https://huggingface.co/collections/OpenDataArena/mmfinereason"
     selected: y
 
