@@ -340,9 +340,24 @@ title: Home
 
 <div class="docs-section" id="template">
   <h3>Acknowledgements</h3>
-  This website is inspired by <a href="https://github.com/msaveski/www_personal" target="_blank">Martin Saveski's website</a> (huge gratitude!).
-  <br/>
-  <br/>
+  {% assign ack_pdf = '/assets/docs/Acknowledgement.pdf' | prepend: site.baseurl %}
+  <p style="margin-bottom: 10px;">
+    <span style="color: #000000; font-weight: bold; margin-right: 8px;">Apr 2026</span>
+    <span style="color: #000000;">
+      I’m finishing undergrad, and there’s no way I could leave without turning a tiny part of this site into a thank-you note.
+      So many people—advisors, mentors, friends, family, and others along the way—made these years what they were.
+      There’s a longer thank-you below, but truly: if you were part of this journey, thank you.
+      <span style="margin-left: 6px;">
+        <a href="{{ ack_pdf }}" class="misc-ack-pdf-trigger" data-pdf="{{ ack_pdf }}">Read acknowledgements (PDF)</a>
+      </span>
+    </span>
+  </p>
+  <p style="margin-bottom: 10px;">
+    <span style="color: #000000; font-weight: bold; margin-right: 8px;">Dec 2025</span>
+    <span style="color: #000000;">
+      This website is inspired by <a href="https://github.com/msaveski/www_personal" target="_blank" rel="noopener noreferrer">Martin Saveski's website</a> (huge gratitude!).
+    </span>
+  </p>
   <div style="text-align: center;">
     <div id="clustrmaps-container"></div>
   </div>
@@ -363,5 +378,72 @@ title: Home
     var c = document.getElementById('clustrmaps-container');
     if (c) { c.appendChild(s); }
   })();
+  </script>
+
+  <!-- PDF viewer modal (acknowledgements) -->
+  <div class="misc-pdf-modal" id="misc-pdf-modal" aria-hidden="true">
+    <div class="misc-pdf-modal-backdrop" data-pdf-action="close"></div>
+    <div class="misc-pdf-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="misc-pdf-modal-title">
+      <div class="misc-pdf-modal-header">
+        <div class="misc-pdf-modal-title" id="misc-pdf-modal-title">Acknowledgements</div>
+        <div class="misc-pdf-modal-toolbar">
+          <a class="misc-pdf-modal-link" id="misc-pdf-open-tab" href="{{ ack_pdf }}" target="_blank" rel="noopener noreferrer">Open in new tab</a>
+          <a class="misc-pdf-modal-link" id="misc-pdf-download" href="{{ ack_pdf }}" download="Acknowledgement.pdf">Download</a>
+          <button type="button" class="misc-pdf-modal-close" data-pdf-action="close" aria-label="Close">×</button>
+        </div>
+      </div>
+      <div class="misc-pdf-modal-body">
+        <iframe class="misc-pdf-iframe" id="misc-pdf-iframe" title="Acknowledgements PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var modal = document.getElementById('misc-pdf-modal');
+      var iframe = document.getElementById('misc-pdf-iframe');
+      var openTab = document.getElementById('misc-pdf-open-tab');
+      var download = document.getElementById('misc-pdf-download');
+      if (!modal || !iframe) return;
+
+      function openPdfModal(url) {
+        if (!url) return;
+        iframe.src = url;
+        if (openTab) openTab.href = url;
+        if (download) download.href = url;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('footprint-no-scroll');
+      }
+
+      function closePdfModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('footprint-no-scroll');
+        iframe.src = '';
+      }
+
+      document.addEventListener('click', function(e) {
+        var t = e.target && e.target.closest ? e.target.closest('a.misc-ack-pdf-trigger') : null;
+        if (!t) return;
+        e.preventDefault();
+        var url = t.getAttribute('data-pdf') || t.getAttribute('href');
+        openPdfModal(url);
+      });
+
+      modal.addEventListener('click', function(e) {
+        var el = e.target;
+        var action = el && el.getAttribute ? el.getAttribute('data-pdf-action') : null;
+        if (action === 'close') {
+          e.preventDefault();
+          closePdfModal();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (!modal || !modal.classList.contains('open')) return;
+        if (e.key === 'Escape') closePdfModal();
+      });
+    })();
   </script>
 </div>
