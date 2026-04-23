@@ -16,4 +16,4 @@ items:
     content: "[MMFineReason](https://mmfinereason.github.io/) has been released. The reasoning dataset [MMFineReason-1.8M](https://huggingface.co/datasets/OpenDataArena/MMFineReason-1.8M-Qwen3-VL-235B-Thinking) is also available and ranked Top 2 (<b>25k+</b> downloads) on HuggingFace Datasets Trending."
 
   - date: "2026-04-06"
-    content: "[ImplicitMemBench](http://arxiv.org/abs/2604.08064) has been accepted to ACL 2026 Main Conference and SAVOIR has been accepted to ACL 2026 Findings. Thanks once again to all collaborators!"
+    content: "[ImplicitMemBench](http://arxiv.org/abs/2604.08064) has been accepted to ACL 2026 Main Conference and [SAVOIR](https://arxiv.org/abs/2604.18982) has been accepted to ACL 2026 Findings. Thanks once again to all collaborators!"
