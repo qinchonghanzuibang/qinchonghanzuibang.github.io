@@ -1,5 +1,13 @@
 papers:
 
+  - title: "The Granularity Axis: A Micro-to-Macro Latent Direction for Social Roles in Language Models"
+    authors: "<b>Chonghan Qin</b>, Xiachong Feng, Ziyun Song, Xiaocheng Feng, Jing Xiong, Lingpeng Kong"
+    venue: "arXiv, 2026"
+    paper: "http://arxiv.org/abs/2605.06196"
+    code: "https://github.com/qinchonghanzuibang/Granularity-Axis"
+    # data: ""
+    selected: y
+
   - title: "ImplicitMemBench: A Comprehensive Benchmark for Evaluating Implicit Memory in Large Language Models"
     authors: "<b>Chonghan Qin</b>, Xiachong Feng, Weitao Ma, Xiaocheng Feng, Lingpeng Kong"
     venue: "ACL, 2026"
