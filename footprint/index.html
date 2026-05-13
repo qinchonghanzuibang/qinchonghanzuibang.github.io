@@ -113,6 +113,7 @@ title: Footprint
 
   <!-- Placeholder URL for lazy-loaded images (keeps Liquid out of inline JS for linters) -->
   <span id="footprint-lazy-placeholder" data-src="{{ '/assets/empty_300x200.png' | prepend: site.baseurl }}" hidden></span>
+  <span id="footprint-basemap-asset" data-src="{{ '/assets/footprint/world-basemap-mercator.svg' | prepend: site.baseurl }}" hidden></span>
 
   <!-- Leaflet (map) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -134,16 +135,30 @@ title: Footprint
       }
 
       var map = L.map('footprint-map', { scrollWheelZoom: false, worldCopyJump: true });
-      // Use an English-labeled basemap (no API key required)
-      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 18,
-        attribution: 'Tiles &copy; Esri'
-      }).addTo(map);
 
       var bounds = [];
       var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-      // Prevent dragging into "grey" non-world area
-      var worldBounds = L.latLngBounds(L.latLng(-85, -180), L.latLng(85, 180));
+      var basemapAssetEl = document.getElementById('footprint-basemap-asset');
+      var basemapSvgUrl = basemapAssetEl ? basemapAssetEl.getAttribute('data-src') : null;
+      // Match Leaflet's finite Web Mercator world extent.
+      var worldBounds = L.latLngBounds(
+        L.latLng(-85.05112878, -180),
+        L.latLng(85.05112878, 180)
+      );
+      if (basemapSvgUrl) {
+        var basemap = L.imageOverlay(basemapSvgUrl, worldBounds, {
+          interactive: false,
+          opacity: 1,
+          className: 'footprint-basemap-overlay'
+        }).addTo(map);
+        basemap.on('load', function () {
+          mapEl.classList.add('footprint-map-basemap-loaded');
+        });
+        basemap.on('error', function () {
+          mapEl.classList.add('footprint-map-basemap-fallback');
+        });
+      }
+      // Prevent dragging into non-world area
       map.setMaxBounds(worldBounds);
       map.options.maxBoundsViscosity = 1.0;
       var lastPopup = null;
@@ -215,7 +230,7 @@ title: Footprint
         var m = L.circleMarker([t.lat, t.lng], {
           radius: 5,
           weight: 2,
-          color: '#33006f',
+          color: '#6f8798',
           fillColor: '#ffffff',
           fillOpacity: 1,
           bubblingMouseEvents: false
@@ -903,4 +918,3 @@ title: Footprint
     })();
   </script>
 </div>
-
